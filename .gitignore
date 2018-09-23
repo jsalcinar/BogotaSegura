@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -21,8 +22,8 @@
 /storage/*
 !/storage/.keep
 
+# Ignore node_modules
 /node_modules
-/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -31,6 +32,20 @@
 /config/master.key
 /public/packs
 /public/packs-test
+
 /node_modules
+
+# Ignore yarn files
+/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore pow environment settings
+.powenv
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
