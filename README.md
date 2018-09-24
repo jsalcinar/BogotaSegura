@@ -1,7 +1,25 @@
 # BogotaSegura
 Aplicación de seguridad para Bogotá.
 
+Esta aplicacion web esta escrita sobre:
 
+* Ruby 2.5.1
+* Rails 5.2.1
+* Boostrap 4.1.3
+* NodeJs 10.10.0
+* ReactJs 16.4.2
+
+Para la utilizacion del programa, dentro de la carpeta asegurarse de ejecutar:
+
+> bundle install
+
+con el fin de instalar las gemas necesarias. Para correr la aplicacion, ejecutar:
+
+> rails server
+
+y luego desde el navegador ir a
+[localhost:3000](localhost:3000)
+para visualizar la pagina.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
