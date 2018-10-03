@@ -8,12 +8,31 @@ Esta aplicacion web esta escrita sobre:
 * Boostrap 4.1.3
 * NodeJs 10.10.0
 * ReactJs 16.4.2
+* Yarn 1.9.4
+* Postgresql 9.5.14
 
-Para la utilizacion del programa, dentro de la carpeta asegurarse de ejecutar:
+Para la utilizacion del programa despues de clonarlo, dentro de la carpeta asegurarse de ejecutar:
 
 > bundle install
 
-con el fin de instalar las gemas necesarias. Para correr la aplicacion, ejecutar:
+con el fin de instalar las gemas necesarias. Tambien ejecutar
+
+> yarn install
+
+con el fin de instalar los componentes necesarios para el uso de webpacker.
+
+Crear un usuario en postgresql con el siguiente comando
+
+> create role bogota with createdb login password 'segura';
+
+Antes de correr la aplicacion por primera vez despues de la clonacion
+
+> rails db:setup
+> rails db:migrate
+
+Si al realizar db:setup da un error como "FATAL:  Peer authentication failed for user "bogota"
+" realizar la solucion que hay [aqui](https://askubuntu.com/questions/820792/peer-authentication-failed-for-user-with-all-privileges-in-postgres-9-5)
+Para correr la aplicacion ejecutar
 
 > rails server
 
