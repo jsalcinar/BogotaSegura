@@ -11,54 +11,35 @@ Esta aplicacion web esta escrita sobre:
 * Yarn 1.9.4
 * Postgresql 9.5.14
 
-Para la utilizacion del programa despues de clonarlo, dentro de la carpeta asegurarse de ejecutar:
+Para la utilizacion del programa realizar los siguientes comandos:  
+        
+Para la instalacion de las gemas requeridas por la aplicacion:
 
-> bundle install
+> $ bundle install
 
-con el fin de instalar las gemas necesarias. Tambien ejecutar
+Para actualizar lo relacionado con el Webpacker ejecutar:
 
-> yarn install
+> $ yarn install
 
-con el fin de instalar los componentes necesarios para el uso de webpacker.
+Para el uso de la base Posgresql primero crear un usuario con los siguientes comandos:
 
-Crear un usuario en postgresql con el siguiente comando
+> $ sudo -u postgres psql
 
-> create role bogota with createdb login password 'segura';
+>  # create role bogota with createdb login password 'segura';
 
 Antes de correr la aplicacion por primera vez despues de la clonacion
 
-> rails db:setup
-> rails db:migrate
+> $ rails db:setup
 
-Si al realizar db:setup da un error como "FATAL:  Peer authentication failed for user "bogota"
-" realizar la solucion que hay [aqui](https://askubuntu.com/questions/820792/peer-authentication-failed-for-user-with-all-privileges-in-postgres-9-5)
+> $ rails db:migrate
+
+Si al realizar db:setup da un error como ** FATAL:  Peer authentication failed for user "bogota"
+** intentar  la solucion que hay [aqui](https://askubuntu.com/questions/820792/peer-authentication-failed-for-user-with-all-privileges-in-postgres-9-5).
+
 Para correr la aplicacion ejecutar
 
-> rails server
+> $ rails server
 
 y luego desde el navegador ir a
 [localhost:3000](localhost:3000)
 para visualizar la pagina.
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
