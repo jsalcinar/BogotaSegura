@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get "pages/map"	
+  get "pages/home"	
   root to: "pages#index"
 end
