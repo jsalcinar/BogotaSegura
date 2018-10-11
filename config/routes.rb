@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
-  get "pages/home"	
+  devise_for :users
+  get "pages/index"
+  get "pages/home"
+  get "pages/aboutus"	
+  get "maps/map"	
+  get "tips/selection"	
+  get "tips/tip"	
+  get "tips/data"		
   root to: "pages#index"
 end

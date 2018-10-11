@@ -1,4 +1,4 @@
-<nav id="top_navbar" class="navbar navbar-dark  navbar-expand-lg bg-dark">
+<nav id="top_navbar" class="navbar navbar-dark navbar-expand-lg bg-dark">
   	<%= link_to 'Bogota Segura', root_path, class: 'navbar-brand' %>
 
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,10 +6,41 @@
   	</button>
 
   	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-	    <div id="in_navbar" class="navbar-nav">
-  	   <a class="nav-item nav-link" href="/pages/home">Home </a>
-  	   <a class="nav-item nav-link" href="/">More</a>
-      </div>
-  	</div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to 'Home', root_path, class: 'nav-item nav-link' %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link" href="/maps/map">Map</a>
+        </li>    
+        <li class="nav-item">
+          <a class="nav-item nav-link" href="/tips/selection">Tips</a>
+        </li>    
+        <li class="nav-item">
+          <a class="nav-item nav-link" href="/pages/aboutus">About Us</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <strong><%= current_user.email %></strong>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, :class => 'nav-item nav-link'  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, :class => 'nav-item nav-link'  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 </nav>
 

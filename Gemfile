@@ -68,3 +68,6 @@ gem 'jquery-rails'
 #React
 gem 'webpacker'
 gem 'react-rails'
+
+#Autentification
+gem 'devise'

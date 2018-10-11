@@ -1,10 +1,18 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Home</title>
+    <title>Bogota Segura</title>
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
+    <%= stylesheet_link_tag 'index', media: 'all' %>
   </head>
-  <body>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOL77h63YMvrMDxXl5q3eWq_JQ7sLQc1E&callback=initMap"
-    async defer></script>
+  <body >
+          <div class="row justify-content-md-center align-items-center">
+              <div class="col bodyPage">
+                  <p>Seleccione una opcion</p>
+                  <a id="btnr" href="/maps/map" class="btn btn-lg btn-secondary" >Calcular ruta</a>
+                  <a id="btnt" href="/tips/selection" class="btn btn-lg btn-secondary" >Tips de movilidad</a>
+              </div>
+          </div>
   </body>
 </html>
