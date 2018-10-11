@@ -24,7 +24,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <strong><%= current_user.email %></strong>
+              <strong><%= current_user.username %></strong>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
