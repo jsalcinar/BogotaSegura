@@ -4,7 +4,19 @@
     <%= stylesheet_link_tag 'map', media: 'all' %>
   </head>
   <body>
-    <div id="map"></div>
+  	<div class="row">
+  		<div class="col-sm-4">
+  			<button>Hello</button>
+  		</div>
+  		<div class="col-sm-8">
+        <div id="map-container">
+          <div id="map"></div>
+        </div>
+  		</div>
+  	</div>
+
+
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOL77h63YMvrMDxXl5q3eWq_JQ7sLQc1E&callback=initMap"
     async defer></script>
   </body>
