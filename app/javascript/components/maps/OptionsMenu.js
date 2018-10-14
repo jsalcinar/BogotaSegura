@@ -1,40 +1,75 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-function routeClick(e) {
-    e.preventDefault();
-    alert('Planear Ruta');
+function Menu (props){
+  return(
+    <div id="menu">
+      <font size="18">¿Que Buscas?</font>
+      <div>
+        <li onClick={props.routeClick}>Planear Ruta</li>
+        <li onClick={props.interesClick}>Sitios de interes</li>
+        <li onClick={props.lastClick}>Ultimos acontecimientos</li>
+      </div>
+    </div>
+  )
+}
+
+function Route (props){
+  return(
+    <div id="route">
+      <font size="18">Planea tu ruta</font>
+      <div>
+        <form>
+          <div className="form-group">
+            <label>¿Donde comienza tu viaje?</label>
+            <input type="text" className="form-control" id="Origen" placeholder="Origen" />
+          </div>
+          <div className="form-group">
+            <label>¿Donde termina?</label>
+            <input type="text" className="form-control" id="Destino" placeholder="Destino" />
+          </div>
+          <button type="submit" className="btn btn-primary">Enviar</button>
+      </form>
+      </div>
+    </div>
+  )
+}
+
+
+
+class OptionsMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.routeClick = this.routeClick.bind(this);
+    this.interesClick = this.interesClick.bind(this);
+    this.lastClick = this.lastClick.bind(this);
+    this.state = {option: "Inicial"};
   }
 
-function interesClick(e) {
-    e.preventDefault();
+  routeClick() {
+    this.setState({option: "Route"});
+  }
+
+  interesClick() {
     alert('Sitios de interes');
   }
 
-function lastClick(e) {
-    e.preventDefault();
+  lastClick() {
     alert('Ultimos acontecimientos');
   }
 
-function Menu() {
-  return (
-      <div id="menu">
-        <font size="18">¿Que Buscas?</font>
-        <div>
-          <li onClick={routeClick}>Planear Ruta</li>
-          <li onClick={interesClick}>Sitios de interes</li>
-          <li onClick={lastClick}>Ultimos acontecimientos</li>
-        </div>
-      </div>
-    )
-}
-
-const main = <Menu />
-
-class OptionsMenu extends React.Component {
   render () {
+    const option = this.state.option;
+    let element;
+
+    if (option == "Route"){
+      element = <Route />;
+    } else {
+      element = <Menu routeClick={this.routeClick} interesClick={this.interesClick} lastClick={this.lastClick} />;
+    }
+
     return (
-      main
+      element
     );
   }
 }
