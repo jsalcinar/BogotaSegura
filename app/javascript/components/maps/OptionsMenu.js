@@ -1,14 +1,29 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+function routeClick(e) {
+    e.preventDefault();
+    alert('Planear Ruta');
+  }
+
+function interesClick(e) {
+    e.preventDefault();
+    alert('Sitios de interes');
+  }
+
+function lastClick(e) {
+    e.preventDefault();
+    alert('Ultimos acontecimientos');
+  }
+
 function Menu() {
   return (
       <div id="menu">
-        <h1 ><font size="18">¿Que Buscas?</font></h1>
+        <font size="18">¿Que Buscas?</font>
         <div>
-          <li>Planear Ruta</li>
-          <li>Sitios de interes</li>
-          <li>Ultimos acontecimientos</li>
+          <li onClick={routeClick}>Planear Ruta</li>
+          <li onClick={interesClick}>Sitios de interes</li>
+          <li onClick={lastClick}>Ultimos acontecimientos</li>
         </div>
       </div>
     )
