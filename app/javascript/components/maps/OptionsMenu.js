@@ -14,6 +14,23 @@ function Menu (props){
   )
 }
 
+
+function Buttons (props){
+  if(props.complete=="Route_Complete"){
+    return(
+      <div id="btngroup">
+        <button className="btn btn-dark btn-block" onClick={() => { document.location.href = "/maps/map"; }}>Regresar</button>
+      </div>
+      )
+  }else{
+  return(
+    <div id="btngroup">
+      <button className="btn btn-dark btn-block" id="Send" onClick={props.initialClick}>Enviar</button>
+      <button className="btn btn-dark btn-block" onClick={() => { document.location.href = "/maps/map"; }}>Cancelar</button>
+    </div>
+  )}
+}
+
 function Route (props){
   return(
     <div id="route">
@@ -29,12 +46,12 @@ function Route (props){
             <input type="text" className="form-control" id="Destino" placeholder="Destino" disabled/>
           </div>
         </form>
-        <button className="btn btn-dark btn-block">Enviar</button>
-        <button className="btn btn-dark btn-block" onClick={() => { document.location.href = "/maps/map"; }}>Cancelar</button>
+        <Buttons complete={props.complete} initialClick={props.initialClick}/>
       </div>
     </div>
   )
 }
+
 
 
 
@@ -49,7 +66,7 @@ class OptionsMenu extends React.Component {
   }
 
   initialClick() {
-    this.setState({option: "Inicial"});
+    this.setState({option: "Route_Complete"});
   }
 
   routeClick() {
@@ -68,10 +85,10 @@ class OptionsMenu extends React.Component {
     const option = this.state.option;
     let element;
 
-    if (option == "Route"){
-      element = <Route initialClick={this.initialClick} />;
+    if (option == "Route" || option == "Route_Complete"){
+      element = <Route initialClick={this.initialClick} complete={option} />;
     } else {
-      element = <Menu routeClick={this.routeClick} interesClick={this.interesClick} lastClick={this.lastClick} />;
+      element = <Menu routeClick={this.routeClick} interesClick={this.interesClick} lastClick={this.lastClick}  />;
     }
 
     return (

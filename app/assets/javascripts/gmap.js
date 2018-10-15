@@ -1,8 +1,13 @@
 function initMap() {
+
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 4.6371933, lng: -74.0826976},
     zoom: 16
   });
+
+  directionsDisplay.setMap(map);
 
   var route = [];
 
@@ -36,6 +41,13 @@ function initMap() {
                 $('#Origen').attr('placeholder',results[0].formatted_address);
               }else{
                 $('#Destino').attr('placeholder',results[0].formatted_address);
+
+                  $( "#Send" ).click(function() {
+                    calculateAndDisplayRoute(directionsService, directionsDisplay,route);
+                      for (var i = 0; i < route.length; i++) {
+                        route[i].setMap(null);
+                      }
+                  });
               }
             }
           }
@@ -91,6 +103,7 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
+
 }
 
 function placeMarker(latLng, map,type) {
@@ -98,6 +111,21 @@ function placeMarker(latLng, map,type) {
     position: latLng,
     map: map
   });
-  map.panTo(latLng);
   return marker;
 }
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, points) {
+        directionsService.route({
+          //origin: document.getElementById('Origen').placeholder,
+          //destination: document.getElementById('Destino').placeholder,
+          origin: points[0].getPosition(),
+          destination: points[1].getPosition(),
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+    }
