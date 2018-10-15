@@ -4,18 +4,44 @@ function initMap() {
     zoom: 16
   });
 
+  var route = [];
+
+  var markers = [];
+
+  var geocoder = new google.maps.Geocoder();
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+
+  //Onclick event
+  map.addListener('click', function(e) {
+    if(route.length<2){
+      route.push(placeMarker(e.latLng, map,0));
+
+      geocoder.geocode({
+      'latLng': e.latLng
+      }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            if(route.length==1){
+              $('#Origen').attr('placeholder',results[0].formatted_address);
+            }else{
+              $('#Destino').attr('placeholder',results[0].formatted_address);
+            }
+          }
+        }
+      });
+    }
+  });
+
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   });
 
-  var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function() {
@@ -58,4 +84,13 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
+}
+
+function placeMarker(latLng, map,type) {
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  map.panTo(latLng);
+  return marker;
 }

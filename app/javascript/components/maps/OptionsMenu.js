@@ -22,11 +22,11 @@ function Route (props){
         <form>
           <div className="form-group">
             <label>¿Donde comienza tu viaje?</label>
-            <input type="text" className="form-control" id="Origen" placeholder="Origen" />
+            <input type="text" className="form-control" id="Origen" placeholder="Origen" disabled/>
           </div>
           <div className="form-group">
             <label>¿Donde termina?</label>
-            <input type="text" className="form-control" id="Destino" placeholder="Destino" />
+            <input type="text" className="form-control" id="Destino" placeholder="Destino" disabled/>
           </div>
         </form>
         <button className="btn btn-dark btn-block">Enviar</button>
