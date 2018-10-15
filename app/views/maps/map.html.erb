@@ -1,20 +1,59 @@
 <% content_for :header do -%>
 <% end -%>
 
-<%= stylesheet_link_tag 'Navbar/whitenavtoggler', 'Maps/map' %>
+<%= stylesheet_link_tag 'Navbar/whitenavtoggler', 'Maps/map', 'Maps/gmap' %>
 
 <div class="row">
-	<div class="col-sm-4">
-    
-  <%= react_component("maps/OptionsMenu") %>
+	<div class="col-sm-4" style="padding-top: 20vh">
+
+    <div id="Menu" class="tabcontent">
+      <font id="MenuLink" class="tablinks active" size="18">¿Que Buscas?</font>
+      <div>
+        <li id="RouteLink" class="tablinks" onclick="showTab('Route')">Planear Ruta</li>
+        <li id="InteresLink" class="tablinks" onclick="showTab('Interes')">Sitios de interes</li>
+        <li id="NewsLink" class="tablinks" onclick="showTab('News')">Ultimos acontecimientos</li>
+      </div>
+    </div>
+
+    <div id="Route" class="tabcontent">
+      <font size="18">Planea tu ruta</font>
+      <div>
+        <form>
+          <div class="form-group">
+            <label>¿Donde comienza tu viaje?</label>
+            <input type="text" class="form-control" id="Origen" placeholder="Origen" disabled/>
+          </div>
+          <div class="form-group">
+            <label>¿Donde termina?</label>
+            <input type="text" class="form-control" id="Destino" placeholder="Destino" disabled/>
+          </div>
+        </form>
+        <div id="btngroup">
+          <button class="btn btn-dark btn-block" id="Send" >Enviar</button>
+          <button class="btn btn-dark btn-block returnBtn" id="btnrt" onclick="showTab('Menu')" >Regresar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="Interes" class="tabcontent">
+      <h3>London</h3>
+      <p>London is the capital city of England.</p>
+      <button class="btn btn-dark btn-block returnBtn" onclick="showTab('Menu')" >Regresar</button>
+    </div>
+
+    <div id="News" class="tabcontent">
+      <h3>Tokyo</h3>
+      <p>Tokyo is the capital of Japan.</p>
+      <button class="btn btn-dark btn-block returnBtn" onclick="showTab('Menu')" >Regresar</button>
+    </div>
+
 	</div>
 	<div class="col-sm-8">
     <div id="map-container">
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
       <div id="map"></div>
     </div>
 	</div>
 </div>
 
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOL77h63YMvrMDxXl5q3eWq_JQ7sLQc1E&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOL77h63YMvrMDxXl5q3eWq_JQ7sLQc1E&libraries=places&callback=initMap" async defer></script>
