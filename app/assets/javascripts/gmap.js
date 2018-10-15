@@ -1,60 +1,19 @@
+var map;
+var originPos = null;
+var destinationPos = null;
+
 function initMap() {
 
-  var directionsService = new google.maps.DirectionsService;
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 4.6371933, lng: -74.0826976},
     zoom: 16
   });
 
-  directionsDisplay.setMap(map);
-
-  var route = [];
-
-  var markers = [];
-
-  var state = "Inicial"
-
-  var geocoder = new google.maps.Geocoder();
-
+  var smarkers = [];
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  $( "#01" ).click(function() {
-    state = "route"
-  });
-
-  //Onclick event
-  map.addListener('click', function(e) {
-    if (state == "route"){
-      if(route.length<2){
-        route.push(placeMarker(e.latLng, map,0));
-
-        geocoder.geocode({
-        'latLng': e.latLng
-        }, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-              if(route.length==1){
-                $('#Origen').attr('placeholder',results[0].formatted_address);
-              }else{
-                $('#Destino').attr('placeholder',results[0].formatted_address);
-
-                  $( "#Send" ).click(function() {
-                    calculateAndDisplayRoute(directionsService, directionsDisplay,route);
-                      for (var i = 0; i < route.length; i++) {
-                        route[i].setMap(null);
-                      }
-                  });
-              }
-            }
-          }
-        });
-      }
-    }
-  });
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
@@ -69,10 +28,9 @@ function initMap() {
       return;
     }
     // Clear out the old markers.
-    markers.forEach(function(marker) {
+    smarkers.forEach(function(marker) {
       marker.setMap(null);
     });
-    markers = [];
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
@@ -88,7 +46,7 @@ function initMap() {
         scaledSize: new google.maps.Size(25, 25)
       };
       // Create a marker for each place.
-      markers.push(new google.maps.Marker({
+      smarkers.push(new google.maps.Marker({
         map: map,
         icon: icon,
         title: place.name,
@@ -104,9 +62,66 @@ function initMap() {
     map.fitBounds(bounds);
   });
 
-}
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay.setMap(map);
 
-function placeMarker(latLng, map,type) {
+  var geocoder = new google.maps.Geocoder();
+
+    //Onclick event
+  map.addListener('click', function(e) {
+    var state = document.getElementById("RouteLink").getAttribute("class");
+    if(state == "tablinks active"){
+      if( (originPos==null || destinationPos == null) ){
+        geocoder.geocode({
+        'latLng': e.latLng
+        }, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+              if(originPos==null){
+                $('#Origen').attr('placeholder',results[0].formatted_address);
+                originPos = placeMarker(e.latLng, map);
+              }else if(destinationPos==null){
+                $('#Destino').attr('placeholder',results[0].formatted_address);
+                destinationPos = placeMarker(e.latLng, map);
+              }
+            }
+          }
+        }
+      )}
+    }
+  })
+
+  document.getElementById("Send").addEventListener('click',function(){
+    if(originPos!=null && destinationPos != null){
+      calculateAndDisplayRoute(directionsService, directionsDisplay);
+      originPos.setMap(null);
+      destinationPos.setMap(null);
+    }
+  })
+
+  document.getElementById("btnrt").addEventListener('click',function(){
+    try {
+      directionsDisplay.setMap(null);
+      directionsService = null;
+      directionsDisplay = null;
+      geocoder = null;
+      directionsService = new google.maps.DirectionsService;
+      directionsDisplay = new google.maps.DirectionsRenderer;
+      directionsDisplay.setMap(map);
+      geocoder = new google.maps.Geocoder();
+    }catch(error){
+
+    }
+    originPos = null;
+    destinationPos = null;
+    $('#Origen').attr('placeholder',"Origen");
+    $('#Destino').attr('placeholder',"Destino");
+  })
+
+}             
+
+function placeMarker(latLng, map) {
   var marker = new google.maps.Marker({
     position: latLng,
     map: map
@@ -114,18 +129,19 @@ function placeMarker(latLng, map,type) {
   return marker;
 }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, points) {
-        directionsService.route({
-          //origin: document.getElementById('Origen').placeholder,
-          //destination: document.getElementById('Destino').placeholder,
-          origin: points[0].getPosition(),
-          destination: points[1].getPosition(),
-          travelMode: 'DRIVING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  directionsService.route({
+    //origin: document.getElementById('Origen').placeholder,
+    //destination: document.getElementById('Destino').placeholder,
+    origin: originPos.getPosition(),
+    destination: destinationPos.getPosition(),
+    travelMode: 'DRIVING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
     }
+  });
+}
+
