@@ -8,6 +8,8 @@ function initMap() {
 
   var markers = [];
 
+  var state = "Inicial"
+
   var geocoder = new google.maps.Geocoder();
 
   // Create the search box and link it to the UI element.
@@ -15,25 +17,30 @@ function initMap() {
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+  $( "#01" ).click(function() {
+    state = "route"
+  });
 
   //Onclick event
   map.addListener('click', function(e) {
-    if(route.length<2){
-      route.push(placeMarker(e.latLng, map,0));
+    if (state == "route"){
+      if(route.length<2){
+        route.push(placeMarker(e.latLng, map,0));
 
-      geocoder.geocode({
-      'latLng': e.latLng
-      }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (results[0]) {
-            if(route.length==1){
-              $('#Origen').attr('placeholder',results[0].formatted_address);
-            }else{
-              $('#Destino').attr('placeholder',results[0].formatted_address);
+        geocoder.geocode({
+        'latLng': e.latLng
+        }, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+              if(route.length==1){
+                $('#Origen').attr('placeholder',results[0].formatted_address);
+              }else{
+                $('#Destino').attr('placeholder',results[0].formatted_address);
+              }
             }
           }
-        }
-      });
+        });
+      }
     }
   });
 

@@ -6,7 +6,7 @@ function Menu (props){
     <div id="menu">
       <font size="18">¿Que Buscas?</font>
       <div>
-        <li onClick={props.routeClick}>Planear Ruta</li>
+        <li id="01" onClick={props.routeClick}>Planear Ruta</li>
         <li onClick={props.interesClick}>Sitios de interes</li>
         <li onClick={props.lastClick}>Ultimos acontecimientos</li>
       </div>
