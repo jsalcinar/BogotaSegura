@@ -110,9 +110,12 @@ function initMap() {
       directionsDisplay = new google.maps.DirectionsRenderer;
       directionsDisplay.setMap(map);
       geocoder = new google.maps.Geocoder();
+      originPos.setMap(null);
+      destinationPos.setMap(null);
     }catch(error){
 
     }
+
     originPos = null;
     destinationPos = null;
     $('#Origen').attr('placeholder',"Origen");
