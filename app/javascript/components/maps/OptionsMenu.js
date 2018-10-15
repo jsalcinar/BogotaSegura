@@ -28,8 +28,9 @@ function Route (props){
             <label>¿Donde termina?</label>
             <input type="text" className="form-control" id="Destino" placeholder="Destino" />
           </div>
-          <button type="submit" className="btn btn-primary">Enviar</button>
-      </form>
+        </form>
+        <button className="btn btn-dark btn-block">Enviar</button>
+        <button className="btn btn-dark btn-block" onClick={props.initialClick}>Cancelar</button>
       </div>
     </div>
   )
@@ -40,10 +41,15 @@ function Route (props){
 class OptionsMenu extends React.Component {
   constructor(props) {
     super(props);
+    this.initialClick = this.initialClick.bind(this);
     this.routeClick = this.routeClick.bind(this);
     this.interesClick = this.interesClick.bind(this);
     this.lastClick = this.lastClick.bind(this);
     this.state = {option: "Inicial"};
+  }
+
+  initialClick() {
+    this.setState({option: "Inicial"});
   }
 
   routeClick() {
@@ -63,7 +69,7 @@ class OptionsMenu extends React.Component {
     let element;
 
     if (option == "Route"){
-      element = <Route />;
+      element = <Route initialClick={this.initialClick} />;
     } else {
       element = <Menu routeClick={this.routeClick} interesClick={this.interesClick} lastClick={this.lastClick} />;
     }
