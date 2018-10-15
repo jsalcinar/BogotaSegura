@@ -30,7 +30,7 @@ function Route (props){
           </div>
         </form>
         <button className="btn btn-dark btn-block">Enviar</button>
-        <button className="btn btn-dark btn-block" onClick={props.initialClick}>Cancelar</button>
+        <button className="btn btn-dark btn-block" onClick={() => { document.location.href = "/maps/map"; }}>Cancelar</button>
       </div>
     </div>
   )
