@@ -1,7 +1,7 @@
 class TipsController < ApplicationController
 
 	def selection
-		@type = "Pie"
+		@type = "Walk"
 	end
 	def tip
 		@type = params[:type]
