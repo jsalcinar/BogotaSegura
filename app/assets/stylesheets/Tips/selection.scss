@@ -1,3 +1,4 @@
+/*General---------------------------------------------*/
 body {
     background-image: url(image-path("index/indexImage.png"));
     background-repeat: no-repeat;
@@ -5,9 +6,10 @@ body {
     background-size: cover;
     text-align: center;
     color: white;
+
+    height: 100vh;
 }
 
-.bodyPage {
-    width: 100%;
-    height: 90vh;
+#top_navbar {
+    background-color: transparent !important;
 }

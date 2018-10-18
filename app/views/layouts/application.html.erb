@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application' , 'data-turbolinks-track': 'reload'%>
     <%= javascript_pack_tag 'application' %>
 
     <%= yield(:header) %>
@@ -17,10 +17,10 @@
     <%= render 'layouts/navigation' %>
     <div id="body_div" class="container-fluid">
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+        <p id="Log_Alert" class="alert alert-success"><%= notice %></p>
       <% end %>
       <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+        <p id="Log_Alert" class="alert alert-danger"><%= alert %></p>
       <% end %>
       <%= yield %>
     </div>
