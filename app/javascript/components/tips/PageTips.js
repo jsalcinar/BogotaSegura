@@ -1,12 +1,128 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+function Walk(props){
+  return (
+    <div>
+      <li>
+        Walk mauris in tincidunt lacus, sit amet tempus nisl. 
+        Quisque porttitor lectus sed massa sagittis varius. 
+        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
+        ac eros. Sed et ligula nec dolor interdum varius.
+      </li>
+      <li>
+        Curabitur faucibus libero non quam vehicula, 
+        at elementum sem dictum. Proin vitae vulputate justo, 
+        id volutpat enim. Pellentesque cursus neque tempus lorem 
+        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
+        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
+      </li>
+      <li>
+        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
+        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
+        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
+      </li>
+    </div>
+  )
+}
+
+function Bus(props){
+  return (
+    <div>
+      <li>
+        Bus mauris in tincidunt lacus, sit amet tempus nisl. 
+        Quisque porttitor lectus sed massa sagittis varius. 
+        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
+        ac eros. Sed et ligula nec dolor interdum varius.
+      </li>
+      <li>
+        Curabitur faucibus libero non quam vehicula, 
+        at elementum sem dictum. Proin vitae vulputate justo, 
+        id volutpat enim. Pellentesque cursus neque tempus lorem 
+        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
+        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
+      </li>
+      <li>
+        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
+        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
+        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
+      </li>
+    </div>
+  )
+}
+
+function Car(props){
+  return (
+    <div>
+      <li>
+        Car mauris in tincidunt lacus, sit amet tempus nisl. 
+        Quisque porttitor lectus sed massa sagittis varius. 
+        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
+        ac eros. Sed et ligula nec dolor interdum varius.
+      </li>
+      <li>
+        Curabitur faucibus libero non quam vehicula, 
+        at elementum sem dictum. Proin vitae vulputate justo, 
+        id volutpat enim. Pellentesque cursus neque tempus lorem 
+        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
+        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
+      </li>
+      <li>
+        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
+        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
+        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
+      </li>
+    </div>
+  )
+}
+
+function Bike(props){
+  return (
+    <div>
+      <li>
+        Bike mauris in tincidunt lacus, sit amet tempus nisl. 
+        Quisque porttitor lectus sed massa sagittis varius. 
+        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
+        ac eros. Sed et ligula nec dolor interdum varius.
+      </li>
+      <li>
+        Curabitur faucibus libero non quam vehicula, 
+        at elementum sem dictum. Proin vitae vulputate justo, 
+        id volutpat enim. Pellentesque cursus neque tempus lorem 
+        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
+        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
+      </li>
+      <li>
+        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
+        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
+        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
+      </li>
+    </div>
+  )
+}
+
+function Tips(props){
+  switch(props.type){
+    case 'Walk':
+      return <Walk />
+    case 'Bus':
+      return <Bus />
+    case 'Car':
+      return <Car />
+    case 'Bike':
+      return <Bike />
+    default:
+      return <Walk />
+  }
+
+}
+
 function Screen(props){
 	return (
     <div className="row">
       <div className="col-sm">
         <h1>{props.type}</h1>
-        <p>El medio de transporte es {props.type}</p>
+        <Tips type={props.type} />
       </div>
       <div className="col-sm">
         <img src={props.image} alt={props.type} id="ModePic" />
