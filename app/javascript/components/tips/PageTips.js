@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 function Walk(props){
   return (
-    <div>
+    <div id="div_tips">
       <li>
         Walk mauris in tincidunt lacus, sit amet tempus nisl. 
         Quisque porttitor lectus sed massa sagittis varius. 
@@ -28,7 +28,7 @@ function Walk(props){
 
 function Bus(props){
   return (
-    <div>
+    <div id="div_tips">
       <li>
         Bus mauris in tincidunt lacus, sit amet tempus nisl. 
         Quisque porttitor lectus sed massa sagittis varius. 
@@ -53,7 +53,7 @@ function Bus(props){
 
 function Car(props){
   return (
-    <div>
+    <div id="div_tips">
       <li>
         Car mauris in tincidunt lacus, sit amet tempus nisl. 
         Quisque porttitor lectus sed massa sagittis varius. 
@@ -78,7 +78,7 @@ function Car(props){
 
 function Bike(props){
   return (
-    <div>
+    <div id="div_tips">
       <li>
         Bike mauris in tincidunt lacus, sit amet tempus nisl. 
         Quisque porttitor lectus sed massa sagittis varius. 
@@ -125,7 +125,7 @@ function Screen(props){
         <Tips type={props.type} />
       </div>
       <div className="col-sm">
-        <img src={props.image} alt={props.type} id="ModePic" />
+        <img id="pic_tips" src={props.image} alt={props.type} />
       </div>
     </div>
 	)
