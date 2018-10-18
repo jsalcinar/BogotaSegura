@@ -5,9 +5,9 @@
     <h1>¿Como te mueves por Bogota?</h1>
   </div>
   <div class="col-sm">
-    <button>A Pie</button>
-    <button>Bus</button>
-    <button>Carro</button>
-    <button>Cicla</button>
+    <%= link_to "Pie", {:action => 'tip', :type => "Pie"}, class: "btn btn-dark" -%>
+    <%= link_to "Bus", {:action => 'tip', :type => "Bus"}, class: "btn btn-dark" -%>
+    <%= link_to "Carro", {:action => 'tip', :type => "Carro"}, class: "btn btn-dark" -%>
+    <%= link_to "Cicla", {:action => 'tip', :type => "Cicla"}, class: "btn btn-dark" -%>
   </div>
 </div>
