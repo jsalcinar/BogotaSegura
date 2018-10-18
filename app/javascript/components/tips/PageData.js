@@ -4,9 +4,10 @@ import PropTypes from "prop-types"
 
 class PageData extends React.Component {
   render () {
+    const type = this.props.type;
     return (
       <React.Fragment>
-        Type: {this.props.type}
+        <Screen type={type} />
       </React.Fragment>
     );
   }

@@ -1,0 +1,13 @@
+body {
+    background-image: url(image-path("index/indexImage.png"));
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+.bodyPage {
+    width: 100%;
+    height: 90vh;
+}
