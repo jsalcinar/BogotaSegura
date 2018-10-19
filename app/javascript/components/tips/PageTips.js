@@ -125,7 +125,8 @@ function Screen(props){
         <Tips type={props.type} />
       </div>
       <div className="col-sm">
-        <img id="pic_tips" src={props.image} alt={props.type} />
+        <p>Press the picture</p>
+        <img id="pic_tips" src={props.image} alt={props.type} onClick={() => { document.location.href = props.data; }}/>
       </div>
     </div>
 	)
@@ -136,15 +137,17 @@ class PageTips extends React.Component {
   render () {
     const type = this.props.type;
     const img = this.props.img_src;
+    const data = this.props.data_url;
     return (
-      <Screen type={type} image={img} />
+      <Screen type={type} image={img} data={data} />
     );
   }
 }
 
 PageTips.propTypes = {
   type: PropTypes.string,
-  img_src: PropTypes.string
+  img_src: PropTypes.string,
+  data_url: PropTypes.string
 };
 
 export default PageTips
