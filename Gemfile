@@ -70,3 +70,5 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 
 #Autentification
 gem 'devise'
+
+gem "font-awesome-rails"
