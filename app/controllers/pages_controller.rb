@@ -3,6 +3,6 @@ class PagesController < ApplicationController
 	end
 	def aboutus
 	end
-	def home
+	def services
 	end
 end
