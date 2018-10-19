@@ -1,9 +1,10 @@
-<%= stylesheet_link_tag 'Pages/home', 'Pages/background'%>
+<%= stylesheet_link_tag 'pages/home', 'pages/background'%>
 
 <div class="row">
     <div class="col">
         <p>Seleccione una opcion</p>
         <a id="btnr" href="/maps/map" class="btn btn-lg btn-secondary" >Mapa</a>
         <a id="btnt" href="/tips/selection" class="btn btn-lg btn-secondary" >Tips</a>
+        <%= react_component("Post", {title: "Hello World"}) %>
     </div>
 </div>

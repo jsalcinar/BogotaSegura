@@ -1,6 +1,3 @@
-import React from "react"
-import PropTypes from "prop-types"
-
 function Walk(props){
   return (
     <div id="div_tips">
@@ -143,11 +140,3 @@ class PageTips extends React.Component {
     );
   }
 }
-
-PageTips.propTypes = {
-  type: PropTypes.string,
-  img_src: PropTypes.string,
-  data_url: PropTypes.string
-};
-
-export default PageTips

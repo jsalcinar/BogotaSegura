@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'b2574f312469a0f80bc68ea4976673ea81dc9f5393c8c2afa2a853024994acbc87524df2a40a6546232c01f27eba1a57202a6bfe91d349ec8cdc7151730b5db9'
+  # config.secret_key = '17d2fa33fe954b0fb82fc1173f7def2552ab69c3787f150293175132987e88e3e2720e62db3ae129f3c0e08d3a19dbf8b40113864934990a984ac4b0faca38c9'
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -114,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'f9c552f5b425fee4f27a57531a2df0d45fbe536f132d96743f5c79848146bed77c3c2de6e783b8dbbaf8c71328afe4b61c12c56bf269b9da464d61b7b172eeb8'
+  # config.pepper = 'd1b8727a279cdcffb451b6edc402c736fb87c0dcd27002736d34250e033ffb5f970a27b343752bcc4ede81e7878255af90de34eb57f55df6bd64e462cfdfce5d'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -287,4 +287,5 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
+  config.authentication_keys = [ :login ]
 end

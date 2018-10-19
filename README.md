@@ -17,20 +17,17 @@ Para el correcto funcionamiento de la aplicacion, tener instalado:
 * Rails 5.2.1
 * NodeJs 10.x
 * Postgresql 9.5.x
+* Yarn 1.10.x
 
 Al clonar el proyecto por primera vez instalar las gemas requeridas al ejecutar dentro de la carpeta de la aplicacion:
 
 > bundle install
 
-Para actualizar  los componentes webpacker:
-
-> yarn install
-
 Para el uso de la base Posgresql primero crear un usuario con los siguientes comandos:
 
 > sudo -u postgres psql
 
-> postgres=# create role bogota with createdb login password 'segura';
+> postgres=# create role bogota with superuser login password 'segura';
 
 Luego configurar la base de datos de la aplicacion con:
 
@@ -52,5 +49,3 @@ Para correr la aplicacion ejecutar
 Desde el navegador visitar
 [localhost:3000](localhost:3000)
 para visualizar la pagina.
-
-Nota: En heroku no funciona la localizacion de google maps.

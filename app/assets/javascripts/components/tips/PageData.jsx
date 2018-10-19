@@ -1,7 +1,4 @@
-import React from "react"
-import PropTypes from "prop-types"
-
-function Screen(props){
+function DataScreen(props){
   return (
     <div>
       <div className="row">
@@ -47,14 +44,8 @@ class PageData extends React.Component {
     const type = this.props.type;
     return (
       <React.Fragment>
-        <Screen type={type} />
+        <DataScreen type={type} />
       </React.Fragment>
     );
   }
 }
-
-PageData.propTypes = {
-  type: PropTypes.string
-};
-
-export default PageData
