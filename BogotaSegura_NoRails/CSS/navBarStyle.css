@@ -1,0 +1,83 @@
+/*Nav Bar------------------------------------------------------------------------*/
+/*Top Nav Bar---------------------------------------------------------------*/
+.navbar {
+    background: none;
+    border: none;
+    text-align: center;
+}
+
+#optionsButton {
+    background: none;
+    border: none;
+    margin-top: 130%;
+    margin-left: 400%;
+    color: black;
+    cursor: pointer;
+    font-size: 2.5vw;
+}
+
+#logo {
+    color: black;
+    margin-top: 25%;
+    margin-right: 50%;
+    font-size: 1.8vw;
+    font-family: 'Raleway', sans-serif;
+}
+/*Side Nav Bar---------------------------------------------------------------*/
+.sidenav {
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 5%;
+}
+
+.sidenav a {
+    padding-top: 10%;
+    text-decoration: none;
+    font-size: 2vw;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.sidenav .closeButton {
+    color: white;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 7%;
+    right: 8%;
+    font-size: 2vw;
+    margin-left: 10%;
+}
+
+.sidenav h2 {
+    margin-bottom: 1%;
+    color: white;
+    padding-top: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 45px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#navBarLine {
+    border: 1px solid black;
+    width: 40%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

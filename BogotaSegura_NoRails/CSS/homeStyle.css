@@ -1,0 +1,28 @@
+/*General---------------------------------------------*/
+body {
+    background-image: url("../Images/Home/homeImage.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+.homePage {
+    width: 100%;
+    height: 100vh;
+}
+
+/*Screen1---------------------------------------------*/
+h1 {
+    margin: 0;
+    padding-top: 17%;
+    font-size: 10vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+#mainText {
+    margin: 0;
+    font-size: 2.3vw;
+    font-family: 'Open Sans', sans-serif;
+}

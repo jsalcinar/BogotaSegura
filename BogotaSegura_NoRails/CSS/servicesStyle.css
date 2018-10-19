@@ -1,0 +1,90 @@
+/*General---------------------------------------------*/
+body{
+    overflow-x: hidden;
+    background-color: black;
+}
+/*Screens---------------------------------------------*/
+.services {
+    width: 100%;
+    height: 100vh;
+    white-space:nowrap;
+}
+
+.slideImage {
+    display: inline-block;
+}
+
+#images{
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.col-sm-5{
+    position: absolute;
+    height: 100vh;
+}
+
+.col1 {
+    background-color: rgba(255, 117, 69, 0.7);
+}
+
+.col2 {
+    background-color: rgba(26, 92, 255, 0.7);
+}
+
+.col3 {
+    background-color: rgba(211, 185, 34, 0.7);
+}
+
+h1 {
+    white-space: normal;
+    text-align: right;
+    margin-top: 10%;
+    margin-right: 5%;
+    color: black;
+    line-height: 6.5vw;
+    font-size: 6vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+p {
+    text-align: right;
+    white-space: normal;
+    color: black;
+    font-size: 1.3vw;
+    line-height: 2.5vw;
+    margin-top: 10%;
+    margin-right: 5%;
+    margin-left: 20%;
+}
+
+.slideButton {
+    background: none;
+    border: none;
+    font-size: 4vw;
+}
+
+#slideButtonRight {
+    margin-left: 5%;
+}
+
+#slideButtonLeft {
+    margin-left: 79%;
+}
+
+.slidesInfo1 {
+    display: none;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: 0.5s;
+}

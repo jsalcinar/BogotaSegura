@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Servicios</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="CSS/servicesStyle.css">
+    <!--Icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
+  </head>
+  <body>
+      <!-- Page Content -->
+      <div class="container-fluid">
+          <div class="row align-items-center">
+              <!--Listado de servicios-->
+              <div class="services">
+                  <!--Servicio1-->
+                  <div class="slideImage">
+                      <ul class="nav navbar-nav">
+                          <div id="service1" class="sidenav">
+                              <div class="col-sm-5 col1">
+                                  <div class="slidesInfo1">
+                                      <h1>Tips de Movilidad</h1>
+                                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
+                                      <button id="slideButtonLeft" class="slideButton"><i class="fas fa-caret-left" onclick="scrollWinLeft()"></i></button>
+                                      <button id="slideButtonRight" class="slideButton"><i class="fas fa-caret-right" onclick="scrollWinRight()"></i></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </ul>
+                      <img id="images" src="Images/Services/slideImage1.png">
+                  </div>
+                  <!--Servicio2-->
+                  <div class="slideImage">
+                      <ul class="nav navbar-nav">
+                          <div id="service2" class="sidenav">
+                              <div class="col-sm-5 col2">
+                                  <div class="slidesInfo2">
+                                      <h1>Mapa de Planeación</h1>
+                                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
+                                      <button id="slideButtonLeft" class="slideButton"><i class="fas fa-caret-left" onclick="scrollWinLeft()"></i></button>
+                                      <button id="slideButtonRight" class="slideButton"><i class="fas fa-caret-right" onclick="scrollWinRight()"></i></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </ul>
+                      <img id="images" src="Images/Services/slideImage2.png">
+                  </div>
+                  <!--Servicio3-->
+                  <div class="slideImage">
+                      <ul class="nav navbar-nav">
+                          <div id="service3" class="sidenav">
+                              <div class="col-sm-5 col3">
+                                  <div class="slidesInfo3">
+                                      <h1>Maneja tu cuenta</h1>
+                                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
+                                      <button id="slideButtonLeft" class="slideButton"><i class="fas fa-caret-left" onclick="scrollWinLeft()"></i></button>
+                                      <button id="slideButtonRight" class="slideButton"><i class="fas fa-caret-right" onclick="scrollWinRight()"></i></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </ul>
+                      <img id="images" src="Images/Services/slideImage3.png">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--JQuery and JavaScript-->
+      <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous">
+      </script>
+      <!--Script-->
+    <script src="JS/slideShow.js"></script>
+  </body>
+</html>
