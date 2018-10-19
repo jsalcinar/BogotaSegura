@@ -52,3 +52,5 @@ Para correr la aplicacion ejecutar
 Desde el navegador visitar
 [localhost:3000](localhost:3000)
 para visualizar la pagina.
+
+Nota: En heroku no funciona la localizacion de google maps.
