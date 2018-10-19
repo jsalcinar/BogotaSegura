@@ -44,3 +44,27 @@
     </div>
 </nav>
 
+
+
+<nav id="top_navbar" class="navbar navbar-dark navbar-expand-lg bg-transparent">
+  <div class="container-fluid">
+    <ul class="navbar-nav mr-auto">
+      <span onclick="openNav()"><%= fa_icon "bars" %></span>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <%= link_to 'Bogota Segura', root_path, class: 'navbar-brand' %>
+    </ul>
+  </div>
+</nav>
+<!-- The overlay -->
+<div id="myNav" class="overlay">
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
