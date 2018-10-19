@@ -1,33 +1,29 @@
-<nav id="top_navbar" class="navbar navbar-dark navbar-expand-lg bg-transparent">
+<nav id="top_navbar" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <ul class="navbar-nav mr-auto">
-      <span onclick="openNav()"><%= fa_icon "bars" %></span>
+      <span id="optionsButton" onclick="openNav()"><%= fa_icon "bars" %></span>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <%= link_to 'Bogota Segura', root_path, class: 'navbar-brand' %>
+      <a id="logo" href=<%root_path%> ><nobr>Bogota Segura</nobr></a>
     </ul>
   </div>
 </nav>
 <!-- The overlay -->
 <div id="myNav" class="overlay">
   <!-- Button to close the overlay navigation -->
-  <span class="closebtn" onclick="closeNav()"><%= fa_icon "arrow-left" %></span>
-  <!-- Overlay content -->
-  <div class="overlay-content">
-
-    <h2>Bogota Segura</h2>
-    <hr class="navBarLine">
-    <% if user_signed_in? %>
-        <strong><%= current_user.username %></strong>
-        <%= link_to 'Edit profile', edit_user_registration_path  %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'nav-item nav-link'  %>
-      <%= link_to "Login", new_user_session_path, :class => 'nav-item nav-link'  %>
-    <% end %>
-    <hr class="navBarLine">
-    <%= link_to 'Inicio', root_path %>
-    <a class="nav-item nav-link" href="/pages/services">Servicios</a>
-    <a class="nav-item nav-link" href="/pages/aboutus">Contactenos</a>
-  </div>
+  <button class="closebtn" onclick="closeNav()"><%= fa_icon "arrow-left" %></button>
+  <h2 id="menu_title">Bogota Segura</h2>
+  <hr class="navBarLine">
+  <%= link_to 'Inicio', root_path %>
+  <a class="nav-item nav-link" href="/pages/services">Servicios</a>
+  <a class="nav-item nav-link" href="/pages/aboutus">Contactenos</a>
+  <hr class="navBarLine">
+  <% if user_signed_in? %>
+      <strong><%= current_user.username %></strong>
+      <%= link_to 'Edit profile', edit_user_registration_path  %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'nav-item nav-link'  %>
+    <%= link_to "Login", new_user_session_path, :class => 'nav-item nav-link'  %>
+  <% end %>
 </div>

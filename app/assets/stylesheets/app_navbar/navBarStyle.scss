@@ -1,6 +1,29 @@
+#top_navbar{
+    background: none;
+    border: none;
+    text-align: center;
+}
+
+#optionsButton {
+    background: none;
+    border: none;
+    margin-top: 15%;
+    margin-left: 200%;
+    color: white;
+    cursor: pointer;
+    font-size: 2.5vw;
+}
+
+#logo {
+    color: white;
+    margin-right: 50%;
+    font-size: 1.8vw;
+    font-family: 'Raleway', sans-serif;
+}
+
 /* The Overlay (background) */
 .overlay {
-    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    /* Height & width depends on how you want to reveal the overlay*/    
     height: 100%;
     width: 0;
     position: fixed; /* Stay in place */
@@ -11,22 +34,15 @@
     background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
-}
-
-/* Position the content inside the overlay */
-.overlay-content {
-    position: relative;
-    top: 25%; /* 25% from the top */
-    width: 100%; /* 100% width */
+    padding-top: 5%;
     text-align: center; /* Centered text/links */
-    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
 
 /* The navigation links inside the overlay */
 .overlay a {
-    padding: 8px;
+    padding-top: 10%;
     text-decoration: none;
-    font-size: 36px;
+    font-size: 2vw;
     color: #818181;
     display: block; /* Display block instead of inline */
     transition: 0.3s; /* Transition effects on hover (color) */
@@ -35,22 +51,33 @@
 /* When you mouse over the navigation links, change their color */
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
+    text-decoration: none;
 }
 
 /* Position the close button (top right corner) */
 .overlay .closebtn {
+    color: white;
+    background: none;
+    border: none;
     position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
+    top: 7%;
+    right: 8%;
+    font-size: 2vw;
+    margin-left: 10%;
+    cursor: pointer;
 }
 
-/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
-@media screen and (max-height: 450px) {
-    .overlay a {font-size: 20px}
-    .overlay .closebtn {
-        font-size: 40px;
-        top: 15px;
-        right: 35px;
-    }
+#menu_title{
+    margin-bottom: 1%;
+    color: white;
+    padding-top: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 45px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#navBarLine {
+    border: 1px solid black;
+    width: 40%;
 }
