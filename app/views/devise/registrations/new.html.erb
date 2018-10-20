@@ -21,10 +21,11 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar Contraseña" %>
           <br />
           <br /><br />
-          <div style="align-content: center;" class="btn-group-vertical">
-            <%= f.submit "Crear Cuenta", id: "submitButton" %>
-            <%= render "devise/shared/links" %>
-          </div>
+          <div class="container-fluid" style="padding-top: -30px;">
+            <div id="buttons_sign" style="width: 50%; margin: 0 auto;">
+              <%= f.submit "Crear Cuenta", id: "submitButton", class: "btn btn-default"%>
+              <%= render "devise/shared/links" %>
+            </div>
         </div>
       <% end %>
   </div>
