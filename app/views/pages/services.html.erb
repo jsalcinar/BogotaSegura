@@ -1,10 +1,118 @@
-<%= stylesheet_link_tag 'pages/services', 'pages/background'%>
+<%= stylesheet_link_tag 'pages/services'%>
 
-<div class="row">
-    <div class="col">
-        <p>Seleccione una opcion</p>
-        <a id="btnr" href="/maps/map" class="btn btn-lg btn-secondary" >Mapa</a>
-        <a id="btnt" href="/tips/selection" class="btn btn-lg btn-secondary" >Tips</a>
-        <%= react_component("Post", {title: "Hello World"}) %>
-    </div>
+<div class="row align-items-center">
+  <div class="services">
+      <!--Servicio1-->
+      <div class="slideImage">
+          <ul class="nav navbar-nav">
+              <div id="service1" class="sidenav">
+                  <div class="col-sm-5 col1">
+                      <div class="slidesInfo1">
+                          <h1 >Tips de Movilidad</h1>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
+                          <a style="width: 60%; float: right;" id="btnr" href="/tips/selection" class="btn btn-lg btn-danger" >Ir</a><br><br>
+                          <button id="slideButtonLeft" class="slideButton" onclick="scrollWinLeft()"><%=fa_icon "caret-left"%></button>
+                          <button id="slideButtonRight" class="slideButton" onclick="scrollWinRight()"><%=fa_icon "caret-right"%></button>
+                      </div>
+                  </div>
+              </div>
+          </ul>
+          <img id="images" src= <%=asset_path("services/slideImage1.png")%> >
+      </div>
+      <!--Servicio2-->
+      <div class="slideImage">
+          <ul class="nav navbar-nav">
+              <div id="service2" class="sidenav">
+                  <div class="col-sm-5 col2">
+                      <div class="slidesInfo2">
+                          <h1>Mapa de Planeación</h1>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
+                          <a style="width: 60%; float: right;" id="btnr" href="/maps/map" class="btn btn-lg btn-primary" >Ir</a><br><br>
+                          <button id="slideButtonLeft" class="slideButton" onclick="scrollWinLeft()"><%=fa_icon "caret-left"%></button>
+                          <button id="slideButtonRight" class="slideButton" onclick="scrollWinRight()"><%=fa_icon "caret-right"%></button>
+                      </div>
+                  </div>
+              </div>
+          </ul>
+          <img id="images" src=<%=asset_path("services/slideImage2.png")%>>
+      </div>
+      <!--Servicio3-->
+      <div class="slideImage">
+          <ul class="nav navbar-nav">
+              <div id="service3" class="sidenav">
+                  <div class="col-sm-5 col3">
+                      <div class="slidesInfo3">
+                          <h1>Maneja tu cuenta</h1>
+                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
+                          <a style="width: 60%; float: right;" id="btnr" href=<%= edit_user_registration_path %> class="btn btn-lg btn-warning" >Ir</a><br><br>
+                          <button id="slideButtonLeft" class="slideButton" onclick="scrollWinLeft()"><%=fa_icon "caret-left"%></button>
+                          <button id="slideButtonRight" class="slideButton" onclick="scrollWinRight()"><%=fa_icon "caret-right"%></button>
+                      </div>
+                  </div>
+              </div>
+          </ul>
+          <img id="images" src=<%=asset_path("services/slideImage3.png")%>>
+      </div>
+  </div>
 </div>
+
+<script type="text/javascript">
+//Inicializar la página en el primer servicio -----------------------------
+window.onbeforeunload = function(){ window.scrollTo(0,0); }
+var currentSlide = 1;
+var distanceToMove = 0;
+showConent(1,300);
+
+//funciones de las flechas izquierda y derecha -----------------------------
+function scrollWinRight() {
+    if(currentSlide==1){
+        hideContent(1,"right");
+        showConent(2,900);
+        currentSlide = 2;
+    }else if(currentSlide==2){
+        hideContent(2,"right");
+        showConent(3,900);
+        currentSlide = 3;
+    }
+}
+
+function scrollWinLeft() {
+    if(currentSlide==2){
+        hideContent(2,"left");
+        showConent(1,900);
+        currentSlide = 1;
+    }else if(currentSlide==3){
+        hideContent(3,"left");
+        showConent(2,900);
+        currentSlide = 2;
+    }
+}
+
+//Mostrar y ocultar contenido -----------------------------
+function hideContent(service,moveTo){
+    if(moveTo=="right"){
+        distanceToMove = 1370;
+        console.log(distanceToMove);
+    }else{
+        distanceToMove = -1370;
+    }
+    console.log(distanceToMove);
+    $(".slidesInfo".concat(service)).fadeOut(400);
+    setTimeout(
+        function(){
+            document.getElementById("service".concat(service)).style.width = "0";
+            window.scrollBy({left: distanceToMove, behavior: 'smooth'})
+        }
+    ,250);
+}
+
+function showConent(service,timeToWait){
+    $(".slidesInfo".concat(service)).fadeOut(400);
+    setTimeout(function(){
+        document.getElementById("service".concat(service)).style.width = "100%";
+        setTimeout(function(){
+            $(".slidesInfo".concat(service)).fadeIn(400);
+        },250);
+    },timeToWait);
+}
+</script>
