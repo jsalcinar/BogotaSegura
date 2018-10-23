@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Zones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Coordinate</th>
+      <th>Name</th>
+      <th>Cai</th>
+      <th>User score</th>
+      <th>Influx</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @zones.each do |zone| %>
+      <tr>
+        <td><%= zone.coordinate %></td>
+        <td><%= zone.name %></td>
+        <td><%= zone.CAI %></td>
+        <td><%= zone.user_score %></td>
+        <td><%= zone.influx %></td>
+        <td><%= link_to 'Show', zone %></td>
+        <td><%= link_to 'Edit', edit_zone_path(zone) %></td>
+        <td><%= link_to 'Destroy', zone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Zone', new_zone_path %>

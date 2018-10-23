@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start: MyString
+  destination: MyString
+  score: 1
+
+two:
+  name: MyString
+  start: MyString
+  destination: MyString
+  score: 1

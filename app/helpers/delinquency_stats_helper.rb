@@ -1,0 +1,2 @@
+module DelinquencyStatsHelper
+end

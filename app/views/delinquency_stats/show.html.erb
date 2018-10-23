@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Theft to person:</strong>
+  <%= @delinquency_stat.theft_to_person %>
+</p>
+
+<p>
+  <strong>Theft to car:</strong>
+  <%= @delinquency_stat.theft_to_car %>
+</p>
+
+<p>
+  <strong>Theft to motorbike:</strong>
+  <%= @delinquency_stat.theft_to_motorbike %>
+</p>
+
+<p>
+  <strong>Theft to bike:</strong>
+  <%= @delinquency_stat.theft_to_bike %>
+</p>
+
+<p>
+  <strong>Theft to building:</strong>
+  <%= @delinquency_stat.theft_to_building %>
+</p>
+
+<p>
+  <strong>Injury to person:</strong>
+  <%= @delinquency_stat.injury_to_person %>
+</p>
+
+<%= link_to 'Edit', edit_delinquency_stat_path(@delinquency_stat) %> |
+<%= link_to 'Back', delinquency_stats_path %>

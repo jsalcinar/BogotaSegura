@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coordinate:</strong>
+  <%= @zone.coordinate %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @zone.name %>
+</p>
+
+<p>
+  <strong>Cai:</strong>
+  <%= @zone.CAI %>
+</p>
+
+<p>
+  <strong>User score:</strong>
+  <%= @zone.user_score %>
+</p>
+
+<p>
+  <strong>Influx:</strong>
+  <%= @zone.influx %>
+</p>
+
+<%= link_to 'Edit', edit_zone_path(@zone) %> |
+<%= link_to 'Back', zones_path %>

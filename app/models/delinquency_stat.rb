@@ -1,0 +1,2 @@
+class DelinquencyStat < ApplicationRecord
+end

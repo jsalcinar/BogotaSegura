@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theft_to_person: 1
+  theft_to_car: 1
+  theft_to_motorbike: 1
+  theft_to_bike: 1
+  theft_to_building: 1
+  injury_to_person: 1
+
+two:
+  theft_to_person: 1
+  theft_to_car: 1
+  theft_to_motorbike: 1
+  theft_to_bike: 1
+  theft_to_building: 1
+  injury_to_person: 1

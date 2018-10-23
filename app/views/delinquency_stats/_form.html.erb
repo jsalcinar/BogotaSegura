@@ -1,0 +1,47 @@
+<%= form_with(model: delinquency_stat, local: true) do |form| %>
+  <% if delinquency_stat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(delinquency_stat.errors.count, "error") %> prohibited this delinquency_stat from being saved:</h2>
+
+      <ul>
+      <% delinquency_stat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :theft_to_person %>
+    <%= form.number_field :theft_to_person %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theft_to_car %>
+    <%= form.number_field :theft_to_car %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theft_to_motorbike %>
+    <%= form.number_field :theft_to_motorbike %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theft_to_bike %>
+    <%= form.number_field :theft_to_bike %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theft_to_building %>
+    <%= form.number_field :theft_to_building %>
+  </div>
+
+  <div class="field">
+    <%= form.label :injury_to_person %>
+    <%= form.number_field :injury_to_person %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

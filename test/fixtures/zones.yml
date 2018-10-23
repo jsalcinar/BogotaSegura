@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coordinate: MyString
+  name: MyString
+  CAI: 1
+  user_score: 1
+  influx: MyString
+
+two:
+  coordinate: MyString
+  name: MyString
+  CAI: 1
+  user_score: 1
+  influx: MyString
