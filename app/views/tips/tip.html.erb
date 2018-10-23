@@ -1,3 +1,3 @@
-<%= stylesheet_link_tag 'tips/tip' %>
+<%= stylesheet_link_tag 'tips/tip','app_navbar/black_theme' %>
 
 <%= react_component("PageTips", { type: @type, img_src: image_url('tips/modes/'+@type+'.jpg'), data_url: url_for({:action => 'data', :type => @type}) }) %>

@@ -4,10 +4,30 @@
   <div class="col-sm">
     <h1>¿Como te mueves por Bogota?</h1>
   </div>
-  <div class="col-sm">
-    <%= link_to "Walking", {:action => 'tip', :type => "Walk"}, class: "btn btn-dark" -%>
-    <%= link_to "Bus", {:action => 'tip', :type => "Bus"}, class: "btn btn-dark" -%>
-    <%= link_to "Car", {:action => 'tip', :type => "Car"}, class: "btn btn-dark" -%>
-    <%= link_to "Bike", {:action => 'tip', :type => "Bike"}, class: "btn btn-dark" -%>
+  <div id="icons-col"class="col-sm">
+    <div class="row">
+      <div class="col-sm"> 
+        <%= link_to({:action => 'tip', :type => "Walk"}, id: "Mov_btn") do %>
+          <%=icon('fas', 'walking')%>
+        <% end %>   
+      </div>
+      <div class="col-sm"> 
+        <%= link_to({:action => 'tip', :type => "Bus"}, id: "Mov_btn") do %>
+          <%=icon('fas', 'bus')%>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm"> 
+        <%= link_to({:action => 'tip', :type => "Car"}, id: "Mov_btn") do %>
+          <%=icon('fas', 'car')%>
+        <% end %>
+      </div>
+      <div class="col-sm"> 
+        <%= link_to({:action => 'tip', :type => "Bike"}, id: "Mov_btn") do %>
+          <%=icon('fas', 'bicycle')%>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
