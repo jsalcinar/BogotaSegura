@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get "pages/services"
   get "pages/aboutus" 
   get "maps/map"  
-  get "tips/selection"  
-  get "tips/tip"  
-  get "tips/data"   
+  get "tipsservice/selection"  
+  get "tipsservice/tip"  
+  get "tipsservice/data"   
   root to: "pages#index"
 end

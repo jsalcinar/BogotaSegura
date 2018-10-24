@@ -10,10 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_155421) do
+ActiveRecord::Schema.define(version: 2018_10_23_220138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delinquency_stats", force: :cascade do |t|
+    t.integer "theft_to_person"
+    t.integer "theft_to_car"
+    t.integer "theft_to_motorbike"
+    t.integer "theft_to_bike"
+    t.integer "theft_to_building"
+    t.integer "injury_to_person"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "zone_id"
+    t.index ["zone_id"], name: "index_delinquency_stats_on_zone_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.text "description"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
+  create_table "reports_zones", id: false, force: :cascade do |t|
+    t.bigint "zone_id", null: false
+    t.bigint "report_id", null: false
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "name"
+    t.string "start"
+    t.string "destination"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_routes_on_user_id"
+  end
+
+  create_table "routes_zones", id: false, force: :cascade do |t|
+    t.bigint "zone_id", null: false
+    t.bigint "route_id", null: false
+  end
+
+  create_table "tips", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tips_zones", id: false, force: :cascade do |t|
+    t.bigint "zone_id", null: false
+    t.bigint "tip_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,4 +83,17 @@ ActiveRecord::Schema.define(version: 2018_10_19_155421) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "zones", force: :cascade do |t|
+    t.string "coordinate"
+    t.string "name"
+    t.integer "CAI"
+    t.integer "user_score"
+    t.string "influx"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "delinquency_stats", "zones"
+  add_foreign_key "reports", "users"
+  add_foreign_key "routes", "users"
 end
