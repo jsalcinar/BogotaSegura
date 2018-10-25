@@ -42,6 +42,16 @@ Si al realizar db:setup da un error tal como
 
 Realizar la solucion mencionada [aqui](https://askubuntu.com/questions/820792/peer-authentication-failed-for-user-with-all-privileges-in-postgres-9-5).
 
+Si ya se habia clonado antes, realizar:
+
+> rails db:reset
+
+> rails db:migrate
+
+Para poblar las bases de datos ejecutar:
+
+> rails db:seed
+
 Para correr la aplicacion ejecutar
 
 > rails server
