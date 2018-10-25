@@ -59,3 +59,5 @@ Para correr la aplicacion ejecutar
 Desde el navegador visitar
 [localhost:3000](localhost:3000)
 para visualizar la pagina.
+
+La aplicacion se puede probar desde [Heroku](https://bogotasegura2018.herokuapp.com/).
