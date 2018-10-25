@@ -9,10 +9,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
-
   </head>
 
   <body>
+    <%= yield :stylesheets %>
     <div id="body_div">
 
       <%= render 'layouts/navigation' %>

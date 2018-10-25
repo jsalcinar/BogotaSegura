@@ -1,6 +1,9 @@
 class ZonesController < ApplicationController
+  layout 'white'
   before_action :set_zone, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authenticate_admin, :except => [:show]
+  
   # GET /zones
   # GET /zones.json
   def index

@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
+  layout 'white'
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authenticate_admin, :except => [:show]
+  
   # GET /reports
   # GET /reports.json
   def index

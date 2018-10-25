@@ -1,5 +1,4 @@
 class TipsserviceController < ApplicationController
-
   def selection
     @type = "Walk"
   end

@@ -1,0 +1,12 @@
+<h1>DashBoard</h1>
+<b>Username:</b> <%= @user.username %> <br>
+<%= link_to 'Edit profile', edit_user_registration_path  %>
+
+<% if @user.try(:admin?)%>
+    <br><br><h2>Admin Tools</h2>
+    <li><%= link_to 'Users List', {controller: "users"} %></li>
+    <li><%= link_to 'Delinquency Stats', {controller: "delinquency_stats"} %></li>
+    <li><%= link_to 'Reports', {controller: "reports"} %></li>
+    <li><%= link_to 'Tips', {controller: "tips"} %></li>
+    <li><%= link_to 'Zones', {controller: "zones"} %></li>
+<% end %>
