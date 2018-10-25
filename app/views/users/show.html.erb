@@ -4,6 +4,7 @@
 
 <% if current_user.try(:admin?)%>
     <br><br><h2>Admin Tools</h2>
+    <li><%= link_to 'Users List', {controller: "users"} %></li>
     <li><%= link_to 'Delinquency Stats', {controller: "delinquency_stats"} %></li>
     <li><%= link_to 'Reports', {controller: "reports"} %></li>
     <li><%= link_to 'Tips', {controller: "tips"} %></li>
