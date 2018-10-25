@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'devise'
+  layout 'white'
   before_action :authenticate_user!
   before_action :authenticate_admin, :except => [:show]
 

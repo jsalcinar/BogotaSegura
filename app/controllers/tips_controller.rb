@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  layout 'devise'
+  layout 'white'
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
   # GET /tips

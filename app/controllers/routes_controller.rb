@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  layout 'devise'
+  layout 'white'
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   # GET /routes

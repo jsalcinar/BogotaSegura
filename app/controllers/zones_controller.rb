@@ -1,4 +1,5 @@
 class ZonesController < ApplicationController
+  layout 'white'
   before_action :set_zone, only: [:show, :edit, :update, :destroy]
 
   # GET /zones

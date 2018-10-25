@@ -2,7 +2,7 @@
 <b>Username:</b> <%= @user.username %> <br>
 <%= link_to 'Edit profile', edit_user_registration_path  %>
 
-<% if current_user.try(:admin?)%>
+<% if @user.try(:admin?)%>
     <br><br><h2>Admin Tools</h2>
     <li><%= link_to 'Users List', {controller: "users"} %></li>
     <li><%= link_to 'Delinquency Stats', {controller: "delinquency_stats"} %></li>

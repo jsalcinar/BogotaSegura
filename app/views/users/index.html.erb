@@ -1,6 +1,9 @@
 <% @users = User.all %>
 
+<h1>User List</h1>
+
 <% @users.each do |user| %>
-  <%= user.username %><br/>
-  <%= user.email %><br/>
-<% end %>
+  <li>
+    <%=link_to user.username, "users/"+user.username%> - <%= user.email %>
+  </li>
+  <% end %>
