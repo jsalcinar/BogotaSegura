@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def admin?
+    self.admin == true
+  end
+
+  def authenticate_admin
+    redirect_to '/', alert: 'Not authorized.' unless current_user && access_whitelist
+  end
+
+
   protected
 
 
@@ -17,6 +26,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def access_whitelist
+    current_user.try(:admin?)
+  end
+  
   def layout_by_resource
     if devise_controller?
       "white"

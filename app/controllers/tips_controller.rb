@@ -1,7 +1,9 @@
 class TipsController < ApplicationController
   layout 'white'
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authenticate_admin, :except => [:show]
+  
   # GET /tips
   # GET /tips.json
   def index

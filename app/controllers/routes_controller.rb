@@ -1,7 +1,8 @@
 class RoutesController < ApplicationController
   layout 'white'
   before_action :set_route, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authenticate_admin, :except => [:show]
   # GET /routes
   # GET /routes.json
   def index

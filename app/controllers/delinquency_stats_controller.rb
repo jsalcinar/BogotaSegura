@@ -1,7 +1,9 @@
 class DelinquencyStatsController < ApplicationController
   layout 'white'
   before_action :set_delinquency_stat, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authenticate_admin, :except => [:show]
+  
   # GET /delinquency_stats
   # GET /delinquency_stats.json
   def index
