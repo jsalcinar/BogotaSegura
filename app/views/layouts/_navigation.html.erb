@@ -19,27 +19,10 @@
   <a class="nav-item nav-link" href="/pages/aboutus">Contactenos</a>
   <hr class="navBarLine">
   <% if user_signed_in? %>
-    <div class="dropdown show">
-      <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
-        <%= current_user.username %>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <% if current_user.try(:admin?)%>
-          <%= link_to 'Show Profile', {controller: "users", action: "show", id: current_user.username} %>
-          <%= link_to 'Edit profile', edit_user_registration_path  %>
-          <div class="dropdown-divider" id="user_menu"></div>
-          <%= link_to 'Delinquency Stats', {controller: "delinquency_stats"} %>
-          <%= link_to 'Reports', {controller: "reports"} %>
-          <%= link_to 'Tips', {controller: "tips"} %>
-          <%= link_to 'Zones', {controller: "zones"} %>
-        <% else %>
-          <%= link_to 'Show Profile', {controller: "users", action: "show", id: @profile} %>
-          <%= link_to 'Edit profile', edit_user_registration_path  %>        <% end %>
-      </div>
-    </div>
+    <%= link_to current_user.username, {controller: "users", action: "show", id: current_user.username} %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
   <% else %>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'nav-item nav-link'  %>
-    <%= link_to "Login", new_user_session_path, :class => 'nav-item nav-link'  %>
+    <%= link_to "Sign up", new_user_registration_path  %>
+    <%= link_to "Login", new_user_session_path %>
   <% end %>
 </div>
