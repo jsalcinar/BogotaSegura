@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  layout 'devise'
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   # GET /reports

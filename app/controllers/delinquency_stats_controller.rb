@@ -1,4 +1,5 @@
 class DelinquencyStatsController < ApplicationController
+  layout 'devise'
   before_action :set_delinquency_stat, only: [:show, :edit, :update, :destroy]
 
   # GET /delinquency_stats

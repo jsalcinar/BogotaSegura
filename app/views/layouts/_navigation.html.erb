@@ -19,7 +19,7 @@
   <a class="nav-item nav-link" href="/pages/aboutus">Contactenos</a>
   <hr class="navBarLine">
   <% if user_signed_in? %>
-    <%= link_to current_user.username, {controller: "users", action: "show", id: current_user.username} %>
+    <%= link_to current_user.username, "/users/"+current_user.username %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path  %>

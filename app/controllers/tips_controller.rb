@@ -1,4 +1,5 @@
 class TipsController < ApplicationController
+  layout 'devise'
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
   # GET /tips
