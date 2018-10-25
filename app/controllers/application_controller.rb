@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     self.admin == true
   end
 
+  def admin_logged?
+    authenticate_admin
+  end
+
   def authenticate_admin
     redirect_to '/', alert: 'Not authorized.' unless current_user && access_whitelist
   end

@@ -70,6 +70,13 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 
 #Autentification
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
+
 
 gem 'font-awesome-sass'
+gem 'simple_form'
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+gem 'rails_db'
