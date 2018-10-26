@@ -1,6 +1,7 @@
 var map;
 var originPos = null;
 var destinationPos = null;
+var transportMode = ['DRIVING','WALKING','BUS']
 
 function initMap() {
 
@@ -9,17 +10,17 @@ function initMap() {
     zoom: 16
   });
 
+
+//SearchBox--------------------------------------------------------------------------
   var smarkers = [];
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   });
-
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function() {
@@ -62,13 +63,14 @@ function initMap() {
     map.fitBounds(bounds);
   });
 
+
+//Directions-------------------------------------------------------------------------
   var directionsService = new google.maps.DirectionsService;
   var directionsDisplay = new google.maps.DirectionsRenderer;
+  var geocoder = new google.maps.Geocoder();
   directionsDisplay.setMap(map);
 
-  var geocoder = new google.maps.Geocoder();
-
-    //Onclick event
+  //Onclick event
   map.addListener('click', function(e) {
     var state = document.getElementById("RouteLink").getAttribute("class");
     if(state == "tablinks active"){
@@ -92,6 +94,7 @@ function initMap() {
     }
   })
 
+  //Send Button
   document.getElementById("Send").addEventListener('click',function(){
     if(originPos!=null && destinationPos != null){
       calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -100,6 +103,7 @@ function initMap() {
     }
   })
 
+  //Return Button
   document.getElementById("btnrt").addEventListener('click',function(){
     try {
       directionsDisplay.setMap(null);
@@ -121,9 +125,9 @@ function initMap() {
     $('#Origen').attr('placeholder',"Origen");
     $('#Destino').attr('placeholder',"Destino");
   })
-
 }             
 
+//Create marker
 function placeMarker(latLng, map) {
   var marker = new google.maps.Marker({
     position: latLng,
@@ -132,13 +136,14 @@ function placeMarker(latLng, map) {
   return marker;
 }
 
+//Create directions route
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     //origin: document.getElementById('Origen').placeholder,
     //destination: document.getElementById('Destino').placeholder,
     origin: originPos.getPosition(),
     destination: destinationPos.getPosition(),
-    travelMode: 'DRIVING'
+    travelMode: transportMode[0]
   }, function(response, status) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
