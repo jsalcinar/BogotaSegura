@@ -1,16 +1,6 @@
 # BogotaSegura
 Aplicación de seguridad para Bogotá.
 
-Esta aplicacion web esta escrita sobre:
-
-* Ruby 2.5.1
-* Rails 5.2.1
-* Boostrap 4.x
-* NodeJs 10.x
-* ReactJs 16.x
-* Yarn 1.10.x
-* Postgresql 9.5.x
-
 Para el correcto funcionamiento de la aplicacion, tener instalado:
 
 * Ruby 2.5.1
@@ -27,20 +17,7 @@ Para el uso de la base Posgresql primero crear un usuario con los siguientes com
 
 > sudo -u postgres psql
 
-> postgres=# create role bogota with superuser login password 'segura';
-
-Luego configurar la base de datos de la aplicacion con:
-
-> rails db:setup
-
-> rails db:migrate
-
-Si al realizar db:setup da un error tal como 
-
-> ** FATAL:  Peer authentication failed for user "bogota"
-** 
-
-Realizar la solucion mencionada [aqui](https://askubuntu.com/questions/820792/peer-authentication-failed-for-user-with-all-privileges-in-postgres-9-5).
+> create role bogota with superuser login password 'segura';
 
 Si es la primera vez que se tiene la aplicacion en el equipo usar:
 
@@ -53,6 +30,13 @@ Si ya se habia clonado antes, realizar:
 Luego migrar la db con:
 
 > rails db:migrate
+
+Si al realizar alguno de los comandos anteriores, da un error similar a este:
+
+> ** FATAL:  Peer authentication failed for user "bogota"
+** 
+
+Realizar la solucion mencionada [aqui](https://askubuntu.com/questions/820792/peer-authentication-failed-for-user-with-all-privileges-in-postgres-9-5).
 
 Para poblar la db ejecutar:
 
