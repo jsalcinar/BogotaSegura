@@ -1,3 +1,12 @@
+function map_init(){
+
+    $( '#transportModeBtns .btn_mode' ).on( 'click', function () {
+        $( '#transportModeBtns' ).find( 'button.active' ).removeClass( 'active' );
+        $( this ).addClass( 'active' );
+    });
+
+}
+
 function showTab(tabName) {
     // Declare all variables
     var i, tabcontent, tablinks;
@@ -20,5 +29,3 @@ function showTab(tabName) {
     document.getElementById(link_id).className += " active";
 }
 
-function selectTranspMode(){
-}

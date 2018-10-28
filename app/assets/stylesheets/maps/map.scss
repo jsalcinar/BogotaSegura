@@ -1,6 +1,7 @@
 
 #Menu{
   margin-top: 10vh;
+  display: block;
 }
 
 #Menu div {
@@ -17,6 +18,21 @@
     display: none;
 }
 
-#Menu {
-  display: block;
+#menu_body {
+  padding-top: 12vh;
+}
+
+#transportModeBtns {
+  width: 100%;
+}
+
+#transportModeBtns > button{
+  width: 25%;
+  color: white;
+
+}
+
+#transportModeBtns > button.active{
+  color: #343a40;
+  background-color: #E2E6EA;
 }
