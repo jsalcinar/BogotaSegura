@@ -2,11 +2,18 @@ var map = null;
 var originPos = null;
 var destinationPos = null;
 var transportMode = 'DRIVING';
+var mapCenter = {lat: 4.6371933, lng: -74.0826976};
+var readState = "none";
+
+var directionsService = null;
+var directionsDisplay = null;
+var geocoder = null;
+
 
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 4.6371933, lng: -74.0826976},
+    center: mapCenter,
     zoom: 16
   });
 
@@ -67,74 +74,134 @@ function initMap() {
     initMapService();
   } );
 
+  $( '#Origen' ).click( function(e){
+    $( '#Destino' ).removeClass( 'active' );
+    $( this ).addClass( 'active' );
+    readState = "start";
+  } );
+
+  $( '#Destino' ).click( function(e){
+    $( '#Origen' ).removeClass( 'active' );
+    $( this ).addClass( 'active' );
+    readState = "end";
+  } );
+
+  $( '#delOrigen' ).click( function(e){
+    $( '#Origen' ).removeClass( 'active' );
+    clearMarker(originPos);
+    originPos = null;
+    $('#Origen').text("Origen");
+    readState = "none";
+  } );
+
+  $( '#delDestino' ).click( function(e){
+    $( '#Destino' ).removeClass( 'active' );
+    clearMarker(destinationPos);
+    destinationPos = null;
+    $('#Destino').text("Destino");
+    readState = "none";
+  });
 } 
 
 function initMapService(){
 
+  map.setCenter(mapCenter);
+  $( '#Origen,#Destino' ).removeClass( 'active' );
+  readState = "none";
+
+
 //Directions-------------------------------------------------------------------------
-  var directionsService = new google.maps.DirectionsService;
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var geocoder = new google.maps.Geocoder();
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+  geocoder = new google.maps.Geocoder();
   directionsDisplay.setMap(map);
 
-  //Onclick event
+  //Put markers on map
   map.addListener('click', function(e) {
     var state = document.getElementById("RouteLink").getAttribute("class");
     if(state == "tablinks active"){
-      if( (originPos==null || destinationPos == null) ){
-        geocoder.geocode({
-        'latLng': e.latLng
-        }, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-              if(originPos==null){
-                $('#Origen').attr('placeholder',results[0].formatted_address);
-                originPos = placeMarker(e.latLng, map);
-              }else if(destinationPos==null){
-                $('#Destino').attr('placeholder',results[0].formatted_address);
-                destinationPos = placeMarker(e.latLng, map);
+      switch(readState){
+        case "start":
+          geocoder.geocode({
+            'latLng': e.latLng
+            }, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                  clearMarker(originPos);
+                  originPos = placeMarker(e.latLng, map);
+                  $('#Origen').text(results[0].formatted_address);
+                  $( '#Origen' ).removeClass( 'active' );
+                  readState = "none";
+                }
               }
             }
-          }
-        }
-      )}
+          )
+          break;
+        case "end":
+          geocoder.geocode({
+            'latLng': e.latLng
+            }, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                  clearMarker(destinationPos);
+                  destinationPos = placeMarker(e.latLng, map);
+                  $('#Destino').text(results[0].formatted_address);
+                  $( '#Destino' ).removeClass( 'active' );
+                  readState = "none";
+                }
+              }
+            }
+          )
+          break;
+        default:
+          //None
+          break;
+      }
     }
   })
 
   //Send Button
-  document.getElementById("Send").addEventListener('click',function(){
-    if(originPos!=null && destinationPos != null){
+  $( '#Send' ).click( function(e){
+    if (originPos==null) {
+      alert("Debes de seleccionar una ubicacion de origen.");
+    }else if (destinationPos==null) {
+      alert("Debes de seleccionar una ubicacion de destino.");
+    }else{
       calculateAndDisplayRoute(directionsService, directionsDisplay);
       originPos.setMap(null);
       destinationPos.setMap(null);
+      $( '#menu_div' ).addClass("disabledbutton");
+      $( '#Send' ).addClass("disabledbutton");
     }
-  })
+  });
 
   //Return Button
-  document.getElementById("btnrt").addEventListener('click',function(){
+  $( '#btnrt' ).click( function(e){
     try {
       directionsDisplay.setMap(null);
-      directionsService = null;
-      directionsDisplay = null;
-      geocoder = null;
-      directionsService = new google.maps.DirectionsService;
-      directionsDisplay = new google.maps.DirectionsRenderer;
-      directionsDisplay.setMap(map);
-      geocoder = new google.maps.Geocoder();
-      originPos.setMap(null);
-      destinationPos.setMap(null);
-    }catch(error){
+    }catch(error){}
 
-    }
-
+    clearMarker(originPos);
+    clearMarker(destinationPos);
+    directionsService = null;
+    directionsDisplay = null;
+    geocoder = null;
     originPos = null;
     destinationPos = null;
-    $('#Origen').attr('placeholder',"Origen");
-    $('#Destino').attr('placeholder',"Destino");
+
+    $('#Origen').text("Origen");
+    $('#Destino').text("Destino");
+
+    map.setCenter(mapCenter);
+    map.setZoom(16);
+
+    $( '#menu_div' ).addClass("disabledbutton");
+    $( '#Send' ).addClass("disabledbutton");
   })
 
   originPos = placeMarker({lat: 4.63786, lng: -74.086341},map);
   destinationPos = placeMarker({lat: 4.6343095, lng: -74.0854674},map);
+
 }       
 
 //Create marker
@@ -165,4 +232,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 function setMode(mode){
   transportMode = mode;
+}
+
+function clearMarker(markerObj){
+    try{
+      markerObj.setMap(null);
+    }catch(error){}
 }

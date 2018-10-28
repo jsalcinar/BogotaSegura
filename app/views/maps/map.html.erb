@@ -14,7 +14,7 @@
 
     <div id="Route" class="tabcontent">
       <font size="18">Planea tu ruta</font>
-      <div>
+      <div id="menu_div">
         <div id="transportModeBtns" class="btn-group" role="group" aria-label="Mode Buttons">
           <button class=" btn btn-dark btn_mode active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
           <button class="btn btn-dark btn_mode" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
@@ -25,20 +25,20 @@
         <br>
         <label>¿Donde comienza tu viaje?</label>
         <div class="d-flex">
-          <input type="text"  class="form-control mr-1" id="Origen" placeholder="Origen" disabled/>
-          <button class="btn btn-dark"><%=icon('fas', 'trash')%></button> 
+          <span class="input-group-text mr-1 pointtext" id="Origen">Origen</span>
+          <button class="btn btn-dark delMarker" id="delOrigen"><%=icon('fas', 'trash')%></button> 
         </div>
         <br>  
         <label>¿Donde termina?</label>
         <div class="d-flex">
-          <input type="text"  class="form-control mr-1" id="Destino" placeholder="Destino" disabled/>
-          <button class="btn btn-dark"><%=icon('fas', 'trash')%></button> 
+          <span class="input-group-text mr-1 pointtext" id="Destino">Destino</span>
+          <button class="btn btn-dark delMarker" id="delDestino"><%=icon('fas', 'trash')%></button> 
         </div>
-        <br>
-        <div id="btngroup">
-          <button class="btn btn-dark btn-block" id="Send" >Enviar</button>
-          <button class="btn btn-dark btn-block returnBtn" id="btnrt" onclick="showTab('Menu')" >Regresar</button>
-        </div>
+      </div>
+      <br>
+      <div id="btngroup">
+        <button class="btn btn-dark btn-block" id="Send" >Enviar</button>
+        <button class="btn btn-dark btn-block returnBtn" id="btnrt" onclick="showTab('Menu')" >Regresar</button>
       </div>
     </div>
 

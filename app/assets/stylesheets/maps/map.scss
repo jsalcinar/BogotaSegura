@@ -36,3 +36,16 @@
   color: #343a40;
   background-color: #E2E6EA;
 }
+
+.pointtext {
+  width: 100%;
+}
+
+.pointtext.active {
+  background-color: green;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.5;
+}
