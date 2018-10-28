@@ -28,4 +28,3 @@ function showTab(tabName) {
     var link_id = tabName.concat("Link");
     document.getElementById(link_id).className += " active";
 }
-

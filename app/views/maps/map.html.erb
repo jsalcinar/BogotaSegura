@@ -16,31 +16,29 @@
       <font size="18">Planea tu ruta</font>
       <div>
         <div id="transportModeBtns" class="btn-group" role="group" aria-label="Mode Buttons">
-          <button class=" btn btn-dark btn_mode active"><%=icon('fas', 'walking')%></button>
-          <button class="btn btn-dark btn_mode"><%=icon('fas', 'bus')%></button>
-          <button class="btn btn-dark btn_mode"><%=icon('fas', 'car')%></button>
-          <button class="btn btn-dark btn_mode"><%=icon('fas', 'bicycle')%></button>
+          <button class=" btn btn-dark btn_mode active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
+          <button class="btn btn-dark btn_mode" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
+          <button class="btn btn-dark btn_mode" onclick="setMode('DRIVING')"><%=icon('fas', 'car')%></button>
+          <button class="btn btn-dark btn_mode" onclick="setMode('BICYCLING')"><%=icon('fas', 'bicycle')%></button>
         </div>
         <br>
-        <form>
-          <br>
-          <label>¿Donde comienza tu viaje?</label>
-          <div class="d-flex">
-            <input type="text"  class="form-control mr-1" id="Origen" placeholder="Origen" disabled/>
-            <button class="btn btn-dark"><%=icon('fas', 'trash')%></button> 
-          </div>
-          <br>  
-          <label>¿Donde termina?</label>
-          <div class="d-flex">
-            <input type="text"  class="form-control mr-1" id="Destino" placeholder="Destino" disabled/>
-            <button class="btn btn-dark"><%=icon('fas', 'trash')%></button> 
-          </div>
-          <br>
-          <div id="btngroup">
-            <button class="btn btn-dark btn-block" id="Send" >Enviar</button>
-            <button class="btn btn-dark btn-block returnBtn" id="btnrt" onclick="showTab('Menu')" >Regresar</button>
-          </div>
-        </form>
+        <br>
+        <label>¿Donde comienza tu viaje?</label>
+        <div class="d-flex">
+          <input type="text"  class="form-control mr-1" id="Origen" placeholder="Origen" disabled/>
+          <button class="btn btn-dark"><%=icon('fas', 'trash')%></button> 
+        </div>
+        <br>  
+        <label>¿Donde termina?</label>
+        <div class="d-flex">
+          <input type="text"  class="form-control mr-1" id="Destino" placeholder="Destino" disabled/>
+          <button class="btn btn-dark"><%=icon('fas', 'trash')%></button> 
+        </div>
+        <br>
+        <div id="btngroup">
+          <button class="btn btn-dark btn-block" id="Send" >Enviar</button>
+          <button class="btn btn-dark btn-block returnBtn" id="btnrt" onclick="showTab('Menu')" >Regresar</button>
+        </div>
       </div>
     </div>
 

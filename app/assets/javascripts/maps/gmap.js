@@ -1,7 +1,7 @@
-var map;
+var map = null;
 var originPos = null;
 var destinationPos = null;
-var transportMode = ['DRIVING','WALKING','BUS']
+var transportMode = 'DRIVING';
 
 function initMap() {
 
@@ -9,7 +9,6 @@ function initMap() {
     center: {lat: 4.6371933, lng: -74.0826976},
     zoom: 16
   });
-
 
 //SearchBox--------------------------------------------------------------------------
   var smarkers = [];
@@ -63,6 +62,14 @@ function initMap() {
     map.fitBounds(bounds);
   });
 
+
+  $( '#RouteLink' ).click( function(e){
+    initMapService();
+  } );
+
+} 
+
+function initMapService(){
 
 //Directions-------------------------------------------------------------------------
   var directionsService = new google.maps.DirectionsService;
@@ -125,7 +132,10 @@ function initMap() {
     $('#Origen').attr('placeholder',"Origen");
     $('#Destino').attr('placeholder',"Destino");
   })
-}             
+
+  originPos = placeMarker({lat: 4.63786, lng: -74.086341},map);
+  destinationPos = placeMarker({lat: 4.6343095, lng: -74.0854674},map);
+}       
 
 //Create marker
 function placeMarker(latLng, map) {
@@ -143,7 +153,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     //destination: document.getElementById('Destino').placeholder,
     origin: originPos.getPosition(),
     destination: destinationPos.getPosition(),
-    travelMode: transportMode[0]
+    travelMode: transportMode
   }, function(response, status) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
@@ -153,3 +163,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   });
 }
 
+function setMode(mode){
+  transportMode = mode;
+}
