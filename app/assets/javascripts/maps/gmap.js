@@ -1,21 +1,18 @@
-var map = null;
-var originPos = null;
-var destinationPos = null;
 var transportMode = 'DRIVING';
 var mapCenter = {lat: 4.6371933, lng: -74.0826976};
 var readState = "none";
 
-var directionsService = null;
-var directionsDisplay = null;
-var geocoder = null;
+var map, originPos, destinationPos = null;
+var directionsService, directionsDisplay, geocoder = null;
 
-
+//Inicializa el mapa.
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: mapCenter,
     zoom: 16
   });
+
 
 //SearchBox--------------------------------------------------------------------------
   var smarkers = [];
@@ -68,24 +65,26 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
+  //---------------------------------------------------------------------
 
-
+  //Botones  ------------------------------------------------------------
+  //Click en la opcion "Planear ruta"
   $( '#RouteLink' ).click( function(e){
     initMapService();
   } );
-
+  //Se presiona la opcion de origen.
   $( '#Origen' ).click( function(e){
     $( '#Destino' ).removeClass( 'active' );
     $( this ).addClass( 'active' );
     readState = "start";
   } );
-
+  //Se presiona la opcion de destino
   $( '#Destino' ).click( function(e){
     $( '#Origen' ).removeClass( 'active' );
     $( this ).addClass( 'active' );
     readState = "end";
   } );
-
+  //Se borra el marcador de origen
   $( '#delOrigen' ).click( function(e){
     $( '#Origen' ).removeClass( 'active' );
     clearMarker(originPos);
@@ -93,7 +92,7 @@ function initMap() {
     $('#Origen').text("Origen");
     readState = "none";
   } );
-
+  //Se borra el marcador de destino
   $( '#delDestino' ).click( function(e){
     $( '#Destino' ).removeClass( 'active' );
     clearMarker(destinationPos);
@@ -103,12 +102,13 @@ function initMap() {
   });
 } 
 
+//Inizializal las funciones extras del mapa.
 function initMapService(){
 
   map.setCenter(mapCenter);
-  $( '#Origen,#Destino' ).removeClass( 'active' );
   readState = "none";
-
+  $( '#Origen,#Destino' ).removeClass( 'active' );
+  $( '#menu_div,#Send' ).removeClass("disabledbutton");
 
 //Directions-------------------------------------------------------------------------
   directionsService = new google.maps.DirectionsService;
@@ -127,6 +127,7 @@ function initMapService(){
             }, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
+                  //Guardo la ubicacion del mouse en el mapa como un marcador
                   clearMarker(originPos);
                   originPos = placeMarker(e.latLng, map);
                   $('#Origen').text(results[0].formatted_address);
@@ -143,6 +144,7 @@ function initMapService(){
             }, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
+                  //Guardo la ubicacion del mouse en el mapa como un marcador
                   clearMarker(destinationPos);
                   destinationPos = placeMarker(e.latLng, map);
                   $('#Destino').text(results[0].formatted_address);
@@ -160,7 +162,7 @@ function initMapService(){
     }
   })
 
-  //Send Button
+  //Send Button -------------------------------------------------------------------------
   $( '#Send' ).click( function(e){
     if (originPos==null) {
       alert("Debes de seleccionar una ubicacion de origen.");
@@ -170,12 +172,11 @@ function initMapService(){
       calculateAndDisplayRoute(directionsService, directionsDisplay);
       originPos.setMap(null);
       destinationPos.setMap(null);
-      $( '#menu_div' ).addClass("disabledbutton");
-      $( '#Send' ).addClass("disabledbutton");
+      $( '#menu_div,#Send' ).addClass("disabledbutton");
     }
   });
 
-  //Return Button
+  //Return Button  ------------------------------------------------------------------------
   $( '#btnrt' ).click( function(e){
     try {
       directionsDisplay.setMap(null);
@@ -183,11 +184,7 @@ function initMapService(){
 
     clearMarker(originPos);
     clearMarker(destinationPos);
-    directionsService = null;
-    directionsDisplay = null;
-    geocoder = null;
-    originPos = null;
-    destinationPos = null;
+    directionsService,directionsDisplay,geocoder,originPos,destinationPos = null;
 
     $('#Origen').text("Origen");
     $('#Destino').text("Destino");
@@ -195,10 +192,9 @@ function initMapService(){
     map.setCenter(mapCenter);
     map.setZoom(16);
 
-    $( '#menu_div' ).addClass("disabledbutton");
-    $( '#Send' ).addClass("disabledbutton");
   })
 
+  //Marcadores para usar en heroku
   originPos = placeMarker({lat: 4.63786, lng: -74.086341},map);
   destinationPos = placeMarker({lat: 4.6343095, lng: -74.0854674},map);
 
@@ -216,8 +212,6 @@ function placeMarker(latLng, map) {
 //Create directions route
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
-    //origin: document.getElementById('Origen').placeholder,
-    //destination: document.getElementById('Destino').placeholder,
     origin: originPos.getPosition(),
     destination: destinationPos.getPosition(),
     travelMode: transportMode

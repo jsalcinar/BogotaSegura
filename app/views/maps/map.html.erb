@@ -14,6 +14,8 @@
 
     <div id="Route" class="tabcontent">
       <font size="18">Planea tu ruta</font>
+      <br>
+      <label>Selecciona la barra de origen o destino, y luego haz click en la ubicacion del mapa.</label>
       <div id="menu_div">
         <div id="transportModeBtns" class="btn-group" role="group" aria-label="Mode Buttons">
           <button class=" btn btn-dark btn_mode active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
@@ -25,13 +27,13 @@
         <br>
         <label>¿Donde comienza tu viaje?</label>
         <div class="d-flex">
-          <span class="input-group-text mr-1 pointtext" id="Origen">Origen</span>
+          <span class="input-group-text btn btn-outline-dark mr-1 pointtext" id="Origen">Origen</span>
           <button class="btn btn-dark delMarker" id="delOrigen"><%=icon('fas', 'trash')%></button> 
         </div>
         <br>  
         <label>¿Donde termina?</label>
         <div class="d-flex">
-          <span class="input-group-text mr-1 pointtext" id="Destino">Destino</span>
+          <span class="input-group-text btn btn-outline-dark mr-1 pointtext" id="Destino">Destino</span>
           <button class="btn btn-dark delMarker" id="delDestino"><%=icon('fas', 'trash')%></button> 
         </div>
       </div>
