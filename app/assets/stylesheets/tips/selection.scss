@@ -14,12 +14,9 @@ body, html {
 }
 
 h1 {
-    margin-top: 10vh;
-    font-size: 10vh;
-}
-
-#icons-col{
-    padding-top: 5vh;
+    margin-top: 12vw;
+    font-size: 8vw;
+    font-family: 'Raleway', sans-serif;
 }
 
 #optionsButton {
@@ -38,8 +35,8 @@ h1 {
     color: white;
 }
 
-#Mov_btn{
-    font-size: 20vh;
+.Mov_btn{
+    font-size: 18vw;
     text-align: center;
     color: black;
 }
