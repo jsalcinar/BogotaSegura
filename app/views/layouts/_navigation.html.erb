@@ -8,21 +8,22 @@
     </ul>
   </div>
 </nav>
-<!-- The overlay -->
-<div id="myNav" class="overlay">
-  <!-- Button to close the overlay navigation -->
-  <button class="closebtn" onclick="closeNav()"><%=icon('fas', 'arrow-left')%></button>
+
+<div id="mySidenav" class="sidenavbar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><%=icon('fas', 'arrow-left')%></a>
+  
   <h2 id="menu_title">Bogota Segura</h2>
-  <hr class="navBarLine">
+  <br />
   <%= link_to 'Inicio', root_path %>
   <a class="nav-item nav-link" href="/pages/services">Servicios</a>
   <a class="nav-item nav-link" href="/pages/aboutus">Contactenos</a>
-  <hr class="navBarLine">
+  <br />
   <% if user_signed_in? %>
     <%= link_to current_user.username, "/users/"+current_user.username %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Log In", new_user_session_path %>
     <%= link_to "Sign up", new_user_registration_path  %>
   <% end %>
 </div>
+
