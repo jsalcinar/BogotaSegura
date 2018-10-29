@@ -1,33 +1,60 @@
 <%= stylesheet_link_tag 'devise_css/sign_up'%>
 
-<div class="row justify-content-md-center align-items-center">
-  <div class="col homePage">
-    <h1>Crea Tu Cuenta</h1>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        
-        <%= devise_error_messages! %>
-
-        <div class="container-fluid">
-          <%= f.label :username , class: "labelLine1" %>
-          <%= f.label :email, class: "labelLine1" %>
-          <br />
-          <%= f.text_field :username, placeholder:"Usuario" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email" %>
-          <br />
-          <%= f.label :password, class: "labelLine2" %>
-          <%= f.label :password_confirmation, class: "labelLine2" %>
-          <br />
-          <%= f.password_field :password, autocomplete: "new-password", placeholder:"Contraseña" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar Contraseña" %>
-          <br />
-          <br /><br />
-          <div class="container-fluid" style="padding-top: -30px;">
-            <div id="buttons_sign" style="width: 50%; margin: 0 auto;">
-              <%= f.submit "Crear Cuenta", id: "submitButton", class: "btn btn-default"%>
-              <%= render "devise/shared/links" %>
-            </div>
-        </div>
-      <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md">
+      <h1 align="center">Crea Tu Cuenta</h1>
+    </div>
   </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    
+    <%= devise_error_messages! %>
+
+    <div class="row">
+      <div class="col-md"></div>
+      <div class="col-md-4">
+        <br>
+        <b><%= f.label :username %></b>
+        <%= f.text_field :username, class: "form-control", placeholder:"Usuario" %>
+      </div>
+      <div class="col-md"></div>
+      <div class="col-md-4">
+        <br>
+        <b><%= f.label :email%></b>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"Email" %>
+      </div>
+      <div class="col-md"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md"></div>
+      <div class="col-md-4">
+        <br>
+        <b><%= f.label :password %></b>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"Contraseña" %>
+      </div>
+      <div class="col-md"></div>
+      <div class="col-md-4">
+        <br>
+        <b><%= f.label :password_confirmation %></b>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder:"Confirmar Contraseña" %>
+      </div>
+      <div class="col-md"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md"></div>
+      <div class="col-md-3">
+          <br>
+          <%= f.submit "Crear Cuenta", id: "submitButton", class: "btn btn-dark" %>
+      </div>
+      <div class="col-md-3">
+          <br>
+          <%= render "devise/shared/links" %>
+      </div>
+      <div class="col-md"></div>
+    </div>
+    
+  <% end %>
 </div>
 
