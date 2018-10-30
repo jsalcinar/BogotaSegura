@@ -21,6 +21,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+  #Configuracion para Cloud9, comentar los username y password de mas adelante.
+  #template: template0
+  #username: ubuntu
+  #password: ubuntu
+
+
 development:
   <<: *default
   database: BogotaSegura_development
