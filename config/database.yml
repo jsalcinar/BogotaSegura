@@ -20,18 +20,21 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  template: template0
+  
 
-  #Configuracion para Cloud9, comentar los username y password de mas adelante.
-  #template: template0
+  #Para usar en cloud9
   #username: ubuntu
   #password: ubuntu
+
+  #Para usar de forma local
+  username: bogota
+  password: segura
 
 
 development:
   <<: *default
   database: BogotaSegura_development
-  username: bogota
-  password: segura
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -66,8 +69,6 @@ development:
 test:
   <<: *default
   database: BogotaSegura_test
-  username: bogota
-  password: segura
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -91,5 +92,3 @@ test:
 production:
   <<: *default
   database: BogotaSegura_production
-  username: BogotaSegura
-  password: <%= ENV['BOGOTASEGURA_DATABASE_PASSWORD'] %>
