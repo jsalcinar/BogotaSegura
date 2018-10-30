@@ -19,11 +19,7 @@ Para el uso de la base Posgresql primero crear un usuario con los siguientes com
 
 > create role bogota with superuser login password 'segura';
 
-Si es la primera vez que se tiene la aplicacion en el equipo usar:
-
-> rails db:setup
-
-Si ya se habia clonado antes, realizar:
+Realizar:
 
 > rails db:reset
 
