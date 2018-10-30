@@ -1,11 +1,46 @@
-<%= stylesheet_link_tag 'users/index' %>
+<%= stylesheet_link_tag 'users/user_list' %>
 
 <% @users = User.all %>
 
-<h1 align="center">User List</h1>
+<div class="row">
+  <div class="col-lg"></div>
+  <div class="col-lg-8">
+    <h1 align="center">User List</h1><br />
+  </div>
+  <div class="col-lg"></div>
+</div>
+
+<div class="row">
+  <div class="col-lg"></div>
+  <div class="col-lg-3">
+    <h3>Usuario</h3>
+  </div>
+  <div class="col-lg-3">
+    <h3>Email</h3>
+  </div>
+  <div class="col-lg-2">
+    <h3>Acciones</h3>
+  </div>
+  <div class="col-lg"></div>
+</div>
 
 <% @users.each do |user| %>
-  <li>
-    <%=link_to user.username, "users/"+user.username%> - <%= user.email %>
-  </li>
-  <% end %>
+  <br />
+  <div class="row">
+    <div class="col-lg"></div>
+    <div class="col-lg-3">
+      <span class="input-group-text"><%=user.username%></span><br/>
+    </div>
+    <div class="col-lg-3">
+      <span class="input-group-text"><%= user.email %></span><br/>
+    </div>
+    <div class="col-lg-2">
+      <div class="btn-group" role="group" aria-label="User_control" id="user_control">
+        <%=link_to icon('fas', 'eye'), "users/"+user.username, class: "btn btn-dark" %>
+        <%=link_to icon('fas', 'edit'), "", class: "btn btn-dark disabled" %>
+        <%=link_to icon('fas', 'trash'), "", class: "btn btn-dark disabled" %>
+      </div>
+    </div>
+    <div class="col-lg"></div>
+  </div>
+<% end %>
