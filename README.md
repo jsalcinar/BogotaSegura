@@ -51,3 +51,5 @@ Desde el navegador visitar
 para visualizar la pagina.
 
 La aplicacion se puede probar desde [Heroku](https://bogotasegura2018.herokuapp.com/).
+
+Para poder correr la aplicacion en Cloud9, revisar la [wiki](https://github.com/jsalcinar/BogotaSegura/wiki/Preparar-Cloud9-para-el-uso-de-la-aplicacion.) del repositorio.
