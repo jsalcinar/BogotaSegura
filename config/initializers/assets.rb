@@ -22,3 +22,5 @@ Rails.application.config.assets.precompile += [ "*tips*" ]
 Rails.application.config.assets.precompile += [ "*app_navbar*" ]
 
 Rails.application.config.assets.precompile += [ "*devise_css*" ]
+
+Rails.application.config.assets.precompile += [ "*users*" ]

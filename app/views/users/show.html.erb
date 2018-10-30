@@ -1,13 +1,52 @@
-<h1>DashBoard</h1>
-<b>Username:</b> <%= @user.username %> <br>
-<%= link_to 'Edit profile', edit_user_registration_path  %>
+<%= stylesheet_link_tag 'users/dashboard' %>
+
+<div class="row">
+    <div class="col-md"></div>
+    <div class="col-md-8" style="text-align: center;">
+        <h1 align="center">DashBoard</h1><br />
+    </div>
+    <div class="col-md"></div>
+</div>
+
+<div class="row">
+    <div class="col-md"></div>
+    <div class="col-md-4">
+        <b>Usuario:</b><br />
+        <span class="input-group-text"><%= @user.username %></span><br/>
+        
+        <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-dark btn-block"  %>
+    </div>
+    <div class="col-md-4">
+        <b>Email:</b><br />
+        <span class="input-group-text"><%= @user.email %></span>
+        
+    </div>
+    <div class="col-md"></div>
+</div>
 
 <% if @user.try(:admin?)%>
-    <br><br><h2>Admin Tools</h2>
-    <li><%= link_to 'Rails DB', "/rails/db" %></li>
-    <li><%= link_to 'Users List', {controller: "users"} %></li>
-    <li><%= link_to 'Delinquency Stats', {controller: "delinquency_stats"} %></li>
-    <li><%= link_to 'Reports', {controller: "reports"} %></li>
-    <li><%= link_to 'Tips', {controller: "tips"} %></li>
-    <li><%= link_to 'Zones', {controller: "zones"} %></li>
+    <div class="row">
+        <div class="col-md"></div>
+        <div class="col-md-8" style="text-align: center;">
+            <br><br><h1 align="center">Admin Tools</h1>
+        </div>
+        <div class="col-md"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md"></div>
+        <div class="col-md-4">
+            <%= link_to 'Rails DB', "/rails/db", class:"btn btn-dark btn-block" %>
+            <%= link_to 'Delinquency Stats', {controller: "delinquency_stats"}, class:"btn btn-dark btn-block" %>
+            <%= link_to 'Reports', {controller: "reports"}, class:"btn btn-dark btn-block" %>
+            <br />
+        </div>
+        <div class="col-md-4">
+            <%= link_to 'Users List', {controller: "users"}, class:"btn btn-dark btn-block" %>
+            <%= link_to 'Tips', {controller: "tips"}, class:"btn btn-dark btn-block" %>
+            <%= link_to 'Zones', {controller: "zones"}, class:"btn btn-dark btn-block" %>
+            <br />
+        </div>
+        <div class="col-md"></div>
+    </div>
 <% end %>
