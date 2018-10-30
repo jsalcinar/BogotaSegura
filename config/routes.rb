@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'pages/tips2'
   resources :routes
   resources :reports
   resources :tips
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   get "pages/index"
   get "pages/services"
   get "pages/aboutus" 
+  get "pages/tips"
   get "maps/map"  
   get "tipsservice/selection"  
   get "tipsservice/tip"  
