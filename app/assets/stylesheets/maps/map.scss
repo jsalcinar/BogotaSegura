@@ -34,11 +34,12 @@
   background-color: #E2E6EA;
 }
 
-.pointtext {
+.address_text {
   width: 100%;
+  overflow: hidden;
 }
 
-.pointtext.active {
+.address_text.active {
   background-color: #218838 !important;
 }
 
