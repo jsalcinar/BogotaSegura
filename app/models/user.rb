@@ -3,8 +3,18 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :username, presence: :true, uniqueness: { case_sensitive: false }
 
+  validate :validate_username
+  
   attr_writer :login
+  
+  def validate_username
+    if User.where(email: username).exists?
+      errors.add(:username, :invalid)
+    end
+  end
+
 
   def login
     @login || self.username || self.email
