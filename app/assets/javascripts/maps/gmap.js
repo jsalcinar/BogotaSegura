@@ -100,6 +100,11 @@ function initMap() {
     $('#Destino').text("Destino");
     readState = "none";
   });
+  
+  $( '#map_resetBtn' ).click( function(e){
+    resetmap();
+    initMapService();
+  })
 } 
 
 //Inizializal las funciones extras del mapa.
@@ -177,21 +182,8 @@ function initMapService(){
   });
 
   //Return Button  ------------------------------------------------------------------------
-  $( '#btnrt' ).click( function(e){
-    try {
-      directionsDisplay.setMap(null);
-    }catch(error){}
-
-    clearMarker(originPos);
-    clearMarker(destinationPos);
-    directionsService,directionsDisplay,geocoder,originPos,destinationPos = null;
-
-    $('#Origen').text("Origen");
-    $('#Destino').text("Destino");
-
-    map.setCenter(mapCenter);
-    map.setZoom(16);
-
+  $( '#map_returnBtn' ).click( function(e){
+    resetmap();
   })
 
   //Marcadores para usar en heroku
@@ -232,4 +224,21 @@ function clearMarker(markerObj){
     try{
       markerObj.setMap(null);
     }catch(error){}
+}
+
+function resetmap(){
+    try {
+      directionsDisplay.setMap(null);
+    }catch(error){}
+
+    clearMarker(originPos);
+    clearMarker(destinationPos);
+    directionsService,directionsDisplay,geocoder,originPos,destinationPos = null;
+
+    $('#Origen').text("Origen");
+    $('#Destino').text("Destino");
+
+    map.setCenter(mapCenter);
+    map.setZoom(16);
+    
 }

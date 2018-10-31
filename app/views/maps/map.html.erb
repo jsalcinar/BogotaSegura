@@ -17,7 +17,7 @@
       <br>
       <label>Selecciona la barra de origen o destino, y luego haz click en la ubicacion del mapa.</label>
       <div id="menu_div">
-        <div id="transportModeBtns" class="btn-group" role="group" aria-label="Mode Buttons">
+        <div id="transportModeBtns" class="btn-group special" role="group" aria-label="Mode Buttons">
           <button class=" btn btn-dark btn_mode active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
           <button class="btn btn-dark btn_mode" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
           <button class="btn btn-dark btn_mode" onclick="setMode('DRIVING')"><%=icon('fas', 'car')%></button>
@@ -38,9 +38,10 @@
         </div>
       </div>
       <br>
-      <div id="btngroup">
-        <button class="btn btn-dark btn-block" id="Send" >Enviar</button>
-        <button class="btn btn-dark btn-block returnBtn" id="btnrt" onclick="showTab('Menu')" >Regresar</button>
+      <button class="btn btn-dark btn-block" id="Send" >Enviar</button><br />
+      <div class="btn-group special" role="group" aria-label="Control Menu">
+        <button class="btn btn-dark mr-1" id="map_resetBtn" onclick="javascript:void(0)" >Reiniciar</button>
+        <button class="btn btn-dark ml-1" id="map_returnBtn" onclick="showTab('Menu')" >Regresar</button>
       </div>
     </div>
 

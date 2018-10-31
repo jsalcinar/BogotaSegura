@@ -22,9 +22,6 @@
   padding-top: 12vh;
 }
 
-#transportModeBtns {
-  width: 100%;
-}
 
 #transportModeBtns > button{
   width: 25%;
@@ -48,4 +45,12 @@
 .disabledbutton {
     pointer-events: none;
     opacity: 0.5;
+}
+
+.btn-group.special {
+  display: flex;
+}
+
+.special .btn {
+  flex: 1
 }
