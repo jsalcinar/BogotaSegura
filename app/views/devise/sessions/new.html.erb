@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag 'devise_css/new'%>
 
 <div class="row">
-  <div class="col-lg"></div>
-  <div class="col-lg-8" style="text-align: center;">
+  <div class="col-md"></div>
+  <div class="col-md-5" style="text-align: center;">
     <h1>Inicia Sesion</h1>
     <span id="loginPic" align="center"><%=icon('fas', 'user')%></span>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -33,5 +33,5 @@
     </div>
 
   </div>
-  <div class="col-lg"></div>
+  <div class="col-md"></div>
 </div>

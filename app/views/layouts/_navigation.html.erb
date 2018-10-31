@@ -4,7 +4,11 @@
       <span id="optionsButton" onclick="openNav()"><%=icon('fas', 'bars')%></span>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <a id="logo" href="/" ><nobr>Bogota Segura</nobr></a>
+      <% if user_signed_in? %>
+        <a id="logo" href="/" ><nobr><%=current_user.username%></nobr></a>
+      <% else %>
+        <a id="logo" href="/" ><nobr>Bogota Segura</nobr></a>
+      <% end %>
     </ul>
   </div>
 </nav>
