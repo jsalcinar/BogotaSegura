@@ -17,6 +17,8 @@ class User < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
+  
+ 
 
 
   def login

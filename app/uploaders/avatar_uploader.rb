@@ -19,6 +19,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
     return "bogotasegura/avatar/users/user_"+model.username+"_email_"+model.email
   end  
 
+  def reset
+     model.avatar = "image/upload/v1541084536/bogotasegura/avatar/default/default.png"
+  end
+  
   # Choose what kind of storage to use for this uploader:
   #storage :file
   # storage :fog
