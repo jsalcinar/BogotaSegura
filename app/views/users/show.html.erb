@@ -9,21 +9,40 @@
 </div>
 
 <div class="row">
-    <div class="col-md"></div>
-    <div class="col-md-4">
-        <b>Usuario:</b><br />
-        <span class="input-group-text"><%= @user.username %></span><br/>
-        
-        <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-dark btn-block"  %>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md"></div>
+            <div class="col-md-5">
+                <b>Usuario:</b><br />
+                <span class="input-group-text"><%= @user.username %></span><br/>
+            </div>
+            <div class="col-md-5">
+                <b>Email:</b><br />
+                <span class="input-group-text"><%= @user.email %></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md"></div>
+            <div class="col-md-5">
+                <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-dark btn-block"  %>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
     </div>
     <div class="col-md-4">
-        <b>Email:</b><br />
-        <span class="input-group-text"><%= @user.email %></span>
-        
+        <div class="row">
+            <div class="col-md-10">
+                <% unless @user.avatar_url.nil? %>
+                    <%= image_tag @user.avatar_url(:standard), id: "user_avatar" %>
+                <% end %>
+            </div>
+            <div class="col-md"></div>
+        </div>
+    
     </div>
-    <div class="col-md"></div>
 </div>
-<% unless @user.avatar_url.nil? %><%= image_tag @user.avatar_url %><br /><% end %>
+
+
 <% if @user.try(:admin?)%>
     <div class="row">
         <div class="col-md"></div>
