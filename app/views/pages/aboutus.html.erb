@@ -1,7 +1,39 @@
 <%= stylesheet_link_tag 'pages/aboutus', 'pages/background'%>
 
-<div class="row">
-    <div class="col">
-        <h1>About Us</h1>
-    </div>
-</div>
+<div class="container-fluid">
+          <div class="row align-items-center">
+              <div class="col-sm-5">
+                  <h1>Contáctanos!</h1>
+                  <hr>
+                  <h2>Teléfono</h2>
+                  <ul>
+                      <li>+57 3197063632</li>
+                  </ul>
+                  <h2>Correo Electronico</h2>
+                  <ul>
+                      <li>contacto@bogotasegura.com</li>
+                  </ul> 
+                  <h2>Nuestro Equipo</h2>
+                  <ul>
+                      <li>Juan Sebastian Alcina</li>
+                      <li>Edwin Javier Jimenez</li>
+                      <li>Rodrigo Alexander Fagua</li>
+                      <li>Juan Felipe Cardenas</li>
+                      <li>Dave Sebastián Valencia</li>
+                  </ul> 
+              </div>
+              <div class="col-sm-7" id="formCol">
+                  <form>
+                    <label for="fname">Nombre y Apellido</label>
+                    <input type="text" id="name" name="nombre" placeholder="Nombre">
+                    <label for="lname">Correo Electrónico</label>
+                    <input type="text" id="email" name="email" placeholder="Email">
+                    <label for="lname">Asunto</label>
+                    <input type="text" id="topics" name="email" placeholder="Asunto">
+                    <label for="lname">Mensaje</label>
+                    <input type="text" id="message" name="asunto" placeholder="Escribe tu mensaje...">
+                    <input type="submit" value="Enviar Mensaje">
+                  </form>
+              </div>
+          </div>
+      </div>
