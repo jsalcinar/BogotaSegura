@@ -23,7 +23,7 @@
     </div>
     <div class="col-md"></div>
 </div>
-
+<% unless @user.avatar_url.nil? %><%= image_tag @user.avatar_url %><br /><% end %>
 <% if @user.try(:admin?)%>
     <div class="row">
         <div class="col-md"></div>

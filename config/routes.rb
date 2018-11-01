@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :delinquency_stats
   resources :zones
 
-  devise_for :users
+  devise_for :users, controllers: { 
+    registrations: 'users/registrations' ,
+    sessions: 'users/sessions',
+  }
   get '/users/:id', to: 'users#show'
   get '/users', to: 'users#index'
   

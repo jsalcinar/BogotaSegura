@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  mount_uploader :avatar, AvatarUploader
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
 
   validate :validate_username
@@ -31,4 +34,5 @@ class User < ApplicationRecord
   #Asociaciones de la tabla User
   has_many :reports
   has_many :routes
+  
 end
