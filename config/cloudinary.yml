@@ -1,0 +1,22 @@
+---
+development:
+  cloud_name: bogotasegura
+  api_key: '912717328328141'
+  api_secret: 9o5uU7GpN44dbd2u5emuT8Lu860
+  enhance_image_tag: true
+  static_image_support: false
+  secure: true
+production:
+  cloud_name: bogotasegura
+  api_key: '912717328328141'
+  api_secret: 9o5uU7GpN44dbd2u5emuT8Lu860
+  enhance_image_tag: true
+  static_image_support: true
+  secure: true
+test:
+  cloud_name: bogotasegura
+  api_key: '912717328328141'
+  api_secret: 9o5uU7GpN44dbd2u5emuT8Lu860
+  enhance_image_tag: true
+  static_image_support: false
+  secure: true

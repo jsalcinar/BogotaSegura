@@ -9,5 +9,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
   end
+  
+  def reset
+      @user.avatar = 'image/upload/v1541084536/bogotasegura/avatar/default/default.png'
+  end
 
 end

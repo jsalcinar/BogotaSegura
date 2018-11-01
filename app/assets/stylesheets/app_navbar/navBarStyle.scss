@@ -3,24 +3,28 @@
     border: none;
     text-align: center;
     position: relative;
+    padding: 0px;
 }
 
 #optionsButton {
     background: none;
     border: none;
-    margin-left: 150%;
+    margin-left: 50px;
     color: white;
     cursor: pointer;
     font-size: 26px;
 }
 
+.user_pic{
+    border-radius: 100%;
+}
+
 #logo {
     color: white;
-    margin-right: 50%;
+    margin-right: 0px;
     font-size: 26px;
     font-family: 'Raleway', sans-serif;
 }
-
 
 .sidenavbar {
     height: 100%;

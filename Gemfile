@@ -77,3 +77,6 @@ gem 'font-awesome-sass'
 
 #Rails DB Viewer
 gem 'rails_db'
+
+gem 'carrierwave'
+gem 'cloudinary'
