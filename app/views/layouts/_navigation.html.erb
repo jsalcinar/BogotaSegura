@@ -1,15 +1,14 @@
 <nav id="top_navbar" class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <ul class="navbar-nav mr-auto">
+  <div class="d-flex p-2 flex-row container-fluid">
+    <div class="p-2 mr-auto">
       <span id="optionsButton" onclick="openNav()"><%=icon('fas', 'bars')%></span>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? %>
-        <a id="logo" href="/" ><nobr><%=current_user.username%></nobr></a>
-      <% else %>
-        <a id="logo" href="/" ><nobr>Bogota Segura</nobr></a>
-      <% end %>
-    </ul>
+    </div>
+    <% if user_signed_in? %>
+        <%= image_tag current_user.avatar_url(:thumbnail), id: "user_thumb", class: "p-2 user_pic" %>
+        <a class="p-2" id="logo" href=<%="users/"+current_user.username%> ><nobr><%=current_user.username%></nobr></a>
+    <% else %>
+      <a class="p-2" id="logo" href="/" ><nobr>Bogota Segura</nobr></a>
+    <% end %>
   </div>
 </nav>
 

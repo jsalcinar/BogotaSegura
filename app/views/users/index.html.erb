@@ -28,6 +28,9 @@
   <br />
   <div class="row">
     <div class="col-lg"></div>
+    <div class="col-lg-1">
+      <%= image_tag user.avatar_url(:thumbnail), id: "user_thumb", style: "float: right;" %>
+    </div>
     <div class="col-lg-3">
       <span class="input-group-text"><%=user.username%></span><br/>
     </div>
@@ -36,7 +39,7 @@
     </div>
     <div class="col-lg-2">
       <div class="btn-group" role="group" aria-label="User_control" id="user_control">
-        <%=link_to icon('fas', 'eye'), "users/"+user.username, class: "btn btn-dark" %>
+        <%=link_to icon('fas', 'eye'), user.username, class: "btn btn-dark" %>
         <%=link_to icon('fas', 'edit'), "", class: "btn btn-dark disabled" %>
         <%=link_to icon('fas', 'trash'), "", class: "btn btn-dark disabled" %>
       </div>

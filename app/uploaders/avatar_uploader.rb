@@ -12,16 +12,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumbnail do
-    resize_to_fit(50, 50)
+    resize_to_fit(40, 40)
   end
   
   def public_id
     return "bogotasegura/avatar/users/user_"+model.username+"_email_"+model.email
   end  
 
-  def reset
-     model.avatar = "image/upload/v1541084536/bogotasegura/avatar/default/default.png"
-  end
   
   # Choose what kind of storage to use for this uploader:
   #storage :file
