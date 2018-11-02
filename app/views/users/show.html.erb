@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag 'users/dashboard' %>
 
 <div class="row">
-    <div class="col-md"></div>
-    <div class="col-md-8" style="text-align: center;">
+    <div class="col-sm"></div>
+    <div class="col-sm-8" style="text-align: center;">
         <h1 align="center">DashBoard</h1><br />
     </div>
-    <div class="col-md"></div>
+    <div class="col-sm"></div>
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-sm-8">
         <div class="row">
             <div class="col-md"></div>
             <div class="col-md-5">
@@ -18,54 +18,48 @@
             </div>
             <div class="col-md-5">
                 <b>Email:</b><br />
-                <span class="input-group-text"><%= @user.email %></span>
+                <span class="input-group-text"><%= @user.email %></span><br/>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md"></div>
-            <div class="col-md-5">
-                <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-dark btn-block"  %>
-            </div>
-            <div class="col-md-5"></div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-sm-4">
         <div class="row">
             <div class="col-md-10">
                 <% unless @user.avatar_url.nil? %>
                     <%= image_tag @user.avatar_url(:standard), id: "user_avatar" %>
                 <% end %>
+                <br />
+                <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-dark btn-block"  %>
             </div>
             <div class="col-md"></div>
         </div>
-    
     </div>
 </div>
 
 
 <% if @user.try(:admin?)%>
     <div class="row">
-        <div class="col-md"></div>
-        <div class="col-md-8" style="text-align: center;">
+        <div class="col-sm"></div>
+        <div class="col-sm-8" style="text-align: center;">
             <br><br><h1 align="center">Admin Tools</h1>
         </div>
-        <div class="col-md"></div>
+        <div class="col-sm"></div>
     </div>
 
     <div class="row">
-        <div class="col-md"></div>
-        <div class="col-md-4">
-            <%= link_to 'Rails DB', "/rails/db", class:"btn btn-dark btn-block" %>
+        <div class="col-sm"></div>
+        <div class="col-sm-4">
+            <%= link_to 'Users List', {controller: "users"}, class:"btn btn-dark btn-block" %>
             <%= link_to 'Delinquency Stats', {controller: "delinquency_stats"}, class:"btn btn-dark btn-block" %>
             <%= link_to 'Reports', {controller: "reports"}, class:"btn btn-dark btn-block" %>
             <br />
         </div>
-        <div class="col-md-4">
-            <%= link_to 'Users List', {controller: "users"}, class:"btn btn-dark btn-block" %>
-            <%= link_to 'Tips', {controller: "tips"}, class:"btn btn-dark btn-block" %>
+        <div class="col-sm-4">
             <%= link_to 'Zones', {controller: "zones"}, class:"btn btn-dark btn-block" %>
+            <%= link_to 'Tips', {controller: "tips"}, class:"btn btn-dark btn-block" %>
+            <%= link_to 'Rails DB', "/rails/db", class:"btn btn-dark btn-block" %>
             <br />
         </div>
-        <div class="col-md"></div>
+        <div class="col-sm"></div>
     </div>
 <% end %>

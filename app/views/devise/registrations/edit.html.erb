@@ -3,7 +3,7 @@
 <div class="container-fluid">
   
   <div class="row">
-    <div class="col-md">
+    <div class="col-sm">
       <h1 align="center">Editar Perfil</h1>
     </div>
   </div>
@@ -12,87 +12,89 @@
     <%= devise_error_messages! %>
   
     <div class="row">
-      <div class="col-md"></div>
-      <div class=col-md-7>
+      <div class=col-sm-8>
         <div class="row">
-          <div class=col-md-6>
+          <div class=col-lg></div>
+          <div class=col-lg-5>
             <%= f.label :username %><br />
             <%= f.text_field :username, class: "form-control"%><br />
           </div>
-          <div class=col-md-6>
+          <div class=col-lg-5>
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %><br />
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-lg-12">
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <label>Currently waiting confirmation for: <%= resource.unconfirmed_email %></label>
             <% end %>
           </div>
         </div>
         <div class="row">
-          <div class=col-md-6>
+          <div class=col-lg></div>
+          <div class=col-lg-5>
             <%= f.label :password %><br />
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %><br />
           </div>
-          <div class=col-md-6>
+          <div class=col-lg-5>
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %><br />
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class=col-lg></div>
+          <div class="col-lg-5">
             <%= f.label :current_password %>
             <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %><br />
           </div>
+          <div class=col-lg-5></div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class=col-lg></div>
+          <div class="col-lg-5">
             <%= f.submit "Actualizar", class: "btn btn-dark btn-block" %><br />
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-5">
             <%= link_to "Cancelar", :back, class: "btn btn-dark btn-block" %><br />
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-sm-4">
         <div class="row">
-          <div class="col-md-10">
-            <div class="crop">
-              <%= image_tag @user.avatar_url(:standard), id: "user_avatar", style: "cursor:pointer" %>
-            </div>
-            <%= f.file_field :avatar, id: "avatar-upload"%>
+          <div class="col-lg-10">
+            <%= image_tag @user.avatar_url(:standard), id: "pic_preview" %>
+            <%= f.file_field :avatar, id: "avatar_upload_btn"%>
             <%= f.hidden_field :avatar_cache %>
           </div>
+          <div class=col-lg></div>
         </div>
       </div>
-      <div class="col-md"></div>
     </div>
   
   <% end %>  
   
   <div class="row">
-    <div class="col-md"></div>
-    <div class="col-md-10">
-      <h2>Cancel my account</h2>
-    </div>
-    <div class="col-md"></div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md"></div>
-    <div class="col-md-7">
+    <div class=col-sm-8>
       <div class="row">
-        <div class="col-md-6">
-          <label>Unhappy?</label><br />
-          <%= button_to "Cancelar mi cuenta.", registration_path(resource_name), data: { confirm: "¡Estas Seguro?" }, method: :delete, class: "btn btn-dark btn-block" %><br />
+        <div class=col-lg></div>
+        <div class="col-lg-10">
+          <h2>Cancel my account</h2>
         </div>
       </div>
+    <div class="row">
+      <div class="col-lg"></div>
+      <div class="col-lg-5">
+        <label>Unhappy?</label><br />
+        <%= button_to "Cancelar mi cuenta.", registration_path(resource_name), data: { confirm: "¡Estas Seguro?" }, method: :delete, class: "btn btn-dark btn-block" %><br />
+      </div>
+        <div class="col-lg-5"></div>
+      </div>
     </div>
-    <div class="col-md-4"></div>
-    
+    <div class=col-lg></div>
   </div>
+  
+
   
 </div>
 
