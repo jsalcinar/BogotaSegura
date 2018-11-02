@@ -26,7 +26,8 @@
         <br>
       </div>
       <div class="col-md-2">
-        <div class="crop">
+        <div class="img_prev_container">
+          <!--<span class="img_helper"></span>-->
           <img id="img_prev" src=<%= image_url("default.png") %> alt="avatar" class="img-thumbnail hidden" style="cursor:pointer"/>
         </div>
         <%= f.file_field :avatar, id: "avatar-upload" %>
