@@ -4,8 +4,10 @@
       <span id="optionsButton" onclick="openNav()"><%=icon('fas', 'bars')%></span>
     </div>
     <% if user_signed_in? %>
-        <%= image_tag current_user.avatar_url(:thumbnail), id: "user_thumb", class: "p-2 user_pic" %>
-        <a class="p-2" id="logo" href=<%="users/"+current_user.username%> ><nobr><%=current_user.username%></nobr></a>
+        <%=link_to("users/"+current_user.username, id: "navbar_logo") do%>
+          <%= image_tag current_user.avatar_url(:thumbnail), id: "user_thumb", class: "p-2 user_pic" %>
+          <a class="p-2" id="logo" href=<%="users/"+current_user.username%> ><nobr><%=current_user.username%></nobr></a>
+        <%end%>
     <% else %>
       <a class="p-2" id="logo" href="/" ><nobr>Bogota Segura</nobr></a>
     <% end %>
