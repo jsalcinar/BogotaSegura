@@ -16,24 +16,14 @@ h1 {
 
 
 //Boton de upload
-#avatar-upload
-{
+#avatar_upload_btn{
     display: none;
 }
 
-#img_prev_container{
+#pic_preview {
+    cursor:pointer;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+    overflow: hidden;
 }
-
-#img_prev {
-  //vertical-align: middle;
-  object-fit: cover;
-  object-position: 50% 50%;
-  width: 100%;
-  overflow: hidden;
-}
-/*
-.img_helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}*/

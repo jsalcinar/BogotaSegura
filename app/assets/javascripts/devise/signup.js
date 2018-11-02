@@ -11,32 +11,31 @@ function pic_preview(){
           var reader = new FileReader();
     
           reader.onload = function (e) {
-            $('#img_prev').attr('src', e.target.result);
+            $('#pic_preview').attr('src', e.target.result);
+            square_always_square();
           }
           reader.readAsDataURL(input.files[0]);
         }
       }
-      $("#avatar-upload").change(function(){
-        $('#img_prev').removeClass('hidden');
+      $("#avatar_upload_btn").change(function(){
         readURL(this);
       });
     });
 }
 
 function pic_as_button(){
-    $( "#img_prev" ).click(function() {
-        $( "#avatar-upload" ).trigger( "click" );
+    $( "#pic_preview" ).click(function() {
+        $( "#avatar_upload_btn" ).trigger( "click" );
     });
 }
 
 function detect_resize_window(){
-  square_always_square();
   $(window).on('resize', function(){
     square_always_square();
   });  
 }
 
 function square_always_square(){
-  var square_width = $('#img_prev').width();
-  $('#img_prev').css({'height':square_width+'px'});
+  var square_width = $('#pic_preview').width();
+  $('#pic_preview').css({'height':square_width+'px'});
 }
