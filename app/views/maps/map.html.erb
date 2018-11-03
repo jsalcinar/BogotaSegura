@@ -1,69 +1,12 @@
 <%= stylesheet_link_tag 'maps/map', 'maps/gmap','app_navbar/black_theme' %>
 
-<div class="row">
-	<div class="col-sm-4" id="menu_body">
-
-    <div id="Menu" class="tabcontent">
-      <font id="MenuLink" class="tablinks active" size="18">¿Que Buscas?</font>
-      <div>
-        <li id="RouteLink" class="tablinks" onclick="showTab('Route')">Planear Ruta</li>
-        <li id="InteresLink" class="tablinks" onclick="showTab('Interes')">Sitios de interes</li>
-        <li id="NewsLink" class="tablinks" onclick="showTab('News')">Ultimos acontecimientos</li>
-      </div>
+<div class="control_panel">
+  <div class="option_panel">
+      <h1 id="indexSection" class="option active">¿Que Buscas?</h1><br/>
+      <p id="planningSection" class="option">Planear Ruta</p>
+      <p id="interesSection" class="option">Sitios de interes</p>
+      <p id="lastNewsSection" class="option">Ultimos acontecimientos</p>
     </div>
-
-    <div id="Route" class="tabcontent">
-      <font size="18">Planea tu ruta</font>
-      <br>
-      <label>Selecciona la barra de origen o destino, y luego haz click en la ubicacion del mapa.</label>
-      <div id="menu_div">
-        <div id="transportModeBtns" class="btn-group special" role="group" aria-label="Mode Buttons">
-          <button class=" btn btn-dark btn_mode active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
-          <button class="btn btn-dark btn_mode" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
-          <button class="btn btn-dark btn_mode" onclick="setMode('DRIVING')"><%=icon('fas', 'car')%></button>
-          <button class="btn btn-dark btn_mode" onclick="setMode('BICYCLING')"><%=icon('fas', 'bicycle')%></button>
-        </div>
-        <br>
-        <br>
-        <label>¿Donde comienza tu viaje?</label>
-        <div class="d-flex">
-          <span class="input-group-text btn btn-outline-dark mr-1 address_text" id="Origen">Origen</span>
-          <button class="btn btn-dark delMarker" id="delOrigen"><%=icon('fas', 'trash')%></button> 
-        </div>
-        <br>  
-        <label>¿Donde termina?</label>
-        <div class="d-flex">
-          <span class="input-group-text btn btn-outline-dark mr-1 address_text" id="Destino">Destino</span>
-          <button class="btn btn-dark" id="delDestino"><%=icon('fas', 'trash')%></button> 
-        </div>
-      </div>
-      <br>
-      <button class="btn btn-dark btn-block" id="Send" >Enviar</button><br />
-      <div class="btn-group special" role="group" aria-label="Control Menu">
-        <button class="btn btn-dark mr-1" id="map_resetBtn" onclick="javascript:void(0)" >Reiniciar</button>
-        <button class="btn btn-dark ml-1" id="map_returnBtn" onclick="showTab('Menu')" >Regresar</button>
-      </div>
-    </div>
-
-    <div id="Interes" class="tabcontent">
-      <h3>London</h3>
-      <p>London is the capital city of England.</p>
-      <button class="btn btn-dark btn-block returnBtn" onclick="showTab('Menu')" >Regresar</button>
-    </div>
-
-    <div id="News" class="tabcontent">
-      <h3>Tokyo</h3>
-      <p>Tokyo is the capital of Japan.</p>
-      <button class="btn btn-dark btn-block returnBtn" onclick="showTab('Menu')" >Regresar</button>
-    </div>
-
-	</div>
-	<div class="col-sm-8">
-    <div id="map-container">
-      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-      <div id="map"></div>
-    </div>
-	</div>
 </div>
 
 <script type="text/javascript">
