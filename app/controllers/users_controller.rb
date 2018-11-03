@@ -35,12 +35,7 @@ class UsersController < ApplicationController
   # PUT /users/username
   def update
     @user = User.find_by_username(params[:id])
-
-    if params[:user][:password].blank?
-      params[:user].delete(:password)
-      params[:user].delete(:password_confirmation)
-    end
-
+    
     if @user.update_attributes(post_params)
       redirect_to users_url, :notice => 'User was successfully updated.'
     else

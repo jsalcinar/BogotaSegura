@@ -8,23 +8,12 @@
 <%= form_for @user, url: {action: "update"}, html: {id: "user_form" } do |f| %>
 
   <% if @user.errors.any? %>
-    <div id="form_error_explanation" class="row">
-      <div class="col-sm"></div>
-      <div class="col-sm-4">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-        <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-      <div class="col-sm"></div>
-    </div>
+    <%= render 'error' %>
   <% end %>
   
   <div class="row">
-    <div class="col-sm"></div>
-    <div class="col-sm-4">
+    <div class="col-md"></div>
+    <div class="col-md-4">
       <div class="row">
         <div class="col-sm">
           <%= f.label :username %><br />
@@ -65,15 +54,15 @@
         </div>
       </div>
     </div>
-    <div class="col-sm"></div>
+    <div class="col-md"></div>
   </div>
 <% end %>
 
 <%= form_for @user, url: {action: "update"}, html: {id: "user_form_pass" } do |f| %>
     
   <div class="row">
-    <div class="col-sm"></div>
-    <div class="col-sm-4">
+    <div class="col-md"></div>
+    <div class="col-md-4">
       <div class="row">
         <div class="col-sm">
           <br/>
@@ -93,17 +82,17 @@
         </div>
       </div>
     </div>
-    <div class="col-sm"></div>
+    <div class="col-md"></div>
   </div>
 <% end %>
 
 <div class="row">
-    <div class="col-sm"></div>
-    <div class="col-sm-4">
+    <div class="col-md"></div>
+    <div class="col-md-4">
       <br />
       <%= link_to 'All users', users_path, class: "btn btn-dark btn-block" %>
     </div>
-    <div class="col-sm"></div>
+    <div class="col-md"></div>
 </div>
 
 <script>
