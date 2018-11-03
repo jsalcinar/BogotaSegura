@@ -1,14 +1,5 @@
-//Boton de upload
-#crud_avatar_upload_btn{
-    display: none;
-}
-
-#crud_preview {
-    cursor:pointer;
-    object-fit: cover;
-    object-position: 50% 50%;
-    width: 80%;
-    overflow: hidden;
+#preview_picture {
+    width: 80% !important;
 }
 
 h1 {
@@ -18,3 +9,4 @@ h1 {
     font-size: 6vw;
     font-family: 'Raleway', sans-serif;
 }
+

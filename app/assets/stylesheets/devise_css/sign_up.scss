@@ -10,20 +10,3 @@ h1 {
     font-family: 'Raleway', sans-serif;
 }
 
-//Para que los campos con errores no dañen el layout
-.field_with_errors { display: inline }
-
-
-
-//Boton de upload
-#avatar_upload_btn{
-    display: none;
-}
-
-#pic_preview {
-    cursor:pointer;
-    object-fit: cover;
-    object-position: 50% 50%;
-    width: 100%;
-    overflow: hidden;
-}

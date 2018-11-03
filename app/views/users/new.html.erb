@@ -6,10 +6,91 @@
     </div>
 </div>
 
-<%= render 'form' %>
+<%= form_for @user, url: {action: "update"}, html: {id: "user_form" } do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="form_error_explanation" class="row">
+      <div class="col-sm"></div>
+      <div class="col-sm-4">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="col-sm"></div>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, class:"form-control"%><br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, class:"form-control" %><br />
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm">
+          <%= f.label :password, "New password" %><br />
+          <%= f.password_field :password, class:"form-control" %><br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, class:"form-control" %><br />
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-check">
+            <%= f.check_box :admin, class:"form-check-input" %>
+            <%= f.label :admin, class: "form-check-label" %>
+          </div>
+          <br/>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm">
+          <div class="preview_picture_container">
+            <p style="text-align:center;">
+              <img id="preview_picture" src=<%= image_url("default.png") %> alt="avatar"/>
+              <%= f.file_field :avatar, id: "preview_upload_file_btn" %>
+              <%= f.hidden_field :avatar_cache %>  
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm">
+            <br/>
+            <% if action_name == "new" %>
+              <%= f.submit 'Crear', :class => 'btn btn-dark btn-block' %>
+            <% else %>
+              <%= f.submit 'Actualizar', :class => 'btn btn-dark btn-block' %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm"></div>
+  </div>
+<% end %>
 
 <%= link_to 'All users', users_path %>
 
 <script>
-    users_init();
+    preview_box();
 </script>

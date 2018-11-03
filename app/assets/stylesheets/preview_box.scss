@@ -1,0 +1,15 @@
+//Boton de upload
+.preview_picture_container #preview_upload_file_btn{
+    display: none;
+}
+
+.preview_picture_container #preview_picture {
+    cursor:pointer;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 575px) {
+}

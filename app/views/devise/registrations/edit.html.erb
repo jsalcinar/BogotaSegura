@@ -63,9 +63,11 @@
       <div class="col-sm-4">
         <div class="row">
           <div class="col-lg-10">
-            <%= image_tag @user.avatar_url(:standard), id: "pic_preview" %>
-            <%= f.file_field :avatar, id: "avatar_upload_btn"%>
-            <%= f.hidden_field :avatar_cache %>
+            <div class="preview_picture_container">
+              <%= image_tag @user.avatar_url(:standard), id: "preview_picture" %>
+              <%= f.file_field :avatar, id: "preview_upload_file_btn"%>
+              <%= f.hidden_field :avatar_cache %>
+            </div>
           </div>
           <div class=col-lg></div>
         </div>
@@ -99,5 +101,5 @@
 </div>
 
 <script>
-  edit_init();
+  preview_box();
 </script>

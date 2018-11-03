@@ -26,9 +26,11 @@
         <br>
       </div>
       <div class="col-md-2">
-        <img id="pic_preview" src=<%= image_url("default.png") %> alt="avatar"/>
-        <%= f.file_field :avatar, id: "avatar_upload_btn" %>
-        <%= f.hidden_field :avatar_cache %>
+        <div class="preview_picture_container">
+          <img id="preview_picture" src=<%= image_url("default.png") %> alt="avatar"/>
+          <%= f.file_field :avatar, id: "preview_upload_file_btn" %>
+          <%= f.hidden_field :avatar_cache %>  
+        </div>
       </div>
       
       <div class="col-md-3">
@@ -65,5 +67,5 @@
 </div>
 
 <script>
-  signup_init();
+  preview_box();
 </script>
