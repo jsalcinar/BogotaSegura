@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin, :except => [:show]
 
-  # GET /users/1
+  # GET /users/username
   def show
     @user = User.find_by_username(params[:id])
   end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # GET /users/1/edit
+  # GET /users/username/edit
   def edit
     @user = User.find_by_username(params[:id])
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/1
+  # PUT /users/username
   def update
     @user = User.find_by_username(params[:id])
 
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
+  # DELETE /users/username
   def destroy
     @user = User.find_by_username(params[:id])
     @user.destroy
