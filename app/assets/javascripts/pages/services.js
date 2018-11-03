@@ -1,12 +1,11 @@
-var currentSlide = 1;
-var distanceToMove = 0;
+var currentSlide;
+var distanceToMove;
 
-function service_init(){
+function services_init(){
     window.onbeforeunload = function(){ window.scrollTo(0,0); }
-    var currentSlide = 1;
-    var distanceToMove = 0;
+    currentSlide = 1;
+    distanceToMove = 0;
     showContent(1,300);
-
 }
 
 //Inicializar la página en el primer servicio -----------------------------
@@ -41,11 +40,9 @@ function scrollWinLeft() {
 function hideContent(service,moveTo){
     if(moveTo=="right"){
         distanceToMove = 1370;
-        console.log(distanceToMove);
     }else{
         distanceToMove = -1370;
     }
-    console.log(distanceToMove);
     $(".slidesInfo".concat(service)).fadeOut(400);
     setTimeout(
         function(){

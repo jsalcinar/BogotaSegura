@@ -97,3 +97,17 @@ p {
     overflow-y: hidden;
     transition: 0.5s;
 }
+
+.more_link{
+    display:block;
+    white-space: normal;
+    text-align: right;
+    margin-right: 5%;
+    color: black;
+    font-size: 2.5vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+.slide_content{
+    align-content: right;
+}
