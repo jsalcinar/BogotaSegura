@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'pages/tips2'
-  resources :routes
-  resources :reports
-  resources :tips
-  resources :delinquency_stats
-  resources :zones
+  namespace :admin do
+      resources :users, :delinquency_stats, :reports, :routes, :tips, :zones
+      root to: "users#index"
+    end
+  resources :delinquency_stats, :reports, :routes, :tips, :zones
 
-  devise_for :users, controllers: { 
-    registrations: 'users/registrations' ,
-    sessions: 'users/sessions',
-  }
-  get '/users/:id', to: 'users#show'
-  get '/users', to: 'users#index'
+  devise_for :users, :path_prefix => 'sessions'
+  resources :users
   
   get "pages/index"
   get "pages/services"

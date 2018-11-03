@@ -70,13 +70,13 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 
 #Autentification
 gem 'devise'
-gem 'cancancan'
+gem 'administrate'
 
 #FontAwesome
 gem 'font-awesome-sass'
 
-#Rails DB Viewer
-gem 'rails_db'
-
+#avatar
 gem 'carrierwave'
 gem 'cloudinary'
+
+gem 'simple_form'

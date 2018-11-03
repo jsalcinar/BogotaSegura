@@ -9,15 +9,15 @@ h1 {
 h3 {
     color: black;
     font-family: 'Raleway', sans-serif;
+    text-align: center;
 }
 
-#user_list_thumb{
+.user_list_thumb{
     width: 40px;
     height: 40px;
-    margin-right: 10px;
     border-radius: 100%;
 }
 
-.user_list_info span{
+span{
     font-size: 20px;
 }

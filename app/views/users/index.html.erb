@@ -1,55 +1,50 @@
 <%= stylesheet_link_tag 'users/user_list' %>
 
+
 <div class="row">
   <div class="col-sm">
     <h1 align="center">Lista de Usuarios</h1><br />
+    <%= link_to "New User", new_user_path, style: "margin: 0 auto; display:block; text-align: center; width: 200px", class: "btn btn-outline-dark"%>
+    <br />
   </div>
 </div>
-
 
 <div class="row">
   <div class="col-lg"></div>
-  <div class="col-lg-6">
-    <div class="row">
-      <div class="col-md-4">
-        <h3>Usuario</h3>
-        <hr>
-      </div>
-      <div class="col-sm-5">
-        <h3>Email</h3>
-        <hr>
-      </div>
-      <div class="col-sm-3">
-        <h3>Acciones</h3>
-        <hr>
-      </div>
+  <div class="col-lg-8">
+    <div class="table-responsive">
+      <table class="table table-hover" id="users_table">
+      	<thead>
+      		<tr>
+      			<th scope="col"><h3>ID</h3></th>
+      			<th scope="col"><h3>Avatar</h3></th>
+      			<th scope="col"><h3>Username</h3></th>
+      			<th scope="col"><h3>Email</h3></th>
+      			<th scope="col"><h3>Admin</h3></th>
+      			<th scope="col"><h3>Actions</h3></th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		<% @users.each do |user| %>
+      		<tr>
+      			<th scope="row"><span class=""><%= user.id %></span></td>
+      			<td><p style="text-align:center;"><%= image_tag user.avatar_url(:thumbnail), class: "user_list_thumb" %></p></td>
+      			<td><span class=""><%=user.username%></span></td>
+      			<td><span class=""><%= user.email %></span></td>
+      			<td><span class=""><%= user.admin %></span></td>
+      			<td>
+      			  <div class="d-flex">
+                <%=link_to icon('fas', 'eye'), "users/"+user.username, class: "p-2 flex-fill btn btn-outline-info" %>
+                <%=link_to icon('fas', 'edit'), edit_user_path(user.username), class: "p-2 flex-fill btn btn-outline-warning" %>
+                <%=link_to icon('fas', 'trash'), "users/"+user.username, :method => :delete, :confirm => "Are you sure?", class: "p-2 flex-fill btn btn-outline-danger" %>
+              </div>
+      			</td>
+      		</tr>
+      		<% end %>
+      	</tbody>
+      </table>
     </div>
   </div>
   <div class="col-lg"></div>
 </div>
 
-<% @users.each do |user| %>
-  <div class="row user_list_info">
-    <div class="col-lg"></div>
-    <div class="col-lg-6">
-      <div class="row">
-        <div class="col-md-4">
-          <%= image_tag user.avatar_url(:thumbnail), id: "user_list_thumb", style: "float: left;" %>
-          <span class=""><%=user.username%></span>
-        </div>
-        <div class="col-sm-5">
-          <span class=""><%= user.email %></span><br/>
-        </div>
-        <div class="col-sm-3">
-          <div class="d-flex">
-            <%=link_to icon('fas', 'eye'), "users/"+user.username, class: "p-2 flex-fill btn btn-outline-info" %>
-            <%=link_to icon('fas', 'edit'), "", class: "p-2 flex-fill btn btn-outline-warning" %>
-            <%=link_to icon('fas', 'trash'), "", class: "p-2 flex-fill btn btn-outline-danger" %>
-          </div>
-        </div>
-      </div>
-      <hr>
-    </div>
-    <div class="col-lg"></div>
-  </div>
-<% end %>

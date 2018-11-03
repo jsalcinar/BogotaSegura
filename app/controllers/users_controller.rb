@@ -3,16 +3,62 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin, :except => [:show]
 
+  # GET /users/1
+  def show
+    @user = User.find_by_username(params[:id])
+  end
+  # GET /users/new
+  def new
+    @user = User.new
+  end
+  
   def index
     @users = User.all
   end
 
-  def show
+  # GET /users/1/edit
+  def edit
     @user = User.find_by_username(params[:id])
   end
-  
-  def reset
-      @user.avatar = 'image/upload/v1541084536/bogotasegura/avatar/default/default.png'
+
+  # POST /users
+  def create
+    @user = User.new(post_params)
+
+    if @user.save
+      redirect_to users_url, :notice => 'User was successfully created.'
+    else
+      render :action => "new"
+    end
   end
 
+  # PUT /users/1
+  def update
+    @user = User.find(params[:id])
+
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
+    if @user.update_attributes(post_params)
+      redirect_to users_url, :notice => 'User was successfully updated.'
+    else
+      render :action => "edit"
+    end
+  end
+
+  # DELETE /users/1
+  def destroy
+    @user = User.find_by_username(params[:id])
+    @user.destroy
+    
+    redirect_to users_url
+  end
+
+  protected
+  def post_params
+  # Require params[:post] and allow its title and text key
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar, :admin) 
+  end
 end
