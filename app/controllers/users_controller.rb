@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
 
     if params[:user][:password].blank?
       params[:user].delete(:password)
