@@ -7,7 +7,7 @@ var directionsService, directionsDisplay, geocoder = null;
 
 //Inicializa el mapa.
 function initMap() {
-
+  
   map = new google.maps.Map(document.getElementById('map'), {
     center: mapCenter,
     zoom: 16
@@ -17,7 +17,7 @@ function initMap() {
 //SearchBox--------------------------------------------------------------------------
   var smarkers = [];
   // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
+  var input = document.getElementById('gmapSearchBar');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   // Bias the SearchBox results towards current map's viewport.
@@ -123,8 +123,6 @@ function initMapService(){
 
   //Put markers on map
   map.addListener('click', function(e) {
-    var state = document.getElementById("RouteLink").getAttribute("class");
-    if(state == "tablinks active"){
       switch(readState){
         case "start":
           geocoder.geocode({
@@ -164,7 +162,6 @@ function initMapService(){
           //None
           break;
       }
-    }
   })
 
   //Send Button -------------------------------------------------------------------------

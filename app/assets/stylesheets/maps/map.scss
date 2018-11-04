@@ -46,7 +46,6 @@ body {
   float: left;
   width: 0%;
   height: 100%;
-  background-color: black;
 }
 
 .control.active{
@@ -56,4 +55,8 @@ body {
 .indexPanel{
   text-align: center;
   width: 100%;
+}
+
+.address_text.active{
+  background-color: green !important;
 }

@@ -1,15 +1,43 @@
-<%= stylesheet_link_tag 'maps/map','app_navbar/black_theme' %>
+<%= stylesheet_link_tag 'maps/map','maps/gmap','app_navbar/black_theme' %>
 
 <div id="control_div">
   <div class="control indexControl active">
   </div>
   <div class="control mapControl">
+    <h2 >Planea tu ruta</h2>
+      <br>
+      <label>Selecciona la barra de origen o destino, y luego haz click en la ubicacion del mapa.</label>
+        <div>
+          <button class=" btn btn-dark btn_mode active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
+          <button class="btn btn-dark btn_mode" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
+          <button class="btn btn-dark btn_mode" onclick="setMode('DRIVING')"><%=icon('fas', 'car')%></button>
+          <button class="btn btn-dark btn_mode" onclick="setMode('BICYCLING')"><%=icon('fas', 'bicycle')%></button>
+        </div>
+        <label>¿Donde comienza tu viaje?</label>
+        <div class="d-flex">
+          <span class="input-group-text btn btn-outline-dark mr-1 address_text" id="Origen">Origen</span>
+          <button class="btn btn-dark delMarker" id="delOrigen"><%=icon('fas', 'trash')%></button> 
+        </div>
+        <label>¿Donde termina?</label>
+        <div class="d-flex">
+          <span class="input-group-text btn btn-outline-dark mr-1 address_text" id="Destino">Destino</span>
+          <button class="btn btn-dark" id="delDestino"><%=icon('fas', 'trash')%></button> 
+        </div>
+      <button class="btn btn-dark btn-block" id="Send" >Enviar</button><br />
+      <button class="btn btn-dark mr-1" id="map_resetBtn" onclick="javascript:void(0)" >Reiniciar</button>
+      <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
   </div>
   <div class="control interestControl">
+    <h2>Seccion de Interes</h2>
+      <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
   </div>
   <div class="control newsControl">
+    <h2>Seccion de Novedades</h2>
+      <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
   </div>
 </div>
+
+
 <div id="panel_div">
   <div class="panel indexPanel active">
       <h1>¿Que Buscas?</h1><br />
@@ -18,15 +46,17 @@
       <p id="NewsLink" class="panellink" onclick="setSection('news')">Ultimos acontecimientos</p>
   </div>
   <div class="panel mapPanel">
-    mappanel
-    <p id="returnlink" class="panellink" onclick="setSection('index')">Regresar</p>
+    <div id="map_container">
+      <input id="gmapSearchBar" class="controls" type="text" placeholder="Search Box">
+      <div id="map"></div>
+    </div>
   </div>
   <div class="panel interestPanel">
-    interest
-    <p id="returnlink" class="panellink" onclick="setSection('index')">Regresar</p>
+    <h2>Panel de Interes</h2>
   </div>
   <div class="panel newsPanel">
-    news
-    <p id="returnlink" class="panellink" onclick="setSection('index')">Regresar</p>
+    <h2>Panel de Novedades</h2>
   </div>
 </div>
+
+<script src=<%=@google_api_src+"&callback=initMap"%>></script>

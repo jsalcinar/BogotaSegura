@@ -1,8 +1,3 @@
-function mapController_init(){
-    console.log("Hola")
-
-}
-
 function setSection(section){
     showPanel(section);   
 }
