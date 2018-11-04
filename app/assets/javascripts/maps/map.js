@@ -1,30 +1,50 @@
-function map_init(){
-
-    $( '#transportModeBtns .btn_mode' ).on( 'click', function () {
-        $( '#transportModeBtns' ).find( 'button.active' ).removeClass( 'active' );
-        $( this ).addClass( 'active' );
-    });
+function mapController_init(){
+    console.log("Hola")
 
 }
 
-function showTab(tabName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
+function setSection(section){
+    showPanel(section);   
+}
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+function showPanel(section) {
+    $( '#control_div' ).find( '.control.active' ).animate(
+        {width: "0%"},
+        500,
+        function(){
+            $( '#control_div' ).find( '.control.active' ).removeClass( 'active' );
+            $( '.'+section+'Control' ).addClass( 'active' );
+            $( '.'+section+'Control' ).animate( 
+                {width: "100%"}, 
+                500 
+            );
+        }
+    );
+    $( '#panel_div' ).find( '.panel.active' ).animate(
+        { width: "0%" },
+        500, 
+        function(){
+            $( '#panel_div' ).find( '.panel.active' ).removeClass( 'active' );
+            $( '.'+section+'Panel' ).addClass( 'active' );
+            $( '.'+section+'Panel' ).animate( 
+                {width: "100%"}, 
+                500 
+            );
+        } 
+    );
+    panelAnimation(section);
+}
+
+function panelAnimation(section){
+    if(section=="index"){
+        $( '#control_div' ).delay( 500 ).animate(
+            { width: "0%"},
+            500, 
+        )
+    }else{
+        $( '#control_div' ).animate(
+            { width: "33%"},
+            500
+        )
     }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    var link_id = tabName.concat("Link");
-    document.getElementById(link_id).className += " active";
 }

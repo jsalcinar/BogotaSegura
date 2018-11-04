@@ -1,15 +1,32 @@
-<%= stylesheet_link_tag 'maps/map', 'maps/gmap','app_navbar/black_theme' %>
+<%= stylesheet_link_tag 'maps/map','app_navbar/black_theme' %>
 
-<div class="control_panel">
-  <div class="option_panel">
-      <h1 id="indexSection" class="option active">¿Que Buscas?</h1><br/>
-      <p id="planningSection" class="option">Planear Ruta</p>
-      <p id="interesSection" class="option">Sitios de interes</p>
-      <p id="lastNewsSection" class="option">Ultimos acontecimientos</p>
-    </div>
+<div id="control_div">
+  <div class="control indexControl active">
+  </div>
+  <div class="control mapControl">
+  </div>
+  <div class="control interestControl">
+  </div>
+  <div class="control newsControl">
+  </div>
 </div>
-
-<script type="text/javascript">
-  map_init();
-</script>
-<script src=<%=@google_api_src+"&callback=initMap"%>></script>
+<div id="panel_div">
+  <div class="panel indexPanel active">
+      <h1>¿Que Buscas?</h1><br />
+      <p id="RouteLink" class="panellink" onclick="setSection('map')">Planear Ruta</p>
+      <p id="InteresLink" class="panellink" onclick="setSection('interest')">Sitios de interes</p>
+      <p id="NewsLink" class="panellink" onclick="setSection('news')">Ultimos acontecimientos</p>
+  </div>
+  <div class="panel mapPanel">
+    mappanel
+    <p id="returnlink" class="panellink" onclick="setSection('index')">Regresar</p>
+  </div>
+  <div class="panel interestPanel">
+    interest
+    <p id="returnlink" class="panellink" onclick="setSection('index')">Regresar</p>
+  </div>
+  <div class="panel newsPanel">
+    news
+    <p id="returnlink" class="panellink" onclick="setSection('index')">Regresar</p>
+  </div>
+</div>

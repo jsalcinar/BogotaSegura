@@ -1,64 +1,59 @@
-.option_panel{
-  text-align: center;
+body {
+ height: 100vh; 
 }
 
+#body_div {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
 
-/*
-#Menu{
-  margin-top: 10vh;
+#content_div {
+  flex-grow : 1;
+  display: flex;
+  padding: 0;
+}
+
+#control_div{
+  background-color: cyan;
+ // width: 33%;
+  width: 0%;
+  overflow: hidden;
+  padding: 0px;
+  padding-top: 20px;
+}
+
+#panel_div{
+  flex-grow : 1;
+  background-color: yellow;
+  overflow: hidden;
+  padding: 15px;
+  padding-right: 0;
+}
+
+.panel{
+  display: none;
+  float: right;
+  width: 0%;
+}
+
+.panel.active{
   display: block;
 }
 
-#Menu div {
-  padding-top: 1vh;
-  padding-left: 50px;
+.control{
+  display: none;
+  float: left;
+  width: 0%;
+  height: 100%;
+  background-color: black;
 }
 
-#menu li {
-  margin: 20px;
+.control.active{
+  display: block;
 }
 
-/* Style the tab content 
-.tabcontent {
-    display: none;
-}
-
-#menu_body {
-  padding-top: 12vh;
-}
-
-
-#transportModeBtns > button{
-  width: 25%;
-  color: white;
-
-}
-
-#transportModeBtns > button.active{
-  color: #343a40;
-  background-color: #E2E6EA;
-}
-
-.address_text {
+.indexPanel{
+  text-align: center;
   width: 100%;
-  overflow: hidden;
 }
-
-.address_text.active {
-  background-color: #218838 !important;
-}
-
-.disabledbutton {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.btn-group.special {
-  display: flex;
-}
-
-.special .btn {
-  flex: 1
-}
-
-*/
