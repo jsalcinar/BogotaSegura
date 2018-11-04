@@ -113,7 +113,7 @@ function initMapService(){
   map.setCenter(mapCenter);
   readState = "none";
   $( '#Origen,#Destino' ).removeClass( 'active' );
-  $( '#menu_div,#Send' ).removeClass("disabledbutton");
+  $( '.mapControl_body' ).removeClass("disabled");
 
 //Directions-------------------------------------------------------------------------
   directionsService = new google.maps.DirectionsService;
@@ -174,7 +174,7 @@ function initMapService(){
       calculateAndDisplayRoute(directionsService, directionsDisplay);
       originPos.setMap(null);
       destinationPos.setMap(null);
-      $( '#menu_div,#Send' ).addClass("disabledbutton");
+      $( '.mapControl_body' ).addClass("disabled");
     }
   });
 
