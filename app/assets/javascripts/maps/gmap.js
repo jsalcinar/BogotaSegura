@@ -2,11 +2,14 @@ var transportMode = 'DRIVING';
 var mapCenter = {lat: 4.6371933, lng: -74.0826976};
 var readState = "none";
 
-var map, originPos, destinationPos = null;
+var map, originPos, destinationPos, midPos = null;
 var directionsService, directionsDisplay, geocoder = null;
+var aCircle = null;
 
 //Inicializa el mapa.
 function initMap() {
+  
+  aCircle = null;
   
   map = new google.maps.Map(document.getElementById('map'), {
     center: mapCenter,
@@ -175,6 +178,10 @@ function initMapService(){
       originPos.setMap(null);
       destinationPos.setMap(null);
       $( '.mapControl_body' ).addClass("disabled");
+      
+      //midPos = placeMarker(getMidPoint(originPos,destinationPos),map);
+      //aCircle = new google.maps.Circle(midPointAndCircle(originPos,destinationPos));
+      //aCircle.bindTo('center', midPos, 'position');
     }
   });
 
@@ -224,10 +231,12 @@ function clearMarker(markerObj){
 }
 
 function resetmap(){
+    clearMarker(aCircle);
+    clearMarker(midPos);
+    aCircle, midPos= null;
     try {
       directionsDisplay.setMap(null);
     }catch(error){}
-
     clearMarker(originPos);
     clearMarker(destinationPos);
     directionsService,directionsDisplay,geocoder,originPos,destinationPos = null;
@@ -238,4 +247,40 @@ function resetmap(){
     map.setCenter(mapCenter);
     map.setZoom(16);
     
+}
+
+var rad = function(x) {
+  return x * Math.PI / 180;
+};
+
+var getDistance = function(p1, p2) {
+  var R = 6378137; // Earth’s mean radius in meter
+  var dLat = rad(p2.getPosition().lat() - p1.getPosition().lat());
+  var dLong = rad(p2.getPosition().lng() - p1.getPosition().lng());
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(rad(p1.getPosition().lat())) * Math.cos(rad(p2.getPosition().lat())) *
+    Math.sin(dLong / 2) * Math.sin(dLong / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return d; // returns the distance in meter
+};
+
+function midPointAndCircle(p1, p2) {
+  var points_distance = getDistance(originPos,destinationPos);
+  
+  var circleOptions = {
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.4,
+    strokeWeight: 1,
+    fillColor: '#FF0000',
+    fillOpacity: 1,
+    map: map,
+    radius: points_distance/2
+  };
+  
+  return circleOptions;
+}
+
+function getMidPoint(p1, p2){
+  return { lat: (p1.getPosition().lat() + (p2.getPosition().lat() - p1.getPosition().lat())*0.5 ), lng: (p1.getPosition().lng() + (p2.getPosition().lng() - p1.getPosition().lng())*0.5 ) };
 }
