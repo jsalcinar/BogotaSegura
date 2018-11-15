@@ -1,14 +1,20 @@
+var cai,station,police_inspection = null;
 
-$(document).ready(function(){
-    $.ajax({
-        url: 'dataset/cai.json',
-        dataType: 'json',
-        success: function(json) {
-            // Rates are in `json.rates`
-            // Base currency (USD) is `json.base`
-            // UNIX Timestamp when rates were collected is in `json.timestamp`        
-            console.log(json);
-        }
+function datasets(){
+    load_all_datasets();
+}
+
+function load_all_datasets(){
+    $.getJSON('/dataset/'+ 'cai' +'.json', function(result){
+        cai = result
+        console.log(cai);
     });
-    
-});
+    $.getJSON('/dataset/'+ 'estacion-de-policia' +'.json', function(result){
+        station = result
+        console.log(station);
+    });
+    $.getJSON('/dataset/'+ 'inspeccion-de-policia' +'.json', function(result){
+        police_inspection = result
+        console.log(police_inspection);
+    });
+}
