@@ -64,8 +64,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
     def check_captcha
       unless verify_recaptcha
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email])
         self.resource = resource_class.new sign_up_params
         resource.validate # Look for any other validation errors besides Recaptcha
+        resource.errors.add(:base, "Hay un error con el Recaptcha")
         set_minimum_password_length
         respond_with resource
       end 

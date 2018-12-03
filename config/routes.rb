@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   resources :delinquency_stats, :reports, :routes, :tips, :zones
 
-  devise_for :users, :path_prefix => 'sessions'
+  devise_for :users, :path_prefix => 'sessions', controllers: { registrations: 'users/registrations' }
   resources :users do
     collection do
       put :update
