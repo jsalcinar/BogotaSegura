@@ -23,6 +23,16 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    if @user.save
+      redirect_to users_url, :notice => 'User was successfully created.'
+    else
+      render :action => "new"
+    end
+  end
+
+
+  # POST /users
+  def create
     @user = User.new(post_params)
 
     if @user.save

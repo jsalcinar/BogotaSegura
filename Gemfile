@@ -70,7 +70,6 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 
 #Autentification
 gem 'devise'
-gem 'administrate'
 
 #FontAwesome
 gem 'font-awesome-sass'
@@ -78,8 +77,6 @@ gem 'font-awesome-sass'
 #avatar
 gem 'carrierwave'
 gem 'cloudinary'
-
-gem 'simple_form'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
