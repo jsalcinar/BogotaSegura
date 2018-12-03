@@ -80,3 +80,5 @@ gem 'carrierwave'
 gem 'cloudinary'
 
 gem 'simple_form'
+
+gem 'dotenv-rails', groups: [:development, :test]
