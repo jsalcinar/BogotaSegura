@@ -48,7 +48,9 @@
             <%= f.label :current_password %>
             <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %><br />
           </div>
-          <div class=col-lg-5></div>
+          <div class=col-lg-5>
+            <%= recaptcha_tags %>
+          </div>
         </div>
         <div class="row">
           <div class=col-lg></div>
@@ -90,7 +92,9 @@
         <label>Unhappy?</label><br />
         <%= button_to "Cancelar mi cuenta.", registration_path(resource_name), data: { confirm: "¡Estas Seguro?" }, method: :delete, class: "btn btn-dark btn-block" %><br />
       </div>
-        <div class="col-lg-5"></div>
+        <div class="col-lg-5">
+          <%= recaptcha_tags %>
+        </div>
       </div>
     </div>
     <div class=col-lg></div>

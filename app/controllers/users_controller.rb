@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by_username(params[:id])
     
-    if @user.update_attributes(post_params)
+    if verify_recaptcha(model: @user) && @user.update_attributes(post_params)
       redirect_to users_url, :notice => 'User was successfully updated.'
     else
       render :action => "edit"

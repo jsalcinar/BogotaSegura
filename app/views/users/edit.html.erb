@@ -49,6 +49,12 @@
       </div>
       <div class="row">
         <div class="col-sm">
+          <%= recaptcha_tags %>
+          <br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
             <br/>
             <%= f.submit 'Actualizar', :class => 'btn btn-dark btn-block' %>
         </div>
@@ -74,6 +80,12 @@
         <div class="col-sm">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, class:"form-control" %><br />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <%= recaptcha_tags %>
+          <br/>
         </div>
       </div>
       <div class="row">
