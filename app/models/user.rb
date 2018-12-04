@@ -5,7 +5,7 @@ class User < ApplicationRecord
   
   has_paper_trail on: [:update, :destroy], only: [:username, :email] #this line is for auditing with the paper_trail gem
   
-  devise :omniauthable, :omniauth_providers => [:google]
+  devise :omniauthable, :omniauth_providers => [:facebook]
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

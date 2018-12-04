@@ -51,6 +51,16 @@ class UsersController < ApplicationController
     
     redirect_to users_url
   end
+  
+  def rollback    #function for rollback user
+    @user = User.find(params[:id])
+    version = @user.versions.find(params[:version])
+    if version.reify.save
+      redirect_to @user, notice: 'User was successfully rollbacked.'
+    else
+      render :show
+    end
+  end
 
   protected
   def post_params
