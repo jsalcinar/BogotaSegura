@@ -3,9 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   mount_uploader :avatar, AvatarUploader
   
-  has_paper_trail on: [:update, :destroy], only: [:username, :email] #this line is for auditing with the paper_trail gem
-  
-  devise :omniauthable, :omniauth_providers => [:google]
+  devise :omniauthable, :omniauth_providers => [:facebook,:google_oauth2] #=> [:google_oauth2]
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
