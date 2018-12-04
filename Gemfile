@@ -89,3 +89,6 @@ gem 'openssl'
 gem 'rack-attack'
 
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+
+gem 'paper_trail'
