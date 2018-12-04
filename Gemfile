@@ -83,3 +83,9 @@ gem 'simple_form'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem "recaptcha"
+
+gem 'openssl'
+
+gem 'rack-attack'
+
+gem 'omniauth-google-oauth2'
