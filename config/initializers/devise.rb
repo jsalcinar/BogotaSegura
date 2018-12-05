@@ -317,5 +317,8 @@ Devise.setup do |config|
 
   # Warn on the last attempt before the account is locked.
   config.last_attempt_warning = true
+  
+  config.send_email_changed_notification = true
+  config.send_password_change_notification = true
 
 end
