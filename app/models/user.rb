@@ -6,7 +6,8 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:facebook,:google_oauth2] #=> [:google_oauth2]
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :trackable, :lockable
          
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
 
