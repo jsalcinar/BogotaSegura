@@ -24,4 +24,19 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  after_filter :log_failed_login, :only => :new
+
+  def create
+    super
+    ::Rails.logger.info "\n***\nSuccessful login with email_id : #{request.filtered_parameters["user"]}\n***\n"
+  end
+
+  private
+  def log_failed_login
+    ::Rails.logger.info "\n***\nFailed login with email_id : #{request.filtered_parameters["user"]}\n***\n" if failed_login?
+  end 
+
+  def failed_login?
+    (options = env["warden.options"]) && options[:action] == "unauthenticated"
+  end 
 end

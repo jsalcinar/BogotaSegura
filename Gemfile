@@ -92,3 +92,5 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 
 gem 'paper_trail'
+
+gem "lograge"
