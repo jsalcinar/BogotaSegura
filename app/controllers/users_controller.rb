@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users/username
   def show
-    @user = User.find_by_username(params[:id])
+    @user = User.find(params[:id])
   end
   # GET /users/new
   def new
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   # GET /users/username/edit
   def edit
-    @user = User.find_by_username(params[:id])
+    @user = User.find(params[:id])
   end
 
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   # PUT /users/username
   def update
-    @user = User.find_by_username(params[:id])
+    @user = User.find(params[:id])
     
     if verify_recaptcha(model: @user) && @user.update_attributes(post_params)
       redirect_to users_url, :notice => 'User was successfully updated.'
@@ -46,9 +46,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/username
   def destroy
-    @user = User.find_by_username(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
-    
     redirect_to users_url
   end
   

@@ -19,10 +19,7 @@ class ApplicationController < ActionController::Base
     redirect_to '/', alert: 'Not authorized.' unless current_user && access_whitelist
   end
 
-
   protected
-
-
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar]

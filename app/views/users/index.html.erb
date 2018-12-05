@@ -34,9 +34,9 @@
       			<td><span class=""><%= user.admin %></span></td>
       			<td>
       			  <div class="d-flex">
-                <%=link_to icon('fas', 'eye'), "users/"+user.username, class: "p-2 flex-fill btn btn-outline-info" %>
-                <%=link_to icon('fas', 'edit'), edit_user_path(user.username), class: "p-2 flex-fill btn btn-outline-warning" %>
-                <%=link_to icon('fas', 'trash'), "users/"+user.username, :method => :delete, :confirm => "Are you sure?", class: "p-2 flex-fill btn btn-outline-danger" %>
+                <%=link_to icon('fas', 'eye'), "users/"+user.id.to_s, class: "p-2 flex-fill btn btn-outline-info" %>
+                <%=link_to icon('fas', 'edit'), edit_user_path(user.id.to_s), class: "p-2 flex-fill btn btn-outline-warning" %>
+                <%=link_to icon('fas', 'trash'), "users/"+user.id.to_s, :method => :delete, :confirm => "Are you sure?", class: "p-2 flex-fill btn btn-outline-danger" %>
               </div>
       			</td>
       		</tr>

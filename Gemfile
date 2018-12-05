@@ -92,3 +92,11 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 
 gem 'paper_trail'
+
+gem "lograge"
+
+group :development do
+  gem 'rails_db'
+end
+
+gem 'audited'

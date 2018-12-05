@@ -1,14 +1,16 @@
 class User < ApplicationRecord
+  audited
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   mount_uploader :avatar, AvatarUploader
   
   has_paper_trail on: [:update, :destroy], only: [:username, :email] #this line is for auditing with the paper_trail gem
   
-  devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :trackable, :lockable
          
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
 
@@ -22,16 +24,38 @@ class User < ApplicationRecord
     end
   end
   
+  def self.from_google_omniauth(access_token)
+      data = access_token.info
+      user = User.where(email: data['email']).first
+  
+      # Uncomment the section below if you want users to be created if they don't exist
+      unless user
+         user = User.create(
+            username: data['name'],
+            email: data['email'],
+            password: Devise.friendly_token[0,20]
+         )
+      end
+      user
+  end
  
-  def self.from_omniauth(auth)
+  def self.from_facebook_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.username = auth.info.name   # assuming the user model has a name
-      user.avatar = auth.info.image # assuming the user model has an image
+      # user.avatar = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.oath_data"] && session["devise.oath_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
     end
   end
 
