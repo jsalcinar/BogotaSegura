@@ -78,25 +78,35 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'cloudinary'
 
+#Simple form
 gem 'simple_form'
 
+#Proteccion private keys
 gem 'dotenv-rails', groups: [:development, :test]
 
+#Google ReCaptcha
 gem "recaptcha"
 
+#OpenSSL
 gem 'openssl'
 
+#Protection against spam and bots
 gem 'rack-attack'
 
+#Facebook and Google OAuth
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 
+#Version Control
 gem 'paper_trail'
 
+#Logger formatter
 gem "lograge"
 
+#UI for DB
 group :development do
   gem 'rails_db'
 end
 
+#Models Changes logger
 gem 'audited'
