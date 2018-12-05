@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    record_activity("Nnew user")
   end
   
   def index
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   # GET /users/username/edit
   def edit
     @user = User.find_by_username(params[:id])
+    record_activity("Edit User")
   end
 
 
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(post_params)
 
     if verify_recaptcha(model: @user) && @user.save
+      record_activity("Created new account")
       redirect_to users_url, :notice => 'User was successfully created.'
     else
       render :action => "new"
@@ -38,6 +41,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
     
     if verify_recaptcha(model: @user) && @user.update_attributes(post_params)
+      record_activity("Updated account")
       redirect_to users_url, :notice => 'User was successfully updated.'
     else
       render :action => "edit"
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by_username(params[:id])
     @user.destroy
-    
+    record_activity("Deleted account")
     redirect_to users_url
   end
 

@@ -15,10 +15,19 @@ class ApplicationController < ActionController::Base
     redirect_to '/', alert: 'Not authorized.' unless current_user && access_whitelist
   end
 
+  def record_activity(note)
+      @activity = Activity_Log.new
+      @activity.user = current_user
+      @activity.note = note
+      @activity.browser = request.env['HTTP_USER_AGENT']
+      @activity.ip_address = request.env['REMOTE_ADDR']
+      @activity.controller = controller_name 
+      @activity.action = action_name 
+      @activity.params = params.inspect
+      @activity.save
+  end
 
   protected
-
-
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar]
