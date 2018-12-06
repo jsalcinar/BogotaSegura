@@ -110,3 +110,5 @@ end
 
 #Models Changes logger
 gem 'audited'
+
+gem 'thin'

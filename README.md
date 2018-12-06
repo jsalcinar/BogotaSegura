@@ -49,3 +49,6 @@ para visualizar la pagina.
 La aplicacion se puede probar desde [Heroku](https://bogotasegura2018.herokuapp.com/).
 
 Para poder correr la aplicacion en Cloud9, revisar la [wiki](https://github.com/jsalcinar/BogotaSegura/wiki/Preparar-Cloud9-para-el-uso-de-la-aplicacion.) del repositorio.
+
+Comando para ejecutar la aplicacion con SSL:
+> rails s -b 'ssl://127.0.0.1:3000?key=config/ssl/localhost.key&cert=config/ssl/localhost.crt'
