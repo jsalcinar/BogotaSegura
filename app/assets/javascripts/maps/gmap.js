@@ -1,5 +1,7 @@
 var transportMode = 'DRIVING';
 var mapCenter = {lat: 4.6371933, lng: -74.0826976};
+var defaultStartPoint = {lat: 4.668466, lng: -74.0979012};
+var defaultEndPoint = {lat: 4.615695, lng: -74.0697733};
 var readState = "none";
 
 var map, originPos, destinationPos = null;
@@ -183,9 +185,9 @@ function initMapService(){
     resetmap();
   })
 
-  //Marcadores para usar en heroku
-  originPos = placeMarker({lat: 4.63786, lng: -74.086341},map);
-  destinationPos = placeMarker({lat: 4.6343095, lng: -74.0854674},map);
+  //Marcadores por defecto
+  originPos = placeMarker(defaultStartPoint,map);
+  destinationPos = placeMarker(defaultEndPoint,map);
 
 }       
 
