@@ -122,12 +122,33 @@ function initMapService(){
   directionsDisplay = new google.maps.DirectionsRenderer;
   geocoder = new google.maps.Geocoder();
   directionsDisplay.setMap(map);
-
+  
   //Put markers on map
   map.addListener('click', function(e) {
+    
+     /* var pnt = e.latLng;
+      var lat = pnt.lat();
+      lat = lat.toFixed(4);
+      var lng = pnt.lng();
+      lng = lng.toFixed(4);
+      console.log("Latitude: " + lat + "  Longitude: " + lng);*/
+      
+      
       switch(readState){
         case "start":
-          geocoder.geocode({
+          var locationPoint = e.latLng;
+          var lat = locationPoint.lat();
+          lat = lat.toFixed(4);
+          var lng = locationPoint.lng();
+          lng = lng.toFixed(4);
+          var point = {lat: parseFloat(lat), lng: parseFloat(lng)};
+          clearMarker(originPos);
+          originPos = placeMarker(point, map);
+          $('#Origen').text(lat+", "+lng);
+          $( '#Origen' ).removeClass( 'active' );
+          readState = "none";
+          
+          /*geocoder.geocode({
             'latLng': e.latLng
             }, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
@@ -141,10 +162,21 @@ function initMapService(){
                 }
               }
             }
-          )
+          )*/
           break;
         case "end":
-          geocoder.geocode({
+          var locationPoint = e.latLng;
+          var lat = locationPoint.lat();
+          lat = lat.toFixed(4);
+          var lng = locationPoint.lng();
+          lng = lng.toFixed(4);
+          var point = {lat: parseFloat(lat), lng: parseFloat(lng)};
+          clearMarker(destinationPos);
+          destinationPos = placeMarker(point, map);
+          $('#Destino').text(lat+", "+lng);
+          $( '#Destino' ).removeClass( 'active' );
+          readState = "none";
+          /*geocoder.geocode({
             'latLng': e.latLng
             }, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
@@ -158,7 +190,7 @@ function initMapService(){
                 }
               }
             }
-          )
+          )*/
           break;
         default:
           //None
@@ -240,4 +272,12 @@ function resetmap(){
     map.setCenter(mapCenter);
     map.setZoom(16);
     
+}
+
+function displayCoordinates(pnt) {
+    var lat = pnt.lat();
+    lat = lat.toFixed(4);
+    var lng = pnt.lng();
+    lng = lng.toFixed(4);
+    console.log("Latitude: " + lat + "  Longitude: " + lng);
 }
