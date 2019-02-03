@@ -126,12 +126,6 @@ function initMapService(){
   //Put markers on map
   map.addListener('click', function(e) {
     
-     /* var pnt = e.latLng;
-      var lat = pnt.lat();
-      lat = lat.toFixed(4);
-      var lng = pnt.lng();
-      lng = lng.toFixed(4);
-      console.log("Latitude: " + lat + "  Longitude: " + lng);*/
       
       
       switch(readState){
@@ -272,12 +266,4 @@ function resetmap(){
     map.setCenter(mapCenter);
     map.setZoom(16);
     
-}
-
-function displayCoordinates(pnt) {
-    var lat = pnt.lat();
-    lat = lat.toFixed(4);
-    var lng = pnt.lng();
-    lng = lng.toFixed(4);
-    console.log("Latitude: " + lat + "  Longitude: " + lng);
 }
