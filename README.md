@@ -38,7 +38,7 @@ Para poblar la db ejecutar:
 
 > rails db:seed
 
-Para correr la aplicacion ejecutar
+Para correr la aplicacion ejecutar:
 
 > rails server
 

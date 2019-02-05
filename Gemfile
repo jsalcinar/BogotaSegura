@@ -79,4 +79,5 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'cloudinary'
 
+#form
 gem 'simple_form'
