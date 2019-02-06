@@ -25,7 +25,7 @@ body{
 
 #images{
     object-fit: cover;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -63,7 +63,7 @@ p {
     color: black;
     font-size: 1.3vw;
     line-height: 2.5vw;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-right: 5%;
     margin-left: 20%;
 }
@@ -104,7 +104,7 @@ p {
     text-align: right;
     margin-right: 5%;
     color: black;
-    font-size: 2.5vw;
+    font-size: 2vw;
     font-family: 'Raleway', sans-serif;
 }
 
