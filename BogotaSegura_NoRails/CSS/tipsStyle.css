@@ -1,0 +1,190 @@
+/*General*/
+body {
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+}
+
+.fullPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 117, 69, 0.5);
+}
+
+.infoPage {
+    background-color: white;
+}
+
+.backgroundPage {
+    position: absolute;
+    display: inline-block;
+}
+
+.firstPage {
+    position: absolute;
+}
+
+.backgroundImg {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+}
+/*Back To Top--------------------------------*/
+#myBtn {
+  display: none;
+  position: fixed;
+  margin-top: 41%;
+  margin-left: 93%;
+  font-size: 2vw;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #1E1E1F;
+  color: white;
+  cursor: pointer;
+  padding-top: 0.1%;
+  padding-bottom: 0.1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-radius: 10%;
+}
+
+#myBtn:hover {
+  background-color: #323233;
+}
+/*Menú Opciones--------------------------------*/
+h1 {
+    text-align: center;
+    font-size: 7vw;
+    margin-top: 9%;
+}
+
+button {
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 800%;
+    margin-top: 3%;
+    margin-left: 5%;
+    background-color: #CCF2FF;
+}
+
+#bicycle {
+    margin-left: 11%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+}
+
+#car {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#bus {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#moto {
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+}
+
+#walk {
+    padding-right: 3.2%;
+    padding-left: 3.2%;
+}
+
+a {
+    color: black;
+}
+/*Otros Menús--------------------------------*/
+.firstCol-sm {
+    width: 100%;
+    height: 125vh;
+}
+
+.col-sm {
+    width: 100%;
+    height: 50vh;
+}
+
+.colImg {
+    padding: 0%;
+}
+
+.col-sm-8 {
+    padding:  0%;
+}
+
+#rightImg {
+    margin-right: -80%;
+    border-radius: 50%;
+    height: 130vh;
+    width: 175%;
+    object-fit: cover;
+}
+
+#leftImg {
+    margin-left: -80%;
+    border-radius: 50%;
+    height: 130vh;
+    width: 175%;
+    object-fit: cover;
+}
+
+.firstRow {
+    margin-top: 9%;
+}
+
+.infoRow {
+    margin-left: 5%;
+}
+
+.infoCol {
+    padding: 5%;
+    padding-bottom: 1%;
+    width: 45%;
+}
+
+p {
+    text-align: justify;
+    font-size: 1.1vw;
+    font-family: 'Open Sans', sans-serif;
+}
+/*Contacto--------------------------------*/
+.contactRow {
+    width: 100vw;
+    height: 30vh;
+    padding: 0%;
+    margin: 0%;
+    background-color: black;
+}
+
+#contactTitle {
+    text-align: center;
+    color: white;
+    padding-top: 2%;
+}
+
+#infoP {
+    text-align: center;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.socialButton {
+    color: white;
+    font-size: 2vw;
+    background: none;
+    border: none;
+    margin-top: 1%;
+    margin-left: 3%;
+}
+
+.firstSocialButton {
+    margin-left: 41.5%;
+}
