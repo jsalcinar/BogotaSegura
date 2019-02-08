@@ -1,25 +1,38 @@
 function TipsData(props){
   return (
-    <div className="col-sm-8">
-      <div  className="row">
-        <div className="col-sm">
+    <div className="col-sm-8 tips_div">
+      <div  className="row infoRow firstRow">
+        <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
-        <div className="col-sm">
+        <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        <div className="col-sm-2"></div>
       </div>
-      <div  className="row">
-        <div className="col-sm">
+      <div  className="row infoRow">
+        <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
-        <div className="col-sm">
+        <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        <div className="col-sm-2"></div>
+      </div>
+      <div  className="row infoRow">
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        <div className="col-sm-2"></div>
       </div>
     </div>
   )

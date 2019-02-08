@@ -24,11 +24,30 @@ body {
     flex-grow : 1;
 }
 
-
 #tipsImage {
     margin-left: -80%;
     border-radius: 50%;
     height: 92vh;
     width: 175%;
     object-fit: cover;
+}
+
+.firstRow {
+    margin-top: 9%;
+}
+
+.infoRow {
+    margin-left: 5%;
+}
+
+.infoCol {
+    padding: 5%;
+    padding-bottom: 1%;
+    width: 45%;
+}
+
+p {
+    text-align: justify;
+    font-size: 1.1vw;
+    font-family: 'Open Sans', sans-serif;
 }
