@@ -1,33 +1,51 @@
 <%= stylesheet_link_tag 'tips/selection' %>
 
+
+
+
+
 <div class="row">
   <div class="col-sm">
     <h1>¿Como te mueves por Bogota?</h1>
-  </div>
-  <div id="icons-col"class="col-sm">
-    <div class="row">
+    <div id="icons-col"class="row">
+      <div class="col-sm"></div>
       <div class="col-sm"> 
-        <%= link_to({:action => 'tip', :type => "Walk"}, class: "Mov_btn") do %>
-          <%=icon('fas', 'walking')%>
-        <% end %>   
+        <div class="selbtn">
+          <%= link_to({:action => 'tip', :type => "Bike"}, class: "icon_btn") do %>
+            <%=icon('fas', 'bicycle')%>
+          <% end %>   
+        </div>
       </div>
       <div class="col-sm"> 
-        <%= link_to({:action => 'tip', :type => "Bus"}, class: "Mov_btn") do %>
-          <%=icon('fas', 'bus')%>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm"> 
-        <%= link_to({:action => 'tip', :type => "Car"}, class: "Mov_btn") do %>
-          <%=icon('fas', 'car')%>
-        <% end %>
+        <div class="selbtn">
+          <%= link_to({:action => 'tip', :type => "Car"}, class: "icon_btn") do %>
+            <%=icon('fas', 'car')%>
+          <% end %>
+        </div>
       </div>
       <div class="col-sm"> 
-        <%= link_to({:action => 'tip', :type => "Bike"}, class: "Mov_btn") do %>
-          <%=icon('fas', 'bicycle')%>
-        <% end %>
+        <div class="selbtn">
+          <%= link_to({:action => 'tip', :type => "Bus"}, class: "icon_btn") do %>
+            <%=icon('fas', 'bus')%>
+          <% end %>
+        </div>
       </div>
+      <div class="col-sm"> 
+        <div class="selbtn">
+          <%= link_to({:action => 'tip', :type => "Moto"}, class: "icon_btn") do %>
+            <%=icon('fas', 'motorcycle')%>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm"> 
+        <div class="selbtn">
+          <%= link_to({:action => 'tip', :type => "Walk"}, class: "icon_btn") do %>
+            <%=icon('fas', 'walking')%>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm"></div>
     </div>
   </div>
 </div>
+

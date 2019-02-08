@@ -11,12 +11,24 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     color: black;
+    background-color: rgba(255, 117, 69, 0.5);
 }
 
 h1 {
-    margin-top: 8vw;
-    font-size: 4vw;
+    margin-top: 6%;
+    font-size: 7vw;
     font-family: 'Raleway', sans-serif;
+    margin-bottom: 3%;
+}
+
+.selbtn{
+    background-color: #CCF2FF;
+    border-radius: 50%;
+    padding-bottom: 10%;
+}
+
+.selbtn:hover {
+  color: #323233;
 }
 
 #optionsButton {
@@ -35,8 +47,8 @@ h1 {
     color: white;
 }
 
-.Mov_btn{
-    font-size: 12vw;
+.icon_btn{
+    font-size: 8vw;
     text-align: center;
     color: black;
 }
