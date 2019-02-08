@@ -1,0 +1,34 @@
+.flex{
+    display: flex;
+}
+
+body {
+     height: 100vh; 
+}
+
+#body_div{
+    height: 100%;
+    flex-flow: column;
+    display: flex;
+}
+
+#content_div{
+    flex-grow : 1;
+    display: flex;
+    padding: 0;
+    align-items: stretch;
+}
+
+#fullpage{
+    height: 100%;
+    flex-grow : 1;
+}
+
+
+#tipsImage {
+    margin-left: -80%;
+    border-radius: 50%;
+    height: 92vh;
+    width: 175%;
+    object-fit: cover;
+}

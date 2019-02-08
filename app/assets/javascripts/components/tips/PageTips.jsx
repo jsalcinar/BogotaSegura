@@ -1,99 +1,26 @@
-function Walk(props){
+function TipsData(props){
   return (
-    <div id="div_tips">
-      <li>
-        Walk mauris in tincidunt lacus, sit amet tempus nisl. 
-        Quisque porttitor lectus sed massa sagittis varius. 
-        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
-        ac eros. Sed et ligula nec dolor interdum varius.
-      </li>
-      <li>
-        Curabitur faucibus libero non quam vehicula, 
-        at elementum sem dictum. Proin vitae vulputate justo, 
-        id volutpat enim. Pellentesque cursus neque tempus lorem 
-        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
-        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
-      </li>
-      <li>
-        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
-        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
-        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
-      </li>
-    </div>
-  )
-}
-
-function Bus(props){
-  return (
-    <div id="div_tips">
-      <li>
-        Bus mauris in tincidunt lacus, sit amet tempus nisl. 
-        Quisque porttitor lectus sed massa sagittis varius. 
-        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
-        ac eros. Sed et ligula nec dolor interdum varius.
-      </li>
-      <li>
-        Curabitur faucibus libero non quam vehicula, 
-        at elementum sem dictum. Proin vitae vulputate justo, 
-        id volutpat enim. Pellentesque cursus neque tempus lorem 
-        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
-        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
-      </li>
-      <li>
-        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
-        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
-        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
-      </li>
-    </div>
-  )
-}
-
-function Car(props){
-  return (
-    <div id="div_tips">
-      <li>
-        Car mauris in tincidunt lacus, sit amet tempus nisl. 
-        Quisque porttitor lectus sed massa sagittis varius. 
-        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
-        ac eros. Sed et ligula nec dolor interdum varius.
-      </li>
-      <li>
-        Curabitur faucibus libero non quam vehicula, 
-        at elementum sem dictum. Proin vitae vulputate justo, 
-        id volutpat enim. Pellentesque cursus neque tempus lorem 
-        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
-        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
-      </li>
-      <li>
-        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
-        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
-        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
-      </li>
-    </div>
-  )
-}
-
-function Bike(props){
-  return (
-    <div id="div_tips">
-      <li>
-        Bike mauris in tincidunt lacus, sit amet tempus nisl. 
-        Quisque porttitor lectus sed massa sagittis varius. 
-        Mauris nisi ipsum, tempus ut ullamcorper quis, pretium 
-        ac eros. Sed et ligula nec dolor interdum varius.
-      </li>
-      <li>
-        Curabitur faucibus libero non quam vehicula, 
-        at elementum sem dictum. Proin vitae vulputate justo, 
-        id volutpat enim. Pellentesque cursus neque tempus lorem 
-        lacinia sodales. Donec sed justo elit. Sed luctus mi eros, 
-        et commodo eros pulvinar a. Quisque vehicula pellentesque erat.
-      </li>
-      <li>
-        Donec sem urna, sagittis nec placerat a, bibendum a arcu. 
-        Phasellus erat sapien, lobortis at leo ut, dignissim tempor 
-        leo. Quisque ex leo, faucibus quis ex quis, euismod auctor neque.
-      </li>
+    <div className="col-sm-8">
+      <div  className="row">
+        <div className="col-sm">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        <div className="col-sm">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+      </div>
+      <div  className="row">
+        <div className="col-sm">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        <div className="col-sm">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -101,29 +28,29 @@ function Bike(props){
 function Tips(props){
   switch(props.type){
     case 'Walk':
-      return <Walk />
+      return <TipsData />
     case 'Bus':
-      return <Bus />
+      return <TipsData />
     case 'Car':
-      return <Car />
+      return <TipsData />
     case 'Bike':
-      return <Bike />
+      return <TipsData />
+    case 'Moto':
+      return <TipsData />
     default:
-      return <Walk />
+      return <TipsData />
   }
 
 }
 
 function Screen(props){
 	return (
-    <div className="row">
-      <div className="col-sm">
-        <h1>{props.type}</h1>
+    <div className="fullPage">
+      <div className="row">
+        <div className="col-sm-4">
+          <img id="tipsImage" src={props.image} alt={props.type}/>
+        </div>
         <Tips type={props.type} />
-      </div>
-      <div className="col-sm">
-        <p>Press the picture</p>
-        <img id="pic_tips" src={props.image} alt={props.type} onClick={() => { document.location.href = props.data; }}/>
       </div>
     </div>
 	)
@@ -134,9 +61,8 @@ class PageTips extends React.Component {
   render () {
     const type = this.props.type;
     const img = this.props.img_src;
-    const data = this.props.data_url;
     return (
-      <Screen type={type} image={img} data={data} />
+      <Screen type={type} image={img}/>
     );
   }
 }
