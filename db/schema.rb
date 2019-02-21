@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_153819) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.boolean "admin", default: false
-    t.string "avatar", default: "image/upload/v1541084536/bogotasegura/avatar/default/default.png"
+    t.string "avatar", default: "image/upload/v1541084536/bogotasegura/avatar/default/User.png"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
