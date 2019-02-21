@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'maps/map','maps/gmap','app_navbar/black_theme' %>
+<%= stylesheet_link_tag 'maps/map','maps/bmap','app_navbar/black_theme' %>
 
 <div id="control_div">
   <div class="control indexControl active">
@@ -53,8 +53,7 @@
   </div>
   <div class="panel mapPanel">
     <div id="map_container">
-      <input id="gmapSearchBar" class="controls" type="text" placeholder="Search Box">
-      <div id="map"></div>
+      <div id="myMap"></div>
     </div>
   </div>
   <div class="panel interestPanel">
@@ -65,7 +64,20 @@
   </div>
 </div>
 
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=getMap' async defer></script>
 <script>
-  mapService_init();
+var map;
+
+function loadMap(){
+    map = new $window.Microsoft.Maps.Map(document.getElementById('mapDiv'), {
+        credentials: 'My credential',
+        mapTypeId: Microsoft.Maps.MapTypeId.road,
+        animate: true,
+        showDashboard: !$scope.readOnly,
+        useInertia: false,
+        enableSearchLogo: false,
+        enableClickableLogo: false,
+        showCopyright: false
+    });
+}
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaoxBtQLuiJX3wkWGD9ycZscf2yQSFPmo&libraries=places&callback=initMap"></script>
