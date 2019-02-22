@@ -88,7 +88,15 @@ body {
   opacity: 0.6;
 }
 
+.menu_return{
+  padding-bottom: 20px;
+}
+
 .menu_return button{
+  flex-grow: 1;
+}
+
+.pushpin_control button{
   flex-grow: 1;
 }
 
