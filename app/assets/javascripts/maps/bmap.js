@@ -1,9 +1,9 @@
-var transportMode = 'DRIVING';
+var transportMode = 'Walking';
 var readState = "none";
 var mapCenter, defaultStartPoint, defaultEndPoint = null;
 var map, originPos, destinationPos = null;
 
-var searchManager = null;
+var searchManager, directionsManager = null;
 
 function getMap(){
     
@@ -21,6 +21,12 @@ function getMap(){
     
     Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
         searchManager = new Microsoft.Maps.Search.SearchManager(map);
+    });
+    
+    //Load the directions module.
+    Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+        //Create an instance of the directions manager.
+        directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
     });
     
     function getLatlng(e) { 
@@ -71,6 +77,51 @@ function getMap(){
     resetmap();
     initMapService();
     })
+    
+    $( '#map_menuBtn' ).click( function(e){
+        resetmap();
+    })
+    
+    //Send Button -------------------------------------------------------------------------
+    $( '#Send' ).click( function(e){
+        if (originPos==null) {
+          alert("Debes de seleccionar una ubicacion de origen.");
+        }else if (destinationPos==null) {
+          alert("Debes de seleccionar una ubicacion de destino.");
+        }else{
+            
+            switch(transportMode){
+                case "Driving":
+                    directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
+                    break;
+                case "Walking":
+                    directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+                    break;
+                case "Bicycling":
+                    directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+                    break;
+                case "Bus":
+                    directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.transit });
+                    break;
+                default:
+                    break;
+            }
+            
+            var startPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: originPos.getLocation() });
+            var endPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: destinationPos.getLocation() });
+            clearPin(originPos);
+            clearPin(destinationPos);
+            
+            directionsManager.addWaypoint(startPoint);
+            directionsManager.addWaypoint(endPoint);
+            
+            directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
+            
+            directionsManager.calculateDirections();
+            
+            $( '.mapControl_body' ).addClass("disabled");
+        }
+    });
 }
 
 
@@ -150,11 +201,6 @@ function initMapService(){
             } 
         }
     });
-    
-      
-      
-
-
 }       
 
 function addPushPin(location, text, color){
@@ -179,6 +225,8 @@ function resetmap(){
     $('#Destino').text("Destino");
 
     map.entities.clear();
+    directionsManager.clearAll();
+    
     map.setView({
         center: mapCenter,
         zoom: 16

@@ -8,10 +8,10 @@
       <br>
       <div class="mapControl_body">
         <div class="flex btn_mode_group">
-          <button class=" btn btn-dark active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
-          <button class="btn btn-dark" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
-          <button class="btn btn-dark" onclick="setMode('DRIVING')"><%=icon('fas', 'car')%></button>
-          <button class="btn btn-dark disabled" onclick="setMode('BICYCLING')"><%=icon('fas', 'bicycle')%></button>
+          <button class=" btn btn-dark active" onclick="setMode('Walking')"><%=icon('fas', 'walking')%></button>
+          <button class="btn btn-dark" onclick="setMode('Bus')"><%=icon('fas', 'bus')%></button>
+          <button class="btn btn-dark" onclick="setMode('Driving')"><%=icon('fas', 'car')%></button>
+          <button class="btn btn-dark disabled" onclick="setMode('Bicycling')"><%=icon('fas', 'bicycle')%></button>
         </div>
         <br />
         <label>¿Donde comienza tu viaje?</label>
@@ -30,7 +30,12 @@
       </div>
       <div class="flex menu_return">
         <button class="btn btn-dark mr-1" id="map_resetBtn" onclick="javascript:void(0)" >Reiniciar</button>
-        <button class="btn btn-dark md-1" onclick="setSection('index')" >Menu</button>
+        <button class="btn btn-dark md-1" id="map_menuBtn" onclick="setSection('index')" >Menu</button>
+      </div>
+      <div class="flex" id="directionsItineraryContainer">
+        <div id="directionsItinerary">
+          
+        </div>
       </div>
   </div>
   <div class="control interestControl">
