@@ -1,5 +1,5 @@
 #myMap {
-  height: 80%;
+  height: 100%;
   width: 100%;
 }
 
@@ -15,17 +15,4 @@
     height:100%;
     overflow-y:auto;
     float:left;
-}
-
-.bmapMenuControl{
-  padding-top: 15px;
-  height: 69vh;
-}
-
-#directionsPanel, #directionsItinerary, .directionsPanel{
-  width: 100% !important;
-}
-
-.dirAddBtn, .dirBtnTime{
-  display: none !important;
 }

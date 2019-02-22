@@ -6,15 +6,31 @@
   <div class="control mapControl">
     <h2 >Planea tu ruta</h2>
       <br>
+      <div class="mapControl_body">
+        <div class="flex btn_mode_group">
+          <button class=" btn btn-dark active" onclick="setMode('WALKING')"><%=icon('fas', 'walking')%></button>
+          <button class="btn btn-dark" onclick="setMode('TRANSIT')"><%=icon('fas', 'bus')%></button>
+          <button class="btn btn-dark" onclick="setMode('DRIVING')"><%=icon('fas', 'car')%></button>
+          <button class="btn btn-dark disabled" onclick="setMode('BICYCLING')"><%=icon('fas', 'bicycle')%></button>
+        </div>
+        <br />
+        <label>¿Donde comienza tu viaje?</label>
+        <div class="flex select_point">
+          <span class="input-group-text btn btn-outline-dark" id="Origen">Origen</span>
+          <button class="btn btn-dark delMarker" id="delOrigen"><%=icon('fas', 'trash')%></button> 
+        </div>
+        <br />
+        <label>¿Donde termina?</label>
+        <div class="flex select_point">
+          <span class="input-group-text btn btn-outline-dark" id="Destino">Destino</span>
+          <button class="btn btn-dark" id="delDestino"><%=icon('fas', 'trash')%></button> 
+        </div>
+        <br />
+        <button class="btn btn-dark btn-block" id="Send" >Enviar</button><br />
+      </div>
       <div class="flex menu_return">
         <button class="btn btn-dark mr-1" id="map_resetBtn" onclick="javascript:void(0)" >Reiniciar</button>
         <button class="btn btn-dark md-1" onclick="setSection('index')" >Menu</button>
-      </div>
-      <div class="bmapMenuControl">
-        <div class="directionsContainer">
-          <div id="directionsPanel"></div>
-          <div id="directionsItinerary"></div>
-        </div>
       </div>
   </div>
   <div class="control interestControl">
@@ -50,18 +66,5 @@
 
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=getMap' async defer></script>
 <script>
-var map;
-
-function loadMap(){
-    map = new $window.Microsoft.Maps.Map(document.getElementById('mapDiv'), {
-        credentials: 'My credential',
-        mapTypeId: Microsoft.Maps.MapTypeId.road,
-        animate: true,
-        showDashboard: !$scope.readOnly,
-        useInertia: false,
-        enableSearchLogo: false,
-        enableClickableLogo: false,
-        showCopyright: false
-    });
-}
+  mapService_init();
 </script>
