@@ -81,3 +81,5 @@ gem 'cloudinary'
 
 #form
 gem 'simple_form'
+
+gem "rails_db"

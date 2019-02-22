@@ -1,39 +1,299 @@
-function TipsData(props){
+function TipsWalk(props){
   return (
     <div className="col-sm-8 tips_div">
+    
+    
       <div  className="row infoRow firstRow">
+      
         <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        
         <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        
         <div className="col-sm-2"></div>
+      
       </div>
+      
+      
       <div  className="row infoRow">
+      
         <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        
         <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        
         <div className="col-sm-2"></div>
+        
       </div>
+      
+      
       <div  className="row infoRow">
+      
         <div className="col-sm infoCol">
           <h2>Ponte el casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        
         <div className="col-sm infoCol">
-          <h2>Ponte el casco</h2>
+          <h2>Ponte el Casco</h2>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         </div>
+        
         <div className="col-sm-2"></div>
+        
       </div>
+      
+      
+    </div>
+  )
+}
+
+function TipsBus(props){
+  return (
+    <div className="col-sm-8 tips_div">
+    
+    
+      <div  className="row infoRow firstRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+      
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el Casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+    </div>
+  )
+}
+
+function TipsCar(props){
+  return (
+    <div className="col-sm-8 tips_div">
+    
+    
+      <div  className="row infoRow firstRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+      
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el Casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+    </div>
+  )
+}
+
+function TipsBike(props){
+  return (
+    <div className="col-sm-8 tips_div">
+    
+    
+      <div  className="row infoRow firstRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+      
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el Casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+    </div>
+  )
+}
+
+function TipsMoto(props){
+  return (
+    <div className="col-sm-8 tips_div">
+    
+    
+      <div  className="row infoRow firstRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+      
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
+      <div  className="row infoRow">
+      
+        <div className="col-sm infoCol">
+          <h2>Ponte el casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm infoCol">
+          <h2>Ponte el Casco</h2>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        
+        <div className="col-sm-2"></div>
+        
+      </div>
+      
+      
     </div>
   )
 }
@@ -41,17 +301,17 @@ function TipsData(props){
 function Tips(props){
   switch(props.type){
     case 'Walk':
-      return <TipsData />
+      return <TipsWalk />
     case 'Bus':
-      return <TipsData />
+      return <TipsBus />
     case 'Car':
-      return <TipsData />
+      return <TipsCar />
     case 'Bike':
-      return <TipsData />
+      return <TipsBike />
     case 'Moto':
-      return <TipsData />
+      return <TipsMoto />
     default:
-      return <TipsData />
+      return <TipsWalk />
   }
 
 }

@@ -13,6 +13,7 @@
   <tbody>
     <% @tips.each do |tip| %>
       <tr>
+        <td><%= tip.transportmode %></td>
         <td><%= tip.description %></td>
         <td><%= link_to 'Show', tip %></td>
         <td><%= link_to 'Edit', edit_tip_path(tip) %></td>
