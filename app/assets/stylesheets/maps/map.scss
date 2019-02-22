@@ -122,3 +122,10 @@ h2 {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.table-container{
+  display: block;
+  max-height: 70vh;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}

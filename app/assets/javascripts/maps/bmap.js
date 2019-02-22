@@ -1,7 +1,7 @@
 var transportMode = 'Walking';
 var readState = "none";
 var mapCenter, defaultStartPoint, defaultEndPoint = null;
-var map, originPos, destinationPos = null;
+var map, interestMap, originPos, destinationPos = null;
 
 var searchManager, directionsManager = null;
 
@@ -18,6 +18,14 @@ function getMap(){
         mapTypeId: Microsoft.Maps.MapTypeId.road,
         zoom: 16
     });
+    
+    interestMap = new Microsoft.Maps.Map('#interestMap', {
+        credentials: 'As532WY9PqmwymM6Hh5eS5HydCGrZZFXE8DouAnheKH6m1KljTfOLcvq1r_JmY4p',
+        center: mapCenter,
+        mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+        zoom: 11
+    });
+    
     
     Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
         searchManager = new Microsoft.Maps.Search.SearchManager(map);
