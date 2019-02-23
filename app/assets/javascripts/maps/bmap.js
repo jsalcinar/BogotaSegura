@@ -1,9 +1,9 @@
 var transportMode = 'Walking';
 var readState = "none";
-var mapCenter, defaultStartPoint, defaultEndPoint = null;
+var mapCenter, searchPin = null;
 var map, interestMap, originPos, destinationPos = null;
 
-var searchManager, directionsManager = null;
+var searchManager, directionsManager, autosuggestManager = null;
 
 function getMap(){
     
@@ -26,7 +26,6 @@ function getMap(){
         zoom: 11
     });
     
-    
     Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
         searchManager = new Microsoft.Maps.Search.SearchManager(map);
     });
@@ -35,6 +34,17 @@ function getMap(){
     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
         //Create an instance of the directions manager.
         directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+    });
+    
+    Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
+        var options = {
+            map: map,
+            countryCode: 'CO',
+            userLocation: mapCenter
+        };
+        autosuggestManager = new Microsoft.Maps.AutosuggestManager(options);
+        autosuggestManager.setOptions()
+        autosuggestManager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
     });
     
     function getLatlng(e) { 
@@ -81,17 +91,22 @@ function getMap(){
         readState = "none";
     });
   
-    $( '#map_resetBtn' ).click( function(e){
-    resetmap();
-    initMapService();
+    $( '#map_resetBtn, #mapResult_resetBtn' ).click( function(e){
+        resetmap();
+        initMapService();
+        $( '#mapControlMainMenu' ).removeClass("hidden");
+        $( '#mapControlResults' ).removeClass("show");
     })
     
-    $( '#map_menuBtn' ).click( function(e){
+    $( '#map_menuBtn, #mapResult_menuBtn' ).click( function(e){
         resetmap();
+        $( '#mapControlMainMenu' ).removeClass("hidden");
+        $( '#mapControlResults' ).removeClass("show");
     })
     
     //Send Button -------------------------------------------------------------------------
     $( '#Send' ).click( function(e){
+        clearPin(searchPin);
         if (originPos==null) {
           alert("Debes de seleccionar una ubicacion de origen.");
         }else if (destinationPos==null) {
@@ -128,6 +143,9 @@ function getMap(){
             directionsManager.calculateDirections();
             
             $( '.mapControl_body' ).addClass("disabled");
+            
+            $( '#mapControlMainMenu' ).addClass("hidden");
+            $( '#mapControlResults' ).addClass("show");
         }
     });
 }
@@ -220,6 +238,7 @@ function addPushPin(location, text, color){
 function clearPin(pinObj){
     try{
       map.entities.remove(pinObj);
+      pinObj = null;
     }catch(error){}
 }
 
@@ -239,4 +258,13 @@ function resetmap(){
         center: mapCenter,
         zoom: 16
     });
+}
+
+function selectedSuggestion(result) {
+    //Remove previously selected suggestions from the map.
+    clearPin(searchPin);
+    //Show the suggestion as a pushpin and center map over it.
+    searchPin = new Microsoft.Maps.Pushpin(result.location);
+    map.entities.push(searchPin);
+    map.setView({ bounds: result.bestView });
 }

@@ -12,10 +12,21 @@
 
 #directionsItineraryContainer{
   display: block;
-  height: 300px;
+  max-height: 600px;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 #directionsItinerary{
+}
+
+#searchContainer{
+}
+
+#mapControlResults{
+  display: none;
+}
+
+#mapControlMainMenu{
+  display: block;
 }
