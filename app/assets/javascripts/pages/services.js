@@ -1,11 +1,17 @@
 var currentSlide;
 var distanceToMove;
+services_init();
 
 function services_init(){
+    if(performance.navigation.type == 2){
+       location.reload(true);
+    }
     window.onbeforeunload = function(){ window.scrollTo(0,0); }
     currentSlide = 1;
     distanceToMove = 0;
     showContent(1,300);
+    hideContent(2,"left");
+    hideContent(3,"left");
 }
 
 //Inicializar la página en el primer servicio -----------------------------
@@ -39,9 +45,9 @@ function scrollWinLeft() {
 //Mostrar y ocultar contenido -----------------------------
 function hideContent(service,moveTo){
     if(moveTo=="right"){
-        distanceToMove = 1370;
+        distanceToMove = screen.width;
     }else{
-        distanceToMove = -1370;
+        distanceToMove = -screen.width;
     }
     $(".slidesInfo".concat(service)).fadeOut(400);
     setTimeout(
