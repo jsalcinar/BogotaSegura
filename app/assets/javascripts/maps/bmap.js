@@ -4,6 +4,7 @@ var mapCenter, searchPin = null;
 var map, interestMap, originPos, destinationPos = null;
 
 var searchManager, directionsManager, autosuggestManager = null;
+var caiList = [];
 
 function getMap(){
     
@@ -92,6 +93,7 @@ function getMap(){
     });
   
     $( '#map_resetBtn, #mapResult_resetBtn' ).click( function(e){
+        console.log(caiList);
         resetmap();
         initMapService();
         $( '#mapControlMainMenu' ).removeClass("hidden");
@@ -132,10 +134,14 @@ function getMap(){
             
             var startPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: originPos.getLocation() });
             var endPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: destinationPos.getLocation() });
+            var waypointArray = [];
             clearPin(originPos);
             clearPin(destinationPos);
             
             directionsManager.addWaypoint(startPoint);
+            
+          
+            
             directionsManager.addWaypoint(endPoint);
             
             directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
@@ -148,6 +154,15 @@ function getMap(){
             $( '#mapControlResults' ).addClass("show");
         }
     });
+    
+    $.getJSON('/cai.json', function(data) {
+      var i = 0;
+      while(data[i]!=null){
+          caiList.push({cainombre: data[i].fields.cainombre, latitude: data[i].fields.geo_point_2d[0], longitude: data[i].fields.geo_point_2d[1]})
+          i++;
+      }
+    });
+    
 }
 
 
