@@ -48,6 +48,7 @@ function getMap(){
         autosuggestManager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
     });
     
+    
     function getLatlng(e) { 
         if (e.targetType == "map") {
             var point = new Microsoft.Maps.Point(e.getX(), e.getY());
@@ -134,15 +135,26 @@ function getMap(){
             
             var startPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: originPos.getLocation() });
             var endPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: destinationPos.getLocation() });
-            var waypointArray = [];
-            clearPin(originPos);
-            clearPin(destinationPos);
             
             directionsManager.addWaypoint(startPoint);
             
-          
+            Microsoft.Maps.loadModule("Microsoft.Maps.SpatialMath", function () {
+                var midPoint = Microsoft.Maps.SpatialMath.interpolate(originPos.getLocation(), destinationPos.getLocation());
+                var midPin = addPushPin(midPoint,"Mid Point","Blue");
+                var radius = Math.max(Microsoft.Maps.SpatialMath.getDistanceTo(originPos.getLocation(), midPoint),Microsoft.Maps.SpatialMath.getDistanceTo(destinationPos.getLocation(), midPoint));
+
+                for(var i = 0; i < caiList.length;i++){
+                    if(Microsoft.Maps.SpatialMath.getDistanceTo(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude), midPoint) < radius){
+                        var tempPin = addPushPin(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude),"","yellow");
+                    }
+                }
+                console.log(radius);
+            });
             
             directionsManager.addWaypoint(endPoint);
+            
+            clearPin(originPos);
+            clearPin(destinationPos);
             
             directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
             
@@ -161,6 +173,9 @@ function getMap(){
           caiList.push({cainombre: data[i].fields.cainombre, latitude: data[i].fields.geo_point_2d[0], longitude: data[i].fields.geo_point_2d[1]})
           i++;
       }
+      /*for(j=0;j<caiList.length;j++){
+          var tempPin = addPushPin(new Microsoft.Maps.Location(caiList[j].latitude, caiList[j].longitude),"","green");
+      }*/
     });
     
 }
