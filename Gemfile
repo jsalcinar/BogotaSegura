@@ -83,3 +83,6 @@ gem 'cloudinary'
 gem 'simple_form'
 
 gem "rails_db"
+
+#mailers security
+gem "figaro"
