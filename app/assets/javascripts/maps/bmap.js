@@ -138,19 +138,21 @@ function getMap(){
             
             directionsManager.addWaypoint(startPoint);
             
-            Microsoft.Maps.loadModule("Microsoft.Maps.SpatialMath", function () {
-                var midPoint = Microsoft.Maps.SpatialMath.interpolate(originPos.getLocation(), destinationPos.getLocation());
-                var midPin = addPushPin(midPoint,"Mid Point","Blue");
-                var radius = Math.max(Microsoft.Maps.SpatialMath.getDistanceTo(originPos.getLocation(), midPoint),Microsoft.Maps.SpatialMath.getDistanceTo(destinationPos.getLocation(), midPoint));
-
-                for(var i = 0; i < caiList.length;i++){
-                    if(Microsoft.Maps.SpatialMath.getDistanceTo(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude), midPoint) < radius){
-                        var tempPin = addPushPin(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude),"","yellow");
+            if(transportMode == 'Walking'){
+                Microsoft.Maps.loadModule("Microsoft.Maps.SpatialMath", function () {
+                    var midPoint = Microsoft.Maps.SpatialMath.interpolate(originPos.getLocation(), destinationPos.getLocation());
+                    var midPin = addPushPin(midPoint,"Mid Point","Blue");
+                    var radius = Math.max(Microsoft.Maps.SpatialMath.getDistanceTo(originPos.getLocation(), midPoint),Microsoft.Maps.SpatialMath.getDistanceTo(destinationPos.getLocation(), midPoint));
+    
+                    for(var i = 0; i < caiList.length;i++){
+                        if(Microsoft.Maps.SpatialMath.getDistanceTo(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude), midPoint) < radius){
+                            var tempPin = addPushPin(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude),"","Black");
+                        }
                     }
-                }
-                console.log(radius);
-            });
-            
+                    console.log(radius);
+                });
+            }
+
             directionsManager.addWaypoint(endPoint);
             
             clearPin(originPos);

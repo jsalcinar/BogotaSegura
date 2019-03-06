@@ -1,6 +1,5 @@
 var currentSlide;
 var distanceToMove;
-services_init();
 
 function services_init(){
     if(performance.navigation.type == 2){
