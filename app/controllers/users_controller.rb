@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    ApplicationMailer.confirm_user(@user).deliver
   end
   
   def index
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
     @user = User.new(post_params)
 
     if @user.save
+
       redirect_to users_url, :notice => 'User was successfully created.'
     else
       render :action => "new"

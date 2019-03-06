@@ -86,3 +86,4 @@ gem "rails_db"
 
 #mailers security
 gem "figaro"
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
