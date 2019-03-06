@@ -3,7 +3,8 @@ var readState = "none";
 var mapCenter, searchPin = null;
 var map, interestMap, originPos, destinationPos = null;
 
-var searchManager, directionsManager, autosuggestManager = null;
+var safeRouteStatus = false;
+var searchManager, directionsManager, autosuggestManager,spatialMath = null;
 var caiList = [];
 
 function getMap(){
@@ -35,6 +36,17 @@ function getMap(){
     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
         //Create an instance of the directions manager.
         directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+        Microsoft.Maps.Events.addHandler(
+            directionsManager,
+            'directionsUpdated',
+            function (directionsEvent){
+                if(transportMode == 'Walking' && directionsManager.getRouteResult()!=null && safeRouteStatus ){
+                    getSafeRoute(directionsManager.getRouteResult()[0].routePath);
+                    directionsManager.clearDisplay();
+                }
+                safeRouteStatus = false;
+            }
+        );
     });
     
     Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
@@ -46,6 +58,10 @@ function getMap(){
         autosuggestManager = new Microsoft.Maps.AutosuggestManager(options);
         autosuggestManager.setOptions()
         autosuggestManager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
+    });
+    
+    Microsoft.Maps.loadModule("Microsoft.Maps.SpatialMath", function () {
+        spatialMath = Microsoft.Maps.SpatialMath;
     });
     
     
@@ -94,7 +110,6 @@ function getMap(){
     });
   
     $( '#map_resetBtn, #mapResult_resetBtn' ).click( function(e){
-        console.log(caiList);
         resetmap();
         initMapService();
         $( '#mapControlMainMenu' ).removeClass("hidden");
@@ -116,6 +131,8 @@ function getMap(){
           alert("Debes de seleccionar una ubicacion de destino.");
         }else{
             
+            safeRouteStatus = true;
+            
             switch(transportMode){
                 case "Driving":
                     directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
@@ -135,32 +152,21 @@ function getMap(){
             
             var startPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: originPos.getLocation() });
             var endPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: destinationPos.getLocation() });
+
+            /*var line = new Microsoft.Maps.Polyline([originPos.getLocation(),destinationPos.getLocation()], {
+                strokeColor: 'red',
+                strokeThickness: 3
+            });
+            map.entities.push(line);*/
             
             directionsManager.addWaypoint(startPoint);
-            
-            if(transportMode == 'Walking'){
-                Microsoft.Maps.loadModule("Microsoft.Maps.SpatialMath", function () {
-                    var midPoint = Microsoft.Maps.SpatialMath.interpolate(originPos.getLocation(), destinationPos.getLocation());
-                    var midPin = addPushPin(midPoint,"Mid Point","Blue");
-                    var radius = Math.max(Microsoft.Maps.SpatialMath.getDistanceTo(originPos.getLocation(), midPoint),Microsoft.Maps.SpatialMath.getDistanceTo(destinationPos.getLocation(), midPoint));
-    
-                    for(var i = 0; i < caiList.length;i++){
-                        if(Microsoft.Maps.SpatialMath.getDistanceTo(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude), midPoint) < radius){
-                            var tempPin = addPushPin(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude),"","Black");
-                        }
-                    }
-                    console.log(radius);
-                });
-            }
-
             directionsManager.addWaypoint(endPoint);
+            
+            directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
+            directionsManager.calculateDirections();
             
             clearPin(originPos);
             clearPin(destinationPos);
-            
-            directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
-            
-            directionsManager.calculateDirections();
             
             $( '.mapControl_body' ).addClass("disabled");
             
@@ -214,7 +220,6 @@ function initMapService(){
                         location: location,
                         callback: function (r) {
                             //Tell the user the name of the result.
-                            console.log(r.name);
                             $('#Origen').text(r.name.split(",")[0]);
                         },
                         errorCallback: function (e) {
@@ -239,7 +244,6 @@ function initMapService(){
                         callback: function (r) {
                             //Tell the user the name of the result.
                             $('#Destino').text(r.name.split(",")[0]);
-                            console.log(r.name);
                         },
                         errorCallback: function (e) {
                             //If there is an error, alert the user about it.
@@ -299,4 +303,58 @@ function selectedSuggestion(result) {
     searchPin = new Microsoft.Maps.Pushpin(result.location);
     map.entities.push(searchPin);
     map.setView({ bounds: result.bestView });
+}
+
+function getSafeRoute(routePath){
+    
+        var kilometers = spatialMath.DistanceUnits.Kilometers;
+        var bufferFlat = spatialMath.Geometry.BufferEndCap.Flat;
+        var nearCai = [];
+        var flag = 0.6; //Kilometers
+        var searchShape = null;
+        
+        var startRouteLoc = routePath[0];
+        var endRouteLoc = routePath[routePath.length-1];
+        var midPoint = spatialMath.interpolate(startRouteLoc, endRouteLoc);
+        var radius = Math.max(spatialMath.getDistanceTo(startRouteLoc,midPoint,kilometers),spatialMath.getDistanceTo(endRouteLoc,midPoint,kilometers));
+        console.log(radius);
+        
+        //var routeLine2 = new Microsoft.Maps.Polyline(routePath);
+       //map.entities.push(routeLine2); 
+        
+        if(radius<flag){
+            var path = spatialMath.getRegularPolygon(midPoint, radius, 40, kilometers);
+            searchShape = new Microsoft.Maps.Polygon(path);
+        }else{
+            var routeLine = new Microsoft.Maps.Polyline(routePath);
+            searchShape = spatialMath.Geometry.buffer(routeLine,flag,kilometers,bufferFlat);
+        }
+        map.entities.push(searchShape);  
+        
+        
+        for(var i = 0; i < caiList.length;i++){
+            var tempCai = new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude);
+            if(spatialMath.Geometry.contains(searchShape,tempCai)){
+                //var tempPin = addPushPin(new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude),"","Black");
+                nearCai.push([new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude),caiList[i].cainombre]);
+            }
+            if(nearCai.length==22) break;
+        }
+        
+        directionsManager.removeWaypoint(1);
+        directionsManager.removeWaypoint(0);
+        
+        var startPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: startRouteLoc });
+        var endPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: endRouteLoc });
+        
+        directionsManager.addWaypoint(startPoint);
+        for(var i=0;i<nearCai.length;i++){
+           var caiPoint = new Microsoft.Maps.Directions.Waypoint({ address: nearCai[i][1], location:  nearCai[i][0] });
+           directionsManager.addWaypoint(caiPoint); 
+        }
+        directionsManager.addWaypoint(endPoint);
+        
+        directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
+        directionsManager.calculateDirections();
+        
 }
