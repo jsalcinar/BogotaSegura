@@ -310,14 +310,15 @@ function getSafeRoute(routePath){
         var kilometers = spatialMath.DistanceUnits.Kilometers;
         var bufferFlat = spatialMath.Geometry.BufferEndCap.Flat;
         var nearCai = [];
-        var flag = 0.6; //Kilometers
+        var sortedWaypoints = [];
+        var flag = 1.0; //Kilometers
         var searchShape = null;
         
         var startRouteLoc = routePath[0];
         var endRouteLoc = routePath[routePath.length-1];
         var midPoint = spatialMath.interpolate(startRouteLoc, endRouteLoc);
+        var totalDistance = spatialMath.getDistanceTo(startRouteLoc,endRouteLoc,kilometers);
         var radius = Math.max(spatialMath.getDistanceTo(startRouteLoc,midPoint,kilometers),spatialMath.getDistanceTo(endRouteLoc,midPoint,kilometers));
-        console.log(radius);
         
         //var routeLine2 = new Microsoft.Maps.Polyline(routePath);
        //map.entities.push(routeLine2); 
@@ -331,7 +332,6 @@ function getSafeRoute(routePath){
         }
         map.entities.push(searchShape);  
         
-        
         for(var i = 0; i < caiList.length;i++){
             var tempCai = new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude);
             if(spatialMath.Geometry.contains(searchShape,tempCai)){
@@ -341,20 +341,43 @@ function getSafeRoute(routePath){
             if(nearCai.length==22) break;
         }
         
+        var pivote = startRouteLoc;
+        sortedWaypoints.push(new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: startRouteLoc }));
+        while(nearCai.length!=0){
+            var nearPoint = [99999999,-1];
+            for(var i = 0;i<nearCai.length;i++){
+                var distance = spatialMath.getDistanceTo(pivote,nearCai[i][0],kilometers);
+                if(distance<nearPoint[0]){
+                    nearPoint = [distance,i];
+                }
+            }
+            
+            var distanceTemptoEnd = spatialMath.getDistanceTo(nearCai[nearPoint[1]][0],endRouteLoc,kilometers);
+            var distancePivotetoEnd = spatialMath.getDistanceTo(pivote,endRouteLoc,kilometers);
+            
+            if(totalDistance > distanceTemptoEnd && distancePivotetoEnd>nearPoint[0] && distancePivotetoEnd>distanceTemptoEnd ){
+                pivote = nearCai[nearPoint[1]][0];
+                sortedWaypoints.push(new Microsoft.Maps.Directions.Waypoint({ address: nearCai[nearPoint[1]][1], location: pivote }));
+            }
+            nearCai.splice(nearPoint[1],1);
+        }
+        sortedWaypoints.push(new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: endRouteLoc }));
+        
         directionsManager.removeWaypoint(1);
         directionsManager.removeWaypoint(0);
         
-        var startPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Origen', location: startRouteLoc });
-        var endPoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Destino', location: endRouteLoc });
-        
-        directionsManager.addWaypoint(startPoint);
-        for(var i=0;i<nearCai.length;i++){
-           var caiPoint = new Microsoft.Maps.Directions.Waypoint({ address: nearCai[i][1], location:  nearCai[i][0] });
-           directionsManager.addWaypoint(caiPoint); 
+        for(var i=0;i<sortedWaypoints.length;i++){
+           directionsManager.addWaypoint(sortedWaypoints[i]); 
         }
-        directionsManager.addWaypoint(endPoint);
         
         directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
         directionsManager.calculateDirections();
         
+}
+
+
+function printArray(array){
+    for(var i=0;i<array.length;i++){
+        console.log(i,array[i]);
+    }
 }
