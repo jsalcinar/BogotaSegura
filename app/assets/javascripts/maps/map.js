@@ -47,10 +47,23 @@ function panelAnimation(section){
             { width: "0%"},
             300, 
         )
+        $( '#top_navbar' ).delay(600).css('display', 'flex');
+    }else if(section=="news"){
+        $( '#control_div' ).delay(300).animate(
+            { width: "33%"},
+            300
+        )
+        $( '#top_navbar' ).delay(600).css('display', 'none');
     }else{
         $( '#control_div' ).delay(300).animate(
             { width: "33%"},
             300
         )
     }
+}
+
+
+function setSource(source){
+    $( '.newsPanel' ).find( '.twitterFeed.active' ).removeClass('active').addClass('hidden');
+    $( '.newsPanel' ).find( '.twitterFeed.'+source ).removeClass('hidden').addClass('active');
 }
