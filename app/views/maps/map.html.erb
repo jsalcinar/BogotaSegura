@@ -73,7 +73,13 @@
   </div>
   <div class="control newsControl">
     <h2>Seccion de Novedades</h2>
-      <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
+      <div class="btn_mode_group">
+        <button class=" btn btn-dark btn-block active" onclick="setSource('source01')">@BogotaTransito</button>
+        <button class="btn btn-dark btn-block" onclick="setSource('source02')">@Transmilenio</button>
+        <button class="btn btn-dark btn-block" onclick="setSource('source03')">@SeguridadBOG</button>
+        <button class="btn btn-dark btn-block" onclick="setSource('source04')">@SectorMovilidad</button>
+      </div>
+      <button class="btn btn-dark btn-block btnMenu" onclick="setSection('index')" >Menu</button>
   </div>
 </div>
 
@@ -96,7 +102,18 @@
     </div>
   </div>
   <div class="panel newsPanel">
-    <a class="twitter-timeline" href="https://twitter.com/BogotaTransito?ref_src=twsrc%5Etfw">Tweets by BogotaTransito</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="twitterFeed source01 active">
+      <a class="twitter-timeline" href="https://twitter.com/BogotaTransito?ref_src=twsrc%5Etfw">Tweets by BogotaTransito</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="twitterFeed source02 hidden">
+      <a class="twitter-timeline" href="https://twitter.com/TransMilenio?ref_src=twsrc%5Etfw">Tweets by TransMilenio</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="twitterFeed source03 hidden">
+      <a class="twitter-timeline" href="https://twitter.com/SeguridadBOG?ref_src=twsrc%5Etfw">Tweets by SeguridadBOG</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="twitterFeed source04 hidden">
+      <a class="twitter-timeline" href="https://twitter.com/SectorMovilidad?ref_src=twsrc%5Etfw">Tweets by SectorMovilidad</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
   </div>
 </div>
 
