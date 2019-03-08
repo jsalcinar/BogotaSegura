@@ -52,33 +52,38 @@
   </div>
   <div class="control interestControl">
     <h2>Seccion de Interes</h2>
-
-      <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
-      <br>
-      
-      <div class="table-container">
-        <table id="sitesTable"class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col" class="hidden">Latitude</th>
-              <th scope="col" class="hidden">Longitude</th>
-            </tr>
-          </thead>
+    
+    <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
+    <br>
+    <button class="btn btn-dark btn-block" onclick="document.getElementById('commentsDiv').style.display='block'" >Comments</button>
+    
+    <div class="table-container">
+      <table id="sitesTable"class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col" class="hidden">Latitude</th>
+            <th scope="col" class="hidden">Longitude</th>
+          </tr>
+        </thead>
         
-          <tbody>
-            <% @sites.each do |site| %>
-              <tr class="sitesRowTable">
-                <th scope="row"><%= site.id %></th>
-                <td><%= site.name %></td>
-                <td class="hidden"><%= site.latitude %></td>
-                <td class="hidden"><%= site.longitude %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+        <tbody>
+          <% @sites.each do |site| %>
+            <tr class="sitesRowTable">
+              <th scope="row"><%= site.id %></th>
+              <td><%= site.name %></td>
+              <td class="hidden"><%= site.latitude %></td>
+              <td class="hidden"><%= site.longitude %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="">
+      
+    </div>   
       
   </div>
   <div class="control newsControl">
@@ -124,6 +129,17 @@
     <div class="twitterFeed source04 hidden">
       <a class="twitter-timeline" href="https://twitter.com/SectorMovilidad?ref_src=twsrc%5Etfw">Tweets by SectorMovilidad</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
+  </div>
+</div>
+
+
+<div id="commentsDiv" class="floating">
+  <div class="floating-content">
+    <p>Comentarios</p>
+    <div>
+      
+    </div>
+    <button class="btn btn-dark btn-block" onclick="document.getElementById('commentsDiv').style.display='none'" >Regresar</button>
   </div>
 </div>
 
