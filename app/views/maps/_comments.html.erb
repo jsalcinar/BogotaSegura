@@ -1,0 +1,9 @@
+<P>Commentarios</P>
+
+<% data.each do |comment| %>
+  <div>
+    <strong><%= comment.user_name %></strong>
+    <br>
+    <p><%= comment.body %></p>
+  </div>
+<% end %>

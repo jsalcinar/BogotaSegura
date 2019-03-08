@@ -81,9 +81,9 @@ function getMap(){
         initMapService();
     } );
     
-    $( '#InteresLink' ).click( function(e){
+   /* $( '#InteresLink' ).click( function(e){
         onRowSitesClick();
-    } );
+    } );*/
     
     //Se presiona la opcion de origen.
     $( '#Origen' ).click( function(e){
@@ -379,10 +379,10 @@ function getSafeRoute(routePath){
         directionsManager.calculateDirections();
         
 }
-
-
+/*
 function onRowSitesClick() {
     $(".sitesRowTable").click(function(){ 
+        var siteID = $(this).find("td:nth-child(1)").text();
         var name = $(this).find("td:nth-child(2)").text();
         var latitude = parseFloat($(this).find("td:nth-child(3)").text());
         var longitude = parseFloat($(this).find("td:nth-child(4)").text());
@@ -398,4 +398,5 @@ function onRowSitesClick() {
         interestMap.entities.push(pin);
         
     });
-};
+};*/
+
