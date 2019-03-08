@@ -80,6 +80,11 @@ function getMap(){
     $( '#RouteLink' ).click( function(e){
         initMapService();
     } );
+    
+    $( '#InteresLink' ).click( function(e){
+        onRowSitesClick();
+    } );
+    
     //Se presiona la opcion de origen.
     $( '#Origen' ).click( function(e){
         $( '#Destino' ).removeClass( 'active' );
@@ -376,8 +381,21 @@ function getSafeRoute(routePath){
 }
 
 
-function printArray(array){
-    for(var i=0;i<array.length;i++){
-        console.log(i,array[i]);
-    }
-}
+function onRowSitesClick() {
+    $(".sitesRowTable").click(function(){ 
+        var name = $(this).find("td:nth-child(2)").text();
+        var latitude = parseFloat($(this).find("td:nth-child(3)").text());
+        var longitude = parseFloat($(this).find("td:nth-child(4)").text());
+        var location = new Microsoft.Maps.Location(latitude, longitude);
+        var viewOptions = {
+            center: location,
+            zoom: 18
+        };
+        
+        interestMap.entities.clear();
+        interestMap.setView(viewOptions);
+        var pin = new Microsoft.Maps.Pushpin(location,{title: name, color: "Red"}, {'draggable': false});
+        interestMap.entities.push(pin);
+        
+    });
+};
