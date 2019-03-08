@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :sites
   namespace :admin do
       resources :users, :delinquency_stats, :reports, :routes, :tips, :zones
       root to: "users#index"

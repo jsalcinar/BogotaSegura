@@ -52,24 +52,34 @@
   </div>
   <div class="control interestControl">
     <h2>Seccion de Interes</h2>
+
       <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
       <br>
+      
       <div class="table-container">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Lugar</th>
+              <th scope="col">Name</th>
+              <th scope="col" class="hidden">Latitude</th>
+              <th scope="col" class="hidden">Longitude</th>
             </tr>
           </thead>
+        
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Jardin Botanico</td>
-            </tr>
+            <% @sites.each do |site| %>
+              <tr>
+                <th scope="row"><%= site.id %></th>
+                <td><%= site.name %></td>
+                <td class="hidden"><%= site.latitude %></td>
+                <td class="hidden"><%= site.longitude %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
+      
   </div>
   <div class="control newsControl">
     <h2>Seccion de Novedades</h2>
