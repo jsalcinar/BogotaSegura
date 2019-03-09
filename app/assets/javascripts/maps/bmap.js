@@ -335,7 +335,7 @@ function getSafeRoute(routePath){
             var routeLine = new Microsoft.Maps.Polyline(routePath);
             searchShape = spatialMath.Geometry.buffer(routeLine,flag,kilometers,bufferFlat);
         }
-        map.entities.push(searchShape);  
+        //map.entities.push(searchShape);  
         
         for(var i = 0; i < caiList.length;i++){
             var tempCai = new Microsoft.Maps.Location(caiList[i].latitude, caiList[i].longitude);
