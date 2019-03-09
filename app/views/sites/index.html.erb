@@ -8,6 +8,8 @@
       <th>Name</th>
       <th>Latitude</th>
       <th>Longitude</th>
+      <th>Description</th>
+      <th>Url</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
         <td><%= site.name %></td>
         <td><%= site.latitude %></td>
         <td><%= site.longitude %></td>
+        <td><%= site.description %></td>
+        <td><%= site.url %></td>
         <td><%= link_to 'Show', site %></td>
         <td><%= link_to 'Edit', edit_site_path(site) %></td>
         <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>

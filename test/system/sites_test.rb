@@ -14,9 +14,11 @@ class SitesTest < ApplicationSystemTestCase
     visit sites_url
     click_on "New Site"
 
+    fill_in "Description", with: @site.description
     fill_in "Latitude", with: @site.latitude
     fill_in "Longitude", with: @site.longitude
     fill_in "Name", with: @site.name
+    fill_in "Url", with: @site.url
     click_on "Create Site"
 
     assert_text "Site was successfully created"
@@ -27,9 +29,11 @@ class SitesTest < ApplicationSystemTestCase
     visit sites_url
     click_on "Edit", match: :first
 
+    fill_in "Description", with: @site.description
     fill_in "Latitude", with: @site.latitude
     fill_in "Longitude", with: @site.longitude
     fill_in "Name", with: @site.name
+    fill_in "Url", with: @site.url
     click_on "Update Site"
 
     assert_text "Site was successfully updated"

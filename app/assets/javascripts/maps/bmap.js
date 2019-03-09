@@ -1,6 +1,6 @@
 var transportMode = 'Walking';
 var readState = "none";
-var mapCenter, searchPin = null;
+var mapCenter, searchPin, infobox = null;
 var map, interestMap, originPos, destinationPos = null;
 
 var safeRouteStatus = false;
@@ -24,7 +24,7 @@ function getMap(){
     interestMap = new Microsoft.Maps.Map('#interestMap', {
         credentials: 'As532WY9PqmwymM6Hh5eS5HydCGrZZFXE8DouAnheKH6m1KljTfOLcvq1r_JmY4p',
         center: mapCenter,
-        mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+        mapTypeId: Microsoft.Maps.MapTypeId.road,
         zoom: 11
     });
     
@@ -81,9 +81,9 @@ function getMap(){
         initMapService();
     } );
     
-   /* $( '#InteresLink' ).click( function(e){
-        onRowSitesClick();
-    } );*/
+    $( '#InteresLink' ).click( function(e){
+        infoboxSites();
+    } );
     
     //Se presiona la opcion de origen.
     $( '#Origen' ).click( function(e){
@@ -379,24 +379,51 @@ function getSafeRoute(routePath){
         directionsManager.calculateDirections();
         
 }
-/*
-function onRowSitesClick() {
-    $(".sitesRowTable").click(function(){ 
+
+function infoboxSites(){
+    infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+        visible: false
+    });
+    infobox.setMap(interestMap);
+
+    $(".sitesRowTable").click(function(){
         var siteID = $(this).find("td:nth-child(1)").text();
         var name = $(this).find("td:nth-child(2)").text();
         var latitude = parseFloat($(this).find("td:nth-child(3)").text());
         var longitude = parseFloat($(this).find("td:nth-child(4)").text());
         var location = new Microsoft.Maps.Location(latitude, longitude);
+        var description = $(this).find("td:nth-child(5)").text();
+        var url = $(this).find("td:nth-child(6)").text();
         var viewOptions = {
             center: location,
-            zoom: 18
+            zoom: 16
         };
-        
+
         interestMap.entities.clear();
         interestMap.setView(viewOptions);
-        var pin = new Microsoft.Maps.Pushpin(location,{title: name, color: "Red"}, {'draggable': false});
-        interestMap.entities.push(pin);
+        var sitePin = new Microsoft.Maps.Pushpin(location,{color: "Red"}, {'draggable': false});
+        sitePin.metadata = {
+            title: name,
+            description: description + '\nMas informacion en '+url
+        };
         
+        infobox.setOptions({
+            visible: false
+        });
+    
+        Microsoft.Maps.Events.addHandler(sitePin, 'click', function(e){
+        //Make sure the infobox has metadata to display.
+            if (e.target.metadata) {
+        //Set the infobox options with the metadata of the pushpin.
+                infobox.setOptions({
+                    location: e.target.getLocation(),
+                    title: e.target.metadata.title,
+                    description: e.target.metadata.description,
+                    visible: true
+                });
+            }
+        });
+        interestMap.entities.push(sitePin);
     });
-};*/
+}
 

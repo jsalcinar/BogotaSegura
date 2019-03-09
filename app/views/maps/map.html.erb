@@ -55,8 +55,6 @@
     
     <button class="btn btn-dark btn-block" onclick="setSection('index')" >Menu</button>
     <br>
-    <button class="btn btn-dark btn-block" onclick="document.getElementById('commentsDiv').style.display='block'" >Comments</button>
-  
     
     <div class="table-container">
       <table id="sitesTable"class="table">
@@ -66,6 +64,8 @@
             <th scope="col">Name</th>
             <th scope="col" class="hidden">Latitude</th>
             <th scope="col" class="hidden">Longitude</th>
+            <th scope="col" class="hidden">Description</th>
+            <th scope="col" class="hidden">URL</th>
           </tr>
         </thead>
         
@@ -76,6 +76,8 @@
               <td><%= site.name %></td>
               <td class="hidden"><%= site.latitude %></td>
               <td class="hidden"><%= site.longitude %></td>
+              <td class="hidden"><%= site.description %></td>
+              <td class="hidden"><%= site.url %></td>
             </tr>
           <% end %>
         </tbody>
@@ -118,56 +120,24 @@
   </div>
   <div class="panel newsPanel">
     <div class="twitterFeed source01 active">
-      <a class="twitter-timeline" href="https://twitter.com/BogotaTransito?ref_src=twsrc%5Etfw">Tweets by BogotaTransito</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-timeline" href="https://twitter.com/BogotaTransito?ref_src=twsrc%5Etfw">Tweets by BogotaTransito</a>
     </div>
     <div class="twitterFeed source02 hidden">
-      <a class="twitter-timeline" href="https://twitter.com/TransMilenio?ref_src=twsrc%5Etfw">Tweets by TransMilenio</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-timeline" href="https://twitter.com/TransMilenio?ref_src=twsrc%5Etfw">Tweets by TransMilenio</a> 
     </div>
     <div class="twitterFeed source03 hidden">
-      <a class="twitter-timeline" href="https://twitter.com/SeguridadBOG?ref_src=twsrc%5Etfw">Tweets by SeguridadBOG</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-timeline" href="https://twitter.com/SeguridadBOG?ref_src=twsrc%5Etfw">Tweets by SeguridadBOG</a> 
     </div>
     <div class="twitterFeed source04 hidden">
-      <a class="twitter-timeline" href="https://twitter.com/SectorMovilidad?ref_src=twsrc%5Etfw">Tweets by SectorMovilidad</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-timeline" href="https://twitter.com/SectorMovilidad?ref_src=twsrc%5Etfw">Tweets by SectorMovilidad</a>
     </div>
   </div>
 </div>
-
-
-<div id="commentsDiv" class="floating">
-  <div class="floating-content">
-    <p>Comentarios</p>
-    <div id="commentsPlace">
-    </div>
-    <button class="btn btn-dark btn-block" onclick="document.getElementById('commentsDiv').style.display='none'" >Regresar</button>
-  </div>
-</div>
-
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=getMap' async defer></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
 
   mapService_init();
-  
-  $(".sitesRowTable").click(function(){ 
-      var siteID = $(this).find("td:nth-child(1)").text();
-      var name = $(this).find("td:nth-child(2)").text();
-      var latitude = parseFloat($(this).find("td:nth-child(3)").text());
-      var longitude = parseFloat($(this).find("td:nth-child(4)").text());
-      var location = new Microsoft.Maps.Location(latitude, longitude);
-      var viewOptions = {
-          center: location,
-          zoom: 18
-      };
-      
-      interestMap.entities.clear();
-      interestMap.setView(viewOptions);
-      var pin = new Microsoft.Maps.Pushpin(location,{title: name, color: "Red"}, {'draggable': false});
-      interestMap.entities.push(pin);
-      
-      console.log(siteID);
-      $.ajax({
-        url: "fetch_comments/".concat(siteID)
-      });
-      
-  });
+
   
 </script>

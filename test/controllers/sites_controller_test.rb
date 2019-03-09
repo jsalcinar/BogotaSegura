@@ -17,7 +17,7 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create site" do
     assert_difference('Site.count') do
-      post sites_url, params: { site: { latitude: @site.latitude, longitude: @site.longitude, name: @site.name } }
+      post sites_url, params: { site: { description: @site.description, latitude: @site.latitude, longitude: @site.longitude, name: @site.name, url: @site.url } }
     end
 
     assert_redirected_to site_url(Site.last)
@@ -34,7 +34,7 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update site" do
-    patch site_url(@site), params: { site: { latitude: @site.latitude, longitude: @site.longitude, name: @site.name } }
+    patch site_url(@site), params: { site: { description: @site.description, latitude: @site.latitude, longitude: @site.longitude, name: @site.name, url: @site.url } }
     assert_redirected_to site_url(@site)
   end
 

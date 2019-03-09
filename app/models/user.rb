@@ -36,5 +36,4 @@ class User < ApplicationRecord
   #Asociaciones de la tabla User
   has_many :reports
   has_many :routes
-  
 end

@@ -67,6 +67,7 @@ function panelAnimation(section){
 
 
 function setSource(source){
+    //twttr.widgets.load($( '.'+source ));
     $( '.newsPanel' ).find( '.twitterFeed.active' ).removeClass('active').addClass('hidden');
     $( '.newsPanel' ).find( '.twitterFeed.'+source ).removeClass('hidden').addClass('active');
 }

@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 2019_03_08_190507) do
   create_table "comments", force: :cascade do |t|
     t.string "user_name"
     t.text "body"
-    t.integer "site_id"
     t.integer "score"
+    t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_comments_on_site_id"
   end
 
   create_table "delinquency_stats", force: :cascade do |t|
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_190507) do
     t.string "name"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.string "description"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -113,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_190507) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "sites"
   add_foreign_key "delinquency_stats", "zones"
   add_foreign_key "reports", "users"
   add_foreign_key "routes", "users"
