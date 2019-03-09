@@ -83,5 +83,3 @@ gem 'cloudinary'
 gem 'simple_form'
 
 gem "rails_db"
-
-gem 'twitter'

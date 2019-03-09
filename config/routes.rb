@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :comments
+  resources :sites
   namespace :admin do
       resources :users, :delinquency_stats, :reports, :routes, :tips, :zones
       root to: "users#index"
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   
+  get "maps/fetch_comments/:id" => 'maps#refresh_comments', as: 'fetch_comments'
   get "pages/index"
   get "pages/services"
   get "pages/aboutus" 

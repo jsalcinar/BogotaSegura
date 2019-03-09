@@ -1,3 +1,6 @@
+var sitesList = null;
+
+
 function mapService_init(){
     button_mode_active();
 }
@@ -64,6 +67,11 @@ function panelAnimation(section){
 
 
 function setSource(source){
+    //twttr.widgets.load($( '.'+source ));
     $( '.newsPanel' ).find( '.twitterFeed.active' ).removeClass('active').addClass('hidden');
     $( '.newsPanel' ).find( '.twitterFeed.'+source ).removeClass('hidden').addClass('active');
+}
+
+function showSites(){
+    console.log(sitesList);
 }
