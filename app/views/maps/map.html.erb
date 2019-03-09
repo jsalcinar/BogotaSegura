@@ -103,11 +103,41 @@
 
 <div id="panel_div">
   <div class="panel indexPanel active">
+      <div class="container-fluid">
+            <div class="row align-items-center">
+                <h1>¿Qué Buscas?</h1>
+            </div>
+            <div id="images" class="row">
+                <div class="col-sm-4">
+                    <a id="a1"><img id="RouteLink" onclick="setSection('map')" class="panellink img-thumbnail" src= <%=asset_path("mapMenu/1.jpg")%>></a>
+                </div>
+                <div class="col-sm-4">
+                    <a id="a1"><img id="InteresLink" onclick="setSection('interest')" class="panellink img-thumbnail" src= <%=asset_path("mapMenu/2.jpg")%>></a>
+                </div>
+                <div class="col-sm-4">
+                    <a id="a1"><img id="NewsLink" onclick="setSection('news')" class="panellink img-thumbnail" src= <%=asset_path("mapMenu/3.jpg")%>></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                  <h2 id="t1">Planear Ruta</h2>
+                </div>
+                <div class="col-sm-4">
+                  <h2 id="t2">Sitios de Interés</h2>
+                </div>
+                <div class="col-sm-4">
+                  <h2 id="t3">Ultimos
+                      Aconteciminetos</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--<div class="panel indexPanel active">
       <h1>¿Que Buscas?</h1><br />
       <p id="RouteLink" class="panellink" onclick="setSection('map')">Planear Ruta</p>
       <p id="InteresLink" class="panellink" onclick="setSection('interest')">Sitios de interes</p>
       <p id="NewsLink" class="panellink" onclick="setSection('news')">Ultimos acontecimientos</p>
-  </div>
+  </div>-->
   <div class="panel mapPanel">
     <div class="map_container">
       <div id="myMap"></div>
