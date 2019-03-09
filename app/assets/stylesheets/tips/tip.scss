@@ -4,6 +4,7 @@
 
 body {
      height: 100vh; 
+     overflow-x: hidden;
 }
 
 #body_div{
@@ -25,15 +26,16 @@ body {
 }
 
 #tipsImage {
+    margin-top: 5%;
     margin-left: -80%;
     border-radius: 50%;
-    height: 92vh;
+    height: 120vh;
     width: 175%;
     object-fit: cover;
 }
 
 .firstRow {
-    margin-top: 9%;
+    margin-top: 0%;
 }
 
 .infoRow {
@@ -42,7 +44,8 @@ body {
 
 .infoCol {
     padding: 5%;
-    padding-bottom: 1%;
+    padding-right: 4%;
+    padding-bottom: 0%;
     width: 45%;
 }
 
